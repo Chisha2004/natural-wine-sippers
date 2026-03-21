@@ -1,0 +1,43 @@
+<div
+  class="bg-white rounded-2xl shadow-md overflow-hidden w-[260px] md:w-[260px] cursor-pointer group relative"
+>
+  <button
+    [attr.aria-label]="'View details of ' + beverage.name + ' button'"
+    (click)="goToBevergaeDetails(beverage.id)"
+  >
+    <img
+      [src]="beverage.imgUrl"
+      [alt]="beverage.name"
+      class="w-full object-contain"
+    />
+    <div class="p-4 space-y-2">
+      <h2 class="text-lg font-semibold text-gray-800">{{ beverage.name }}</h2>
+      <p class="text-sm text-gray-600">{{ beverage.producer }}</p>
+      <div class="text-base font-bold text-rose-600">
+        {{ beverage.price | currency : 'EUR' }}
+      </div>
+    </div>
+  </button>
+  <!-- Add to cart button -->
+  <button
+    class="add-to-cart absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer bg-white p-2 rounded-full shadow"
+    [attr.aria-label]="getAddToCartLabel()"
+    (click)="addToCart()"
+  >
+    <!-- Use Heroicon, Lucide, or Emoji -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6 text-gray-800"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 4.5v15m7.5-7.5h-15"
+      />
+    </svg>
+  </button>
+</div>

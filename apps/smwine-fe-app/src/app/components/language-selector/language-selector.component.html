@@ -1,0 +1,13 @@
+<select
+  [value]="translate.currentLang"
+  (change)="changeLanguage($event)"
+  class="p-1 border rounded"
+  aria-label="Select language"
+  translate="no"
+>
+  @for(lang of supportedLangs; track lang){
+  <option [value]="lang.code">
+    {{ lang.label }}
+  </option>
+  }
+</select>

@@ -1,0 +1,7 @@
+<div
+  class="flex overflow-x-auto space-x-3 p-4 md:grid md:grid-cols-5 md:gap-3 md:space-x-0 md:overflow-visible"
+>
+  @for(aBeverage of beverages; track aBeverage){
+  <app-wine-card [beverage]="aBeverage" class="flex-shrink-0"></app-wine-card>
+  }
+</div>

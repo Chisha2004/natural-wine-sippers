@@ -1,0 +1,94 @@
+<app-header class="block"></app-header>
+<div class="min-h-screen bg-gray-50 py-6 sm:py-12">
+  <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <!-- Mobile Title (visible on mobile only) -->
+    <h1 class="md:hidden text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+      {{ beverage?.name }}
+    </h1>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 bg-white rounded-lg shadow-lg p-6 sm:p-8"
+    >
+      <!-- Image Section -->
+      <div
+        class="hidden md:flex items-center justify-center order-2 md:order-1"
+      >
+        <img
+          [src]="beverage?.imgUrl"
+          [alt]="beverage?.name"
+          class="w-full h-auto object-cover rounded-lg max-w-xs sm:max-w-md"
+        />
+      </div>
+
+      <!-- Details Section -->
+      <div class="flex flex-col justify-between order-1 md:order-2">
+        <!-- Price and Title (hidden on mobile) -->
+        <div>
+          <h1
+            class="hidden md:block text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2"
+          >
+            {{ beverage?.name }}
+          </h1>
+
+          <!-- Mobile Only Image (visible on mobile before price) -->
+          <div class="md:hidden mb-4 flex justify-center">
+            <img
+              [src]="beverage?.imgUrl"
+              [alt]="beverage?.name"
+              class="w-full h-auto object-cover rounded-lg max-w-xs"
+            />
+          </div>
+
+          <p class="text-2xl sm:text-3xl font-semibold text-red-600 mb-4">
+            {{ beverage?.price | currency }}
+          </p>
+
+          <!-- Description -->
+          <p class="text-gray-600 text-base sm:text-lg leading-relaxed mb-6">
+            {{ beverage?.description }}
+          </p>
+        </div>
+
+        <!-- Details Box -->
+        <div class="border-t pt-6">
+          <h2 class="text-lg sm:text-xl font-bold text-gray-900 mb-4">
+            Eigenschaften
+          </h2>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
+          >
+            <!-- Type -->
+            <div class="bg-gray-100 p-3 sm:p-4 rounded-lg">
+              <p class="text-xs sm:text-sm font-semibold text-gray-600 mb-1">
+                Typ
+              </p>
+              <p class="text-base sm:text-lg font-bold text-gray-900 truncate">
+                {{ beverage?.type || 'N/A' }}
+              </p>
+            </div>
+
+            <!-- Producer -->
+            <div class="bg-gray-100 p-3 sm:p-4 rounded-lg">
+              <p class="text-xs sm:text-sm font-semibold text-gray-600 mb-1">
+                Hersteller
+              </p>
+              <p class="text-base sm:text-lg font-bold text-gray-900 truncate">
+                {{ beverage?.producer }}
+              </p>
+            </div>
+
+            <!-- Capacity -->
+            <div class="bg-gray-100 p-3 sm:p-4 rounded-lg">
+              <p class="text-xs sm:text-sm font-semibold text-gray-600 mb-1">
+                Größe
+              </p>
+              <p class="text-base sm:text-lg font-bold text-gray-900">
+                {{ beverage?.capacity }}ml
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

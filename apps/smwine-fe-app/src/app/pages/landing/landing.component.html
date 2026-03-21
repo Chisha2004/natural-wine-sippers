@@ -1,0 +1,61 @@
+<app-header class="block"></app-header>
+<div class="min-h-screen bg-white text-gray-800">
+  <section>
+    <app-beverage-list [beverages]="beverages"></app-beverage-list>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16 px-6 text-center">
+    <h2 class="text-3xl font-semibold mb-10">
+      {{ 'WHY_CHOOSE_US.TITLE' | translate }}
+    </h2>
+    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      <div class="space-y-3">
+        <span class="text-5xl">🍇</span>
+        <h3 class="text-xl font-semibold">
+          {{ 'WHY_CHOOSE_US_1.TITLE' | translate }}
+        </h3>
+        <p>{{ 'WHY_CHOOSE_US_1.TEXT' | translate }}</p>
+      </div>
+      <div class="space-y-3">
+        <span class="text-5xl">🚚</span>
+        <h3 class="text-xl font-semibold">
+          {{ 'WHY_CHOOSE_US_2.TITLE' | translate }}
+        </h3>
+        <p>
+          {{ 'WHY_CHOOSE_US_2.TEXT' | translate }}
+        </p>
+      </div>
+      <div class="space-y-3">
+        <span class="text-5xl">🍷</span>
+        <h3 class="text-xl font-semibold">
+          {{ 'WHY_CHOOSE_US_3.TITLE' | translate }}
+        </h3>
+        <p>
+          {{ 'WHY_CHOOSE_US_3.TEXT' | translate }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to action -->
+  <section class="bg-black text-white py-20 text-center px-6">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+      Ready to Uncork Something Special?
+    </h2>
+    <p class="text-lg mb-8 max-w-2xl mx-auto">
+      Join our wine club and receive exclusive access to limited releases and
+      tasting events.
+    </p>
+    <button
+      class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition"
+    >
+      Join the Club
+    </button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 text-center text-sm text-gray-500">
+    {{ 'COPY_WRITE' | translate }}
+  </footer>
+</div>
