@@ -1,0 +1,29 @@
+project-root/
+│
+├── src/
+│   ├── config/
+│   │   └── database.js
+│   │   └── app.config.js
+│   ├── controllers/
+│   │   └── user.controller.js
+│   ├── models/
+│   │   └── user.model.js            KEEP IN MIND WE USING TYPESCRIPT. SINCE THIS IS A MOCK SERVER IT MAY NOT NEED ALL THIS
+│   ├── routes/
+│   │   └── user.routes.js
+│   ├── middlewares/
+│   │   └── auth.middleware.js
+│   ├── services/
+│   │   └── user.service.js
+│   ├── utils/
+│   │   └── hash.util.js
+│   └── index.js
+│
+├── public/
+│   └── static files, css files
+│
+├── views/
+│   └── view files, multiple layouts
+│
+├── .env
+├── package.json
+└── server.js

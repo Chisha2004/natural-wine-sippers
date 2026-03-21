@@ -1,0 +1,82 @@
+<header class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0 text-xl font-bold text-red-700">
+        <a href="/">
+          <img src="/logo.png" class="logo-img" />
+        </a>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
+        <a href="#" class="hover:text-red-700 transition">Beer</a>
+        <a href="#" class="hover:text-red-700 transition">Wine</a>
+        <a href="#" class="hover:text-red-700 transition">Cider</a>
+        @if(!isMobile){
+        <app-language-selector></app-language-selector>
+        <app-shopping-cart></app-shopping-cart>
+        <app-search-header></app-search-header>
+        <app-profile-header></app-profile-header>
+        }
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex space-x-8">
+        @if(isMobile){
+        <app-search-header></app-search-header>
+        <app-language-selector></app-language-selector>
+        <app-shopping-cart></app-shopping-cart>
+        }
+        <button
+          type="button"
+          class="text-gray-700 focus:outline-none"
+          (click)="menuOpen = !menuOpen"
+        >
+          @if (!menuOpen) {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          } @else {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  @if (menuOpen) {
+  <div class="md:hidden px-4 pb-4 space-y-2 bg-white border-t border-gray-200">
+    <a href="#" class="block text-gray-700 hover:text-red-700">Beer</a>
+    <a href="#" class="block text-gray-700 hover:text-red-700">Wine</a>
+    <a href="#" class="block text-gray-700 hover:text-red-700">Cider</a>
+
+    <app-profile-header></app-profile-header>
+  </div>
+  }
+</header>

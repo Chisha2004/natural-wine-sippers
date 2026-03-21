@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/cart/add-to-cart",
+    "method": "post",
+    "response": [
+      {
+        "productId": "123",
+        "quantity": 2
+      },
+      {
+        "productId": "124",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "path": "/cart/items",
+    "method": "get",
+    "response": {
+      "cartItems": [
+        {
+          "productId": "wine-123",
+          "quantity": 2
+        },
+        {
+          "productId": "wine-456",
+          "quantity": 1
+        }
+      ]
+    }
+  }
+]
