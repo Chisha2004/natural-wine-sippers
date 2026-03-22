@@ -1,0 +1,10 @@
+spring:
+  web:
+    resources:
+      static-locations: "file:src/main/resources/static/"
+      cache:
+        period: 0
+
+devtools:
+  restart:
+    additional-paths: src/main/resources/static

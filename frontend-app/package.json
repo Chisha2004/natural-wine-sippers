@@ -6,7 +6,9 @@
     "start": "nx serve smwine-fe-app",
     "start:mock": "nx serve mock-server",
     "start:dev": "concurrently --kill-others \"nx serve mock-server\" \"nx serve smwine-fe-app\"",
-    "build": "nx build smwine-fe-app"
+    "build": "nx build smwine-fe-app",
+    "build:watch": "nx build smwine-fe-app --watch",
+    "build:dev:watch": "nx build smwine-fe-app --watch --configuration=development"
   },
   "private": true,
   "dependencies": {

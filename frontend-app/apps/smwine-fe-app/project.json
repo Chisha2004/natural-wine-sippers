@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/smwine-fe-app",
+        "outputPath": "../src/main/resources/static",
         "index": "apps/smwine-fe-app/src/index.html",
         "main": "apps/smwine-fe-app/src/main.ts",
         "polyfills": ["zone.js"],
