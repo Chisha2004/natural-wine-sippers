@@ -12,6 +12,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+  mvc:
+    pathmatch:
+      base-path: /api
+
   session:
     store-type: jdbc
     jdbc:
