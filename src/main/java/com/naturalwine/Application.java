@@ -1,4 +1,4 @@
-package com.naturalwine.sippers;
+package com.naturalwine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

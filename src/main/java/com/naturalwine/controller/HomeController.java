@@ -1,4 +1,4 @@
-package com.naturalwine.sippers;
+package com.naturalwine.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
