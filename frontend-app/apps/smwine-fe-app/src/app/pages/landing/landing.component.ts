@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
-import { BeverageService } from '../../services/beverage/beverage.service';
-import { Beverage } from '../../models/beverage.interface';
-import { take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BeverageListComponent } from '../../components/beverage-list/beverage-list-component';
 import { TranslateModule } from '@ngx-translate/core';
+import { BeverageStore } from '../../services/beverage/beverage.store';
 
 @Component({
   selector: 'app-landing',
@@ -15,18 +13,15 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [HttpClient],
 })
 export class LandingComponent implements OnInit {
-  beverage!: Beverage;
-  beverages!: Beverage[];
-
-  constructor(private beverageService: BeverageService) {}
+  readonly beverageStore = inject(BeverageStore);
+  beverageCatalog = this.beverageStore.catalog;
 
   //TODO need to add mini card to show price as well on detailed
   ngOnInit(): void {
-    this.beverageService
-      .getBeverages('wine')
-      .pipe(take(1))
-      .subscribe({
-        next: (beverages: Beverage[]) => (this.beverages = beverages),
-      });
+    this.beverageStore.loadCatalog();
+  }
+
+  test() {
+    console.log('test');
   }
 }

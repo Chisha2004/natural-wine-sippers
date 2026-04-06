@@ -21,4 +21,6 @@ public class BeverageController {
     public List<BeverageDto> getAvailableTypes(){
         return beverageService.getAvailableTypes();
     }
+
+
 }

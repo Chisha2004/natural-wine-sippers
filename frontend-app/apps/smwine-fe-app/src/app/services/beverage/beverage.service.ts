@@ -2,18 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Beverage } from '../../models/beverage.interface';
-import { BeverageCategory } from '../../models/beverage-category.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BeverageService {
-  private readonly apiUrl = '/api/v1/beverages';
+  private readonly BASE_URL = '/api/v1/beverages';
 
+  // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(private http: HttpClient) {}
 
-  public getBeverages(category?: BeverageCategory): Observable<Beverage[]> {
-    return this.http.get<Beverage[]>(this.apiUrl);
+  public getCatalog(): Observable<Beverage[]> {
+    return this.http.get<Beverage[]>(`${this.BASE_URL}/catalog`);
   }
 
   public getBeverage(id: string): Observable<Beverage> {
