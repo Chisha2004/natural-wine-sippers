@@ -19,7 +19,7 @@ public class BeverageController {
 
     @GetMapping("/catalog")
     public List<BeverageDto> getAvailableTypes(){
-        return beverageService.getAvailableTypes();
+        return beverageService.getAvailableTypes(); //TODO need to have language header and have translations for any text in the db
     }
 
 

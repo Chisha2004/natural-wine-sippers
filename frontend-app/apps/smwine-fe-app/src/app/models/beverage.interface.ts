@@ -1,10 +1,10 @@
-import { BeverageCategory } from './beverage-category.interface';
+import { BeverageType } from './beverage-category.interface';
 
 //TODO confirm if origin and country are the same thing
 export interface Beverage {
   id: string;
   name: string;
-  category: BeverageCategory;
+  category: BeverageType;
   description: string;
   type?: string;
   grapeVariety?: string;

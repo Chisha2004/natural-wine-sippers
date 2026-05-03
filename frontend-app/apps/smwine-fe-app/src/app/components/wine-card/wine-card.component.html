@@ -2,19 +2,19 @@
   class="bg-white rounded-2xl shadow-md overflow-hidden w-[260px] md:w-[260px] cursor-pointer group relative"
 >
   <button
-    [attr.aria-label]="'View details of ' + beverage.name + ' button'"
-    (click)="goToBevergaeDetails(beverage.id)"
+    [attr.aria-label]="'View details of ' + beverage().name + ' button'"
+    (click)="goToBevergaeDetails(beverage().id)"
   >
     <img
-      [src]="beverage.imgUrl"
-      [alt]="beverage.name"
+      [src]="beverage().imgUrl"
+      [alt]="beverage().name"
       class="w-full object-contain"
     />
     <div class="p-4 space-y-2">
-      <h2 class="text-lg font-semibold text-gray-800">{{ beverage.name }}</h2>
-      <p class="text-sm text-gray-600">{{ beverage.producer }}</p>
+      <h2 class="text-lg font-semibold text-gray-800">{{ beverage().name }}</h2>
+      <p class="text-sm text-gray-600">{{ beverage().producer }}</p>
       <div class="text-base font-bold text-rose-600">
-        {{ beverage.price | currency : 'EUR' }}
+        {{ beverage().price | currency : 'EUR' }}
       </div>
     </div>
   </button>

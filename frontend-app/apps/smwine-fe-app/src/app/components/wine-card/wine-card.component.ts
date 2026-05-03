@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/prefer-inject */
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Beverage } from '../../models/beverage.interface';
@@ -14,7 +14,7 @@ import { CartService } from '../../services/cart.service';
   styleUrl: './wine-card.component.scss',
 })
 export class WineCardComponent {
-  @Input() beverage!: Beverage;
+  beverage = input.required<Beverage>();
 
   constructor(
     private router: Router,
@@ -28,13 +28,13 @@ export class WineCardComponent {
 
   getAddToCartLabel(): string {
     return `${this.translate.instant('WINE_CARD.ADD_TO_CART')} ${
-      this.beverage.name
+      this.beverage().name
     } to cart button`;
   }
 
   addToCart() {
     this.cartService.addToCart({
-      productId: this.beverage.id,
+      productId: this.beverage().id,
       quantity: 1,
     });
   }

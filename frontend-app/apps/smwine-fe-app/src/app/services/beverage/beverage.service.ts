@@ -20,7 +20,7 @@ export class BeverageService {
     return of({
       id: '123',
       name: 'Trousseau Duty',
-      category: 'wine',
+      category: 'Wine',
       description:
         'A structured, dense, and elegant wine from a magnificent terroir. A wine of great precision and refinement, which will be a pleasure to open to accompany a fine dinner. A sweet moment in perspective!',
       type: 'Red',

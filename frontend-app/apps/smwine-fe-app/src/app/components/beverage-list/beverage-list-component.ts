@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Beverage } from '../../models/beverage.interface';
 import { WineCardComponent } from '../wine-card/wine-card.component';
 
@@ -9,5 +9,5 @@ import { WineCardComponent } from '../wine-card/wine-card.component';
   styleUrl: './beverage-list-component.scss',
 })
 export class BeverageListComponent {
-  @Input() beverages!: Beverage[];
+  beverages = input.required<Beverage[]>();
 }

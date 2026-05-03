@@ -1,1 +1,1 @@
-export type BeverageCategory = 'wine' | 'beer' | 'cider';
+export type BeverageType = 'Wine' | 'Beer' | 'Cider';
