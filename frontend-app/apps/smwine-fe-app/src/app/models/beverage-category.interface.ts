@@ -1,1 +1,5 @@
-export type BeverageType = 'Wine' | 'Beer' | 'Cider';
+export enum BeverageType {
+  Wine = 'Wine',
+  Beer = 'Beer',
+  Cider = 'Cider',
+}

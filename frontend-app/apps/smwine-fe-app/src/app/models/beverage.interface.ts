@@ -4,9 +4,9 @@ import { BeverageType } from './beverage-category.interface';
 export interface Beverage {
   id: string;
   name: string;
-  category: BeverageType;
+  category: string;
   description: string;
-  type?: string;
+  type?: BeverageType;
   grapeVariety?: string;
   country: string;
   region?: string;

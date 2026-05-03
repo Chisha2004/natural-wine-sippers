@@ -10,10 +10,15 @@
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
-        <a href="#" class="hover:text-red-700 transition">Beer</a>
-        <a href="#" class="hover:text-red-700 transition">Wine</a>
-        <a href="#" class="hover:text-red-700 transition">Cider</a>
-        @if(!isMobile){
+        @for (navLink of navigationLinks; track navLink.path) {
+        <a
+          [routerLink]="navLink.path"
+          routerLinkActive="active"
+          class="hover:text-red-700 transition"
+        >
+          {{ navLink.label }}
+        </a>
+        } @if(!isMobile){
         <app-language-selector></app-language-selector>
         <app-shopping-cart></app-shopping-cart>
         <app-search-header></app-search-header>
@@ -72,9 +77,9 @@
   <!-- Mobile Menu -->
   @if (menuOpen) {
   <div class="md:hidden px-4 pb-4 space-y-2 bg-white border-t border-gray-200">
-    <a href="#" class="block text-gray-700 hover:text-red-700">Beer</a>
-    <a href="#" class="block text-gray-700 hover:text-red-700">Wine</a>
-    <a href="#" class="block text-gray-700 hover:text-red-700">Cider</a>
+    <a href="/beer" class="block text-gray-700 hover:text-red-700">Beer</a>
+    <a href="/wine" class="block text-gray-700 hover:text-red-700">Wine</a>
+    <a href="/cider" class="block text-gray-700 hover:text-red-700">Cider</a>
 
     <app-profile-header></app-profile-header>
   </div>

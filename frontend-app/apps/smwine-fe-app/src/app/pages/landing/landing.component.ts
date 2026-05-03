@@ -1,9 +1,12 @@
 import {
   Component,
   computed,
+  DestroyRef,
   inject,
+  OnChanges,
   OnInit,
   signal,
+  SimpleChanges,
   WritableSignal,
 } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -12,6 +15,8 @@ import { BeverageListComponent } from '../../components/beverage-list/beverage-l
 import { TranslateModule } from '@ngx-translate/core';
 import { BeverageStore } from '../../services/beverage/beverage.store';
 import { BeverageType } from '../../models/beverage-category.interface';
+import { ActivatedRoute } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-landing',
@@ -21,9 +26,12 @@ import { BeverageType } from '../../models/beverage-category.interface';
   providers: [HttpClient],
 })
 export class LandingComponent implements OnInit {
+  private route = inject(ActivatedRoute);
   readonly beverageStore = inject(BeverageStore);
+  private destroyRef = inject(DestroyRef);
+
   private readonly beverageCatalog = this.beverageStore.catalog;
-  activeBeverageType: WritableSignal<BeverageType> = signal('Wine'); //Default wine
+  activeBeverageType: WritableSignal<BeverageType> = signal(BeverageType.Wine); //Default wine
   //TODO need to get the active category from either the url or local storage so that when user refreshes the page, it doesn't reset to wine. Also need to update the url when user changes category so that they can share the url with the category they are currently viewing.
   beveragesByType = computed(() =>
     this.beverageCatalog().filter(
@@ -31,7 +39,31 @@ export class LandingComponent implements OnInit {
     )
   );
   //TODO need to add mini card to show price as well on detailed
+
+  private getBeverageTypeFromValue(value: string | null): BeverageType | null {
+    switch (value?.toLowerCase()) {
+      case BeverageType.Wine.toLowerCase():
+        return BeverageType.Wine;
+      case BeverageType.Beer.toLowerCase():
+        return BeverageType.Beer;
+      case BeverageType.Cider.toLowerCase():
+        return BeverageType.Cider;
+      default:
+        return null;
+    }
+  }
+
   ngOnInit(): void {
     this.beverageStore.loadCatalog();
+
+    this.route.firstChild?.paramMap
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((params) => {
+        const beverageType = params.get('type');
+        const validBeverageType = this.getBeverageTypeFromValue(beverageType);
+        if (validBeverageType) {
+          this.activeBeverageType.set(validBeverageType);
+        }
+      });
   }
 }

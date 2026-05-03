@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Beverage } from '../../models/beverage.interface';
+import { BeverageType } from '../../models/beverage-category.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -20,10 +21,10 @@ export class BeverageService {
     return of({
       id: '123',
       name: 'Trousseau Duty',
-      category: 'Wine',
+      category: 'Red',
       description:
         'A structured, dense, and elegant wine from a magnificent terroir. A wine of great precision and refinement, which will be a pleasure to open to accompany a fine dinner. A sweet moment in perspective!',
-      type: 'Red',
+      type: BeverageType.Wine,
       grapeVariety: 'Trousseau',
       country: 'France',
       region: 'Jura',
