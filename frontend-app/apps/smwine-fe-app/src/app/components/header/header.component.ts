@@ -5,6 +5,7 @@ import { takeWhile } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ProfileHeaderComponent } from '../profile-header/profile-header.component';
 import { SearchHeaderComponent } from './search-header/search-header.component';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,8 @@ import { SearchHeaderComponent } from './search-header/search-header.component';
     ShoppingCartComponent,
     ProfileHeaderComponent,
     SearchHeaderComponent,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -21,6 +24,12 @@ export class HeaderComponent implements OnDestroy {
   private isActive = true;
   menuOpen = false;
   isMobile = false;
+
+  readonly navigationLinks = [
+    { label: 'Beer', path: '/beer' },
+    { label: 'Wine', path: '/wine' },
+    { label: 'Cider', path: '/cider' },
+  ];
 
   constructor(private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver

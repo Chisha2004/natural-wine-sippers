@@ -1,3 +1,11 @@
 .logo-img {
   max-width: 150px;
 }
+
+nav {
+  a {
+    &.active {
+      color: rgb(185 28 28 / var(--tw-text-opacity, 1));
+    }
+  }
+}
