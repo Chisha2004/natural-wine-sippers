@@ -32,4 +32,7 @@ public class BeverageEntity {
 
     @Column(name = "img_url")
     private String imgUrl; //TODO this should store the actual image in the table
+
+    @Column(nullable = false)
+    private Integer stock = 0;
 }
