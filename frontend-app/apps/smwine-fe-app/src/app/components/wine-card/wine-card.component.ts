@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/prefer-inject */
 import { Component, input, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Beverage } from '../../models/beverage.interface';
 import { CurrencyPipe } from '@angular/common';
@@ -18,12 +18,13 @@ export class WineCardComponent {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private translate: TranslateService,
     private cartService: CartService
   ) {}
 
   goToBevergaeDetails(id: string) {
-    this.router.navigate(['/beverages', id]);
+    this.router.navigate([id], { relativeTo: this.route });
   }
 
   getAddToCartLabel(): string {

@@ -8,7 +8,9 @@ import { WineCardDetailComponent } from './components/wine-card-detail/wine-card
 export const appRoutes: Route[] = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'beverages/:id', component: WineCardDetailComponent },
+  { path: 'beer/:beverageId', component: WineCardDetailComponent },
+  { path: 'wine/:beverageId', component: WineCardDetailComponent },
+  { path: 'cider/:beverageId', component: WineCardDetailComponent },
   {
     path: 'admin',
     canMatch: [adminAuthGuard],
@@ -17,12 +19,11 @@ export const appRoutes: Route[] = [
   },
   {
     path: '',
+    redirectTo: '/wine',
+    pathMatch: 'full',
+  },
+  {
+    path: ':type',
     component: LandingComponent,
-    children: [
-      {
-        path: ':type',
-        component: LandingComponent,
-      },
-    ],
   },
 ];

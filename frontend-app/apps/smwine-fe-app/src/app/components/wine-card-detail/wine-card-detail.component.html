@@ -1,9 +1,20 @@
 <app-header class="block"></app-header>
 <div class="min-h-screen bg-gray-50 py-6 sm:py-12">
   <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    @if(isLoading()) {
+    <div class="text-center py-20">
+      <p class="text-2xl font-semibold text-gray-700">
+        Loading beverage details...
+      </p>
+    </div>
+    } @else if(!beverage()) {
+    <div class="text-center py-20">
+      <p class="text-2xl font-semibold text-gray-700">Beverage not found.</p>
+    </div>
+    } @else {
     <!-- Mobile Title (visible on mobile only) -->
     <h1 class="md:hidden text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-      {{ beverage?.name }}
+      {{ beverage()?.name }}
     </h1>
 
     <div
@@ -14,8 +25,8 @@
         class="hidden md:flex items-center justify-center order-2 md:order-1"
       >
         <img
-          [src]="beverage?.imgUrl"
-          [alt]="beverage?.name"
+          [src]="beverage()?.imgUrl"
+          [alt]="beverage()?.name"
           class="w-full h-auto object-cover rounded-lg max-w-xs sm:max-w-md"
         />
       </div>
@@ -27,25 +38,25 @@
           <h1
             class="hidden md:block text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2"
           >
-            {{ beverage?.name }}
+            {{ beverage()?.name }}
           </h1>
 
           <!-- Mobile Only Image (visible on mobile before price) -->
           <div class="md:hidden mb-4 flex justify-center">
             <img
-              [src]="beverage?.imgUrl"
-              [alt]="beverage?.name"
+              [src]="beverage()?.imgUrl"
+              [alt]="beverage()?.name"
               class="w-full h-auto object-cover rounded-lg max-w-xs"
             />
           </div>
 
           <p class="text-2xl sm:text-3xl font-semibold text-red-600 mb-4">
-            {{ beverage?.price | currency }}
+            {{ beverage()?.price | currency }}
           </p>
 
           <!-- Description -->
           <p class="text-gray-600 text-base sm:text-lg leading-relaxed mb-6">
-            {{ beverage?.description }}
+            {{ beverage()?.description }}
           </p>
         </div>
 
@@ -63,7 +74,7 @@
                 Typ
               </p>
               <p class="text-base sm:text-lg font-bold text-gray-900 truncate">
-                {{ beverage?.type || 'N/A' }}
+                {{ beverage()?.type || 'N/A' }}
               </p>
             </div>
 
@@ -73,7 +84,7 @@
                 Hersteller
               </p>
               <p class="text-base sm:text-lg font-bold text-gray-900 truncate">
-                {{ beverage?.producer }}
+                {{ beverage()?.producer }}
               </p>
             </div>
 
@@ -83,12 +94,13 @@
                 Größe
               </p>
               <p class="text-base sm:text-lg font-bold text-gray-900">
-                {{ beverage?.capacity }}ml
+                {{ beverage()?.capacity }}ml
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
+    }
   </div>
 </div>

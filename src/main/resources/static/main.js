@@ -79,25 +79,6 @@ class RegisterUserService {
 
 /***/ }),
 
-/***/ 833:
-/*!**************************************************************************!*\
-  !*** ./apps/smwine-fe-app/src/app/models/beverage-category.interface.ts ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   BeverageType: () => (/* binding */ BeverageType)
-/* harmony export */ });
-var BeverageType;
-(function (BeverageType) {
-  BeverageType["Wine"] = "Wine";
-  BeverageType["Beer"] = "Beer";
-  BeverageType["Cider"] = "Cider";
-})(BeverageType || (BeverageType = {}));
-
-/***/ }),
-
 /***/ 1700:
 /*!***********************************************************************!*\
   !*** ./apps/smwine-fe-app/src/app/pages/landing/landing.component.ts ***!
@@ -114,9 +95,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_beverage_list_beverage_list_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/beverage-list/beverage-list-component */ 5307);
 /* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ngx-translate/core */ 8503);
 /* harmony import */ var _services_beverage_beverage_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/beverage/beverage.store */ 4998);
-/* harmony import */ var _models_beverage_category_interface__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../models/beverage-category.interface */ 833);
+/* harmony import */ var _models_beverage_category_interface__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../models/beverage-category.interface */ 1833);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 2596);
-/* harmony import */ var _angular_core_rxjs_interop__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core/rxjs-interop */ 74);
+/* harmony import */ var _angular_core_rxjs_interop__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core/rxjs-interop */ 9074);
 
 
 
@@ -150,8 +131,7 @@ class LandingComponent {
     }
   }
   ngOnInit() {
-    this.beverageStore.loadCatalog();
-    this.route.firstChild?.paramMap.pipe((0,_angular_core_rxjs_interop__WEBPACK_IMPORTED_MODULE_6__.takeUntilDestroyed)(this.destroyRef)).subscribe(params => {
+    this.route.paramMap.pipe((0,_angular_core_rxjs_interop__WEBPACK_IMPORTED_MODULE_6__.takeUntilDestroyed)(this.destroyRef)).subscribe(params => {
       const beverageType = params.get('type');
       const validBeverageType = this.getBeverageTypeFromValue(beverageType);
       if (validBeverageType) {
@@ -254,6 +234,25 @@ class LandingComponent {
 
 /***/ }),
 
+/***/ 1833:
+/*!**************************************************************************!*\
+  !*** ./apps/smwine-fe-app/src/app/models/beverage-category.interface.ts ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BeverageType: () => (/* binding */ BeverageType)
+/* harmony export */ });
+var BeverageType;
+(function (BeverageType) {
+  BeverageType["Wine"] = "Wine";
+  BeverageType["Beer"] = "Beer";
+  BeverageType["Cider"] = "Cider";
+})(BeverageType || (BeverageType = {}));
+
+/***/ }),
+
 /***/ 2311:
 /*!*****************************************************!*\
   !*** ./apps/smwine-fe-app/src/app/app.component.ts ***!
@@ -264,26 +263,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AppComponent: () => (/* binding */ AppComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ 2596);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 2596);
+/* harmony import */ var _services_beverage_beverage_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/beverage/beverage.store */ 4998);
+
+
 
 
 class AppComponent {
-  title = 'smwine-fe-app';
+  beverageStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_services_beverage_beverage_store__WEBPACK_IMPORTED_MODULE_0__.BeverageStore);
+  ngOnInit() {
+    this.beverageStore.loadCatalog();
+  }
   static ɵfac = function AppComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || AppComponent)();
   };
-  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
     type: AppComponent,
     selectors: [["app-root"]],
     decls: 1,
     vars: 0,
     template: function AppComponent_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "router-outlet");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "router-outlet");
       }
     },
-    dependencies: [_angular_router__WEBPACK_IMPORTED_MODULE_1__.RouterOutlet],
+    dependencies: [_angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterOutlet],
     styles: ["/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MifQ== */\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL2FwcHMvc213aW5lLWZlLWFwcC9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsZ0tBQWdLIiwic291cmNlUm9vdCI6IiJ9 */"]
   });
 }
@@ -500,103 +505,149 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   WineCardDetailComponent: () => (/* binding */ WineCardDetailComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4460);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4460);
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../header/header.component */ 6168);
-/* harmony import */ var _services_beverage_beverage_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/beverage/beverage.service */ 4284);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 4334);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _services_beverage_beverage_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/beverage/beverage.store */ 4998);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 2596);
+/* harmony import */ var _angular_core_rxjs_interop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core/rxjs-interop */ 9074);
 
 
 
 
 
 
-class WineCardDetailComponent {
-  beverageService;
-  beverage = null; //TODO this should based on route param id fetch the beverage details from backend
-  constructor(beverageService) {
-    this.beverageService = beverageService;
+
+function WineCardDetailComponent_Conditional_3_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 3)(1, "p", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2, " Loading beverage details... ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
   }
+}
+function WineCardDetailComponent_Conditional_4_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 3)(1, "p", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2, "Beverage not found.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+  }
+}
+function WineCardDetailComponent_Conditional_5_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "h1", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "div", 6)(3, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](4, "img", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 9)(6, "div")(7, "h1", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](9, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](10, "img", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "p", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpipe"](13, "currency");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](14, "p", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](16, "div", 15)(17, "h2", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](18, " Eigenschaften ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](19, "div", 17)(20, "div", 18)(21, "p", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](22, " Typ ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](23, "p", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](25, "div", 18)(26, "p", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](27, " Hersteller ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](28, "p", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](30, "div", 18)(31, "p", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](32, " Gr\u00F6\u00DFe ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](33, "p", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()()()()();
+  }
+  if (rf & 2) {
+    let tmp_1_0;
+    let tmp_2_0;
+    let tmp_3_0;
+    let tmp_4_0;
+    let tmp_5_0;
+    let tmp_6_0;
+    let tmp_7_0;
+    let tmp_8_0;
+    let tmp_9_0;
+    let tmp_10_0;
+    let tmp_11_0;
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", (tmp_1_0 = ctx_r0.beverage()) == null ? null : tmp_1_0.name, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("src", (tmp_2_0 = ctx_r0.beverage()) == null ? null : tmp_2_0.imgUrl, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsanitizeUrl"])("alt", (tmp_3_0 = ctx_r0.beverage()) == null ? null : tmp_3_0.name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", (tmp_4_0 = ctx_r0.beverage()) == null ? null : tmp_4_0.name, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("src", (tmp_5_0 = ctx_r0.beverage()) == null ? null : tmp_5_0.imgUrl, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsanitizeUrl"])("alt", (tmp_6_0 = ctx_r0.beverage()) == null ? null : tmp_6_0.name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpipeBind1"](13, 11, (tmp_7_0 = ctx_r0.beverage()) == null ? null : tmp_7_0.price), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", (tmp_8_0 = ctx_r0.beverage()) == null ? null : tmp_8_0.description, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ((tmp_9_0 = ctx_r0.beverage()) == null ? null : tmp_9_0.type) || "N/A", " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", (tmp_10_0 = ctx_r0.beverage()) == null ? null : tmp_10_0.producer, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", (tmp_11_0 = ctx_r0.beverage()) == null ? null : tmp_11_0.capacity, "ml ");
+  }
+}
+class WineCardDetailComponent {
+  route = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_angular_router__WEBPACK_IMPORTED_MODULE_3__.ActivatedRoute);
+  beverageStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_services_beverage_beverage_store__WEBPACK_IMPORTED_MODULE_1__.BeverageStore);
+  destroyRef = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_angular_core__WEBPACK_IMPORTED_MODULE_2__.DestroyRef);
+  beverageCatalog = this.beverageStore.catalog;
+  isLoading = this.beverageStore.isLoading;
+  beverageId = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.signal)(null);
+  beverage = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.computed)(() => {
+    return this.beverageCatalog().find(b => String(b.id) === this.beverageId()) || null;
+  });
   ngOnInit() {
-    this.beverageService.getBeverage('1').pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_2__.take)(1)).subscribe({
-      next: beverage => this.beverage = beverage
+    this.route.paramMap.pipe((0,_angular_core_rxjs_interop__WEBPACK_IMPORTED_MODULE_4__.takeUntilDestroyed)(this.destroyRef)).subscribe(params => {
+      const beverageId = params.get('beverageId');
+      if (beverageId) {
+        this.beverageId.set(beverageId);
+      }
     });
   }
   static ɵfac = function WineCardDetailComponent_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || WineCardDetailComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_beverage_beverage_service__WEBPACK_IMPORTED_MODULE_1__.BeverageService));
+    return new (__ngFactoryType__ || WineCardDetailComponent)();
   };
-  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({
+  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
     type: WineCardDetailComponent,
     selectors: [["app-wine-card-detail"]],
-    decls: 38,
-    vars: 13,
-    consts: [[1, "block"], [1, "min-h-screen", "bg-gray-50", "py-6", "sm:py-12"], [1, "container", "mx-auto", "max-w-6xl", "px-4", "sm:px-6", "lg:px-8"], [1, "md:hidden", "text-2xl", "sm:text-3xl", "font-bold", "text-gray-900", "mb-4"], [1, "grid", "grid-cols-1", "md:grid-cols-2", "gap-6", "sm:gap-8", "bg-white", "rounded-lg", "shadow-lg", "p-6", "sm:p-8"], [1, "hidden", "md:flex", "items-center", "justify-center", "order-2", "md:order-1"], [1, "w-full", "h-auto", "object-cover", "rounded-lg", "max-w-xs", "sm:max-w-md", 3, "src", "alt"], [1, "flex", "flex-col", "justify-between", "order-1", "md:order-2"], [1, "hidden", "md:block", "text-2xl", "sm:text-3xl", "lg:text-4xl", "font-bold", "text-gray-900", "mb-2"], [1, "md:hidden", "mb-4", "flex", "justify-center"], [1, "w-full", "h-auto", "object-cover", "rounded-lg", "max-w-xs", 3, "src", "alt"], [1, "text-2xl", "sm:text-3xl", "font-semibold", "text-red-600", "mb-4"], [1, "text-gray-600", "text-base", "sm:text-lg", "leading-relaxed", "mb-6"], [1, "border-t", "pt-6"], [1, "text-lg", "sm:text-xl", "font-bold", "text-gray-900", "mb-4"], [1, "grid", "grid-cols-1", "sm:grid-cols-2", "lg:grid-cols-3", "gap-3", "sm:gap-4"], [1, "bg-gray-100", "p-3", "sm:p-4", "rounded-lg"], [1, "text-xs", "sm:text-sm", "font-semibold", "text-gray-600", "mb-1"], [1, "text-base", "sm:text-lg", "font-bold", "text-gray-900", "truncate"], [1, "text-base", "sm:text-lg", "font-bold", "text-gray-900"]],
+    decls: 6,
+    vars: 1,
+    consts: [[1, "block"], [1, "min-h-screen", "bg-gray-50", "py-6", "sm:py-12"], [1, "container", "mx-auto", "max-w-6xl", "px-4", "sm:px-6", "lg:px-8"], [1, "text-center", "py-20"], [1, "text-2xl", "font-semibold", "text-gray-700"], [1, "md:hidden", "text-2xl", "sm:text-3xl", "font-bold", "text-gray-900", "mb-4"], [1, "grid", "grid-cols-1", "md:grid-cols-2", "gap-6", "sm:gap-8", "bg-white", "rounded-lg", "shadow-lg", "p-6", "sm:p-8"], [1, "hidden", "md:flex", "items-center", "justify-center", "order-2", "md:order-1"], [1, "w-full", "h-auto", "object-cover", "rounded-lg", "max-w-xs", "sm:max-w-md", 3, "src", "alt"], [1, "flex", "flex-col", "justify-between", "order-1", "md:order-2"], [1, "hidden", "md:block", "text-2xl", "sm:text-3xl", "lg:text-4xl", "font-bold", "text-gray-900", "mb-2"], [1, "md:hidden", "mb-4", "flex", "justify-center"], [1, "w-full", "h-auto", "object-cover", "rounded-lg", "max-w-xs", 3, "src", "alt"], [1, "text-2xl", "sm:text-3xl", "font-semibold", "text-red-600", "mb-4"], [1, "text-gray-600", "text-base", "sm:text-lg", "leading-relaxed", "mb-6"], [1, "border-t", "pt-6"], [1, "text-lg", "sm:text-xl", "font-bold", "text-gray-900", "mb-4"], [1, "grid", "grid-cols-1", "sm:grid-cols-2", "lg:grid-cols-3", "gap-3", "sm:gap-4"], [1, "bg-gray-100", "p-3", "sm:p-4", "rounded-lg"], [1, "text-xs", "sm:text-sm", "font-semibold", "text-gray-600", "mb-1"], [1, "text-base", "sm:text-lg", "font-bold", "text-gray-900", "truncate"], [1, "text-base", "sm:text-lg", "font-bold", "text-gray-900"]],
     template: function WineCardDetailComponent_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](0, "app-header", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "div", 1)(2, "div", 2)(3, "h1", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "div", 4)(6, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](7, "img", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "div", 7)(9, "div")(10, "h1", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](12, "div", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](13, "img", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](14, "p", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](16, "currency");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](17, "p", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](18);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](19, "div", 13)(20, "h2", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](21, " Eigenschaften ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](22, "div", 15)(23, "div", 16)(24, "p", 17);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](25, " Typ ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](26, "p", 18);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](27);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](28, "div", 16)(29, "p", 17);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](30, " Hersteller ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](31, "p", 18);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](32);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](33, "div", 16)(34, "p", 17);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](35, " Gr\u00F6\u00DFe ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](36, "p", 19);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](37);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()()()()()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](0, "app-header", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 1)(2, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](3, WineCardDetailComponent_Conditional_3_Template, 3, 0, "div", 3)(4, WineCardDetailComponent_Conditional_4_Template, 3, 0, "div", 3)(5, WineCardDetailComponent_Conditional_5_Template, 35, 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
       }
       if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", ctx.beverage == null ? null : ctx.beverage.name, " ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("src", ctx.beverage == null ? null : ctx.beverage.imgUrl, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsanitizeUrl"])("alt", ctx.beverage == null ? null : ctx.beverage.name);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", ctx.beverage == null ? null : ctx.beverage.name, " ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("src", ctx.beverage == null ? null : ctx.beverage.imgUrl, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsanitizeUrl"])("alt", ctx.beverage == null ? null : ctx.beverage.name);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](16, 11, ctx.beverage == null ? null : ctx.beverage.price), " ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", ctx.beverage == null ? null : ctx.beverage.description, " ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", (ctx.beverage == null ? null : ctx.beverage.type) || "N/A", " ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", ctx.beverage == null ? null : ctx.beverage.producer, " ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", ctx.beverage == null ? null : ctx.beverage.capacity, "ml ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵconditional"](ctx.isLoading() ? 3 : !ctx.beverage() ? 4 : 5);
       }
     },
-    dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.CurrencyPipe, _header_header_component__WEBPACK_IMPORTED_MODULE_0__.HeaderComponent],
+    dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_5__.CurrencyPipe, _header_header_component__WEBPACK_IMPORTED_MODULE_0__.HeaderComponent],
     styles: ["/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ3aW5lLWNhcmQtZGV0YWlsLmNvbXBvbmVudC5zY3NzIn0= */\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL2FwcHMvc213aW5lLWZlLWFwcC9zcmMvYXBwL2NvbXBvbmVudHMvd2luZS1jYXJkLWRldGFpbC93aW5lLWNhcmQtZGV0YWlsLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQSxnTEFBZ0wiLCJzb3VyY2VSb290IjoiIn0= */"]
   });
 }
@@ -614,7 +665,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   BeverageService: () => (/* binding */ BeverageService)
 /* harmony export */ });
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 9452);
-/* harmony import */ var _models_beverage_category_interface__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../models/beverage-category.interface */ 833);
+/* harmony import */ var _models_beverage_category_interface__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../models/beverage-category.interface */ 1833);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7580);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 9648);
 
@@ -691,16 +742,20 @@ __webpack_require__.r(__webpack_exports__);
 
 class WineCardComponent {
   router;
+  route;
   translate;
   cartService;
   beverage = _angular_core__WEBPACK_IMPORTED_MODULE_1__.input.required();
-  constructor(router, translate, cartService) {
+  constructor(router, route, translate, cartService) {
     this.router = router;
+    this.route = route;
     this.translate = translate;
     this.cartService = cartService;
   }
   goToBevergaeDetails(id) {
-    this.router.navigate(['/beverages', id]);
+    this.router.navigate([id], {
+      relativeTo: this.route
+    });
   }
   getAddToCartLabel() {
     return `${this.translate.instant('WINE_CARD.ADD_TO_CART')} ${this.beverage().name} to cart button`;
@@ -712,7 +767,7 @@ class WineCardComponent {
     });
   }
   static ɵfac = function WineCardComponent_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || WineCardComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ngx_translate_core__WEBPACK_IMPORTED_MODULE_3__.TranslateService), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_cart_service__WEBPACK_IMPORTED_MODULE_0__.CartService));
+    return new (__ngFactoryType__ || WineCardComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__.ActivatedRoute), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ngx_translate_core__WEBPACK_IMPORTED_MODULE_3__.TranslateService), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_cart_service__WEBPACK_IMPORTED_MODULE_0__.CartService));
   };
   static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
     type: WineCardComponent,
@@ -911,7 +966,13 @@ const appRoutes = [{
   path: 'register',
   component: _pages_register_register_register_component__WEBPACK_IMPORTED_MODULE_3__.RegisterComponent
 }, {
-  path: 'beverages/:id',
+  path: 'beer/:beverageId',
+  component: _components_wine_card_detail_wine_card_detail_component__WEBPACK_IMPORTED_MODULE_4__.WineCardDetailComponent
+}, {
+  path: 'wine/:beverageId',
+  component: _components_wine_card_detail_wine_card_detail_component__WEBPACK_IMPORTED_MODULE_4__.WineCardDetailComponent
+}, {
+  path: 'cider/:beverageId',
   component: _components_wine_card_detail_wine_card_detail_component__WEBPACK_IMPORTED_MODULE_4__.WineCardDetailComponent
 }, {
   path: 'admin',
@@ -919,11 +980,11 @@ const appRoutes = [{
   loadChildren: () => __webpack_require__.e(/*! import() */ "libs_admin_src_index_ts").then(__webpack_require__.bind(__webpack_require__, /*! @smwine-fe-app/admin */ 3365)).then(m => m.adminRoutes)
 }, {
   path: '',
-  component: _pages_landing_landing_component__WEBPACK_IMPORTED_MODULE_1__.LandingComponent,
-  children: [{
-    path: ':type',
-    component: _pages_landing_landing_component__WEBPACK_IMPORTED_MODULE_1__.LandingComponent
-  }]
+  redirectTo: '/wine',
+  pathMatch: 'full'
+}, {
+  path: ':type',
+  component: _pages_landing_landing_component__WEBPACK_IMPORTED_MODULE_1__.LandingComponent
 }];
 
 /***/ }),

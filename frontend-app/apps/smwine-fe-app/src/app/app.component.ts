@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { BeverageStore } from './services/beverage/beverage.store';
 
 @Component({
   imports: [RouterOutlet],
@@ -7,6 +8,10 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'smwine-fe-app';
+export class AppComponent implements OnInit {
+  private readonly beverageStore = inject(BeverageStore);
+
+  ngOnInit(): void {
+    this.beverageStore.loadCatalog();
+  }
 }

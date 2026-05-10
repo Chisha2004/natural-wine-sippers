@@ -1,9 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Beverage } from '../../models/beverage.interface';
+import {
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
-import { BeverageService } from '../../services/beverage/beverage.service';
-import { take } from 'rxjs';
+import { BeverageStore } from '../../services/beverage/beverage.store';
+import { ActivatedRoute } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-wine-card-detail',
@@ -12,13 +20,28 @@ import { take } from 'rxjs';
   styleUrl: './wine-card-detail.component.scss',
 })
 export class WineCardDetailComponent implements OnInit {
-  beverage: Beverage | null = null; //TODO this should based on route param id fetch the beverage details from backend
+  private route = inject(ActivatedRoute);
+  private readonly beverageStore = inject(BeverageStore);
+  private destroyRef = inject(DestroyRef);
 
-  constructor(private beverageService: BeverageService) {}
+  beverageCatalog = this.beverageStore.catalog;
+  isLoading = this.beverageStore.isLoading;
+  beverageId: WritableSignal<string | null> = signal(null);
+  beverage = computed(() => {
+    return (
+      this.beverageCatalog().find((b) => String(b.id) === this.beverageId()) ||
+      null
+    );
+  });
+
   ngOnInit(): void {
-    this.beverageService
-      .getBeverage('1')
-      .pipe(take(1))
-      .subscribe({ next: (beverage: Beverage) => (this.beverage = beverage) });
+    this.route.paramMap
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((params) => {
+        const beverageId = params.get('beverageId');
+        if (beverageId) {
+          this.beverageId.set(beverageId);
+        }
+      });
   }
 }

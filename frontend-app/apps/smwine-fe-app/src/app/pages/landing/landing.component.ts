@@ -3,10 +3,8 @@ import {
   computed,
   DestroyRef,
   inject,
-  OnChanges,
   OnInit,
   signal,
-  SimpleChanges,
   WritableSignal,
 } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -27,7 +25,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class LandingComponent implements OnInit {
   private route = inject(ActivatedRoute);
-  readonly beverageStore = inject(BeverageStore);
+  private readonly beverageStore = inject(BeverageStore);
   private destroyRef = inject(DestroyRef);
 
   private readonly beverageCatalog = this.beverageStore.catalog;
@@ -54,9 +52,7 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.beverageStore.loadCatalog();
-
-    this.route.firstChild?.paramMap
+    this.route.paramMap
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((params) => {
         const beverageType = params.get('type');
