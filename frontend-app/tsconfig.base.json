@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@smwine-fe-app/admin": ["libs/admin/src/index.ts"],
+      "@smwine-fe-app/components": ["libs/src/index.ts"],
       "@smwine-fe-app/interceptor": ["libs/interceptor/src/index.ts"],
       "@smwine-fe-app/security": ["libs/security/src/index.ts"],
       "@smwine-fe-app/store": ["libs/shared/src/index.ts"]

@@ -3,12 +3,16 @@ package com.naturalwine.service;
 import com.naturalwine.dto.CartDto;
 import com.naturalwine.entity.BeverageEntity;
 import com.naturalwine.entity.CartEntity;
+import com.naturalwine.exception.BeverageNotFoundException;
+import com.naturalwine.exception.InsufficientStockException;
 import com.naturalwine.repository.BeverageRepository;
 import com.naturalwine.repository.CartRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CartService {
@@ -27,10 +31,9 @@ public class CartService {
      * @param userId the ID of the user
      * @param beverageId the ID of the beverage
      * @param quantity the quantity to add to cart
-     * @return CartDto with the added item details
      * @throws IllegalArgumentException if beverage not found or insufficient stock
      */
-    public CartDto addToCart(Long userId, Long beverageId, Integer quantity) {
+    public void addToCart(final Long userId, final Long beverageId, final Integer quantity) {
         // Validate inputs
         if (quantity <= 0) {
             throw new IllegalArgumentException("Quantity must be greater than 0");
@@ -38,12 +41,10 @@ public class CartService {
 
         // Fetch the beverage and check stock
         BeverageEntity beverage = beverageRepository.findById(beverageId)
-                .orElseThrow(() -> new IllegalArgumentException("Beverage not found with ID: " + beverageId));
+                .orElseThrow(() -> new BeverageNotFoundException(beverageId));
 
         if (beverage.getStock() < quantity) {
-            throw new IllegalArgumentException(
-                    "Insufficient stock. Available: " + beverage.getStock() + ", Requested: " + quantity
-            );
+            throw new InsufficientStockException(beverageId, beverage.getStock(), quantity);
         }
 
         // Check if item already exists in cart
@@ -57,26 +58,33 @@ public class CartService {
 
             // Check if new quantity exceeds available stock
             if (beverage.getStock() < newQuantity) {
-                throw new IllegalArgumentException(
-                        "Insufficient stock for total quantity. Available: " + beverage.getStock() +
-                        ", Requested total: " + newQuantity
-                );
+                throw new InsufficientStockException(beverageId, beverage.getStock(), newQuantity);
             }
 
             cartEntity.setQuantity(newQuantity);
-            cartEntity.setDlu(LocalDateTime.now());
         } else {
             // Create new cart item
             cartEntity = new CartEntity();
             cartEntity.setUserId(userId);
             cartEntity.setBeverageId(beverageId);
             cartEntity.setQuantity(quantity);
-            cartEntity.setDoe(LocalDateTime.now());
-            cartEntity.setDlu(LocalDateTime.now());
         }
 
-        CartEntity savedCartEntity = cartRepository.save(cartEntity);
-        return convertToDto(savedCartEntity);
+        cartEntity.setDlu(LocalDateTime.now());
+        cartRepository.save(cartEntity);
+    }
+
+    /**
+     * Gets all cart items for a specific user
+     *
+     * @param userId the ID of the user
+     * @return list of CartDto items in the user's cart
+     */
+    public List<CartDto> getUserCart(final Long userId) {
+        return cartRepository.findByUserId(userId)
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     private CartDto convertToDto(CartEntity cartEntity) {
@@ -84,12 +92,8 @@ public class CartService {
             return null;
         }
         return new CartDto(
-                cartEntity.getId(),
-                cartEntity.getUserId(),
                 cartEntity.getBeverageId(),
-                cartEntity.getQuantity(),
-                cartEntity.getDoe(),
-                cartEntity.getDlu()
+                cartEntity.getQuantity()
         );
     }
 }

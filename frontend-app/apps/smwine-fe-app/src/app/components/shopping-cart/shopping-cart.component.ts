@@ -1,6 +1,7 @@
 /* eslint-disable @angular-eslint/prefer-inject */
 import { Component, Signal } from '@angular/core';
-import { CartService, CartItem } from '../../services/cart.service';
+import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../models/cart.interface';
 
 @Component({
   selector: 'app-shopping-cart',

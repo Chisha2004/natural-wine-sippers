@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/prefer-inject */
-import { Component, input, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Beverage } from '../../models/beverage.interface';
@@ -35,7 +35,7 @@ export class WineCardComponent {
 
   addToCart() {
     this.cartService.addToCart({
-      productId: this.beverage().id,
+      beverageId: this.beverage().id,
       quantity: 1,
     });
   }

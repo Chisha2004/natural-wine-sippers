@@ -35,7 +35,7 @@
     <div class="p-4 font-medium text-gray-700">Your Cart</div>
     <ul class="max-h-60 overflow-y-auto">
       <!-- Item from cart service -->
-      @for (item of cartItems(); track item.productId) {
+      @for (item of cartItems(); track item.beverageId) {
       <li class="flex items-center justify-between px-4 py-3 hover:bg-gray-50">
         <div class="flex items-center gap-3">
           <img
@@ -44,7 +44,7 @@
             alt="Item"
           />
           <div>
-            <div class="font-medium text-gray-800">{{ item.productId }}</div>
+            <div class="font-medium text-gray-800">{{ item.beverageId }}</div>
             <div class="text-gray-500 text-xs">Qty: {{ item.quantity }}</div>
           </div>
         </div>

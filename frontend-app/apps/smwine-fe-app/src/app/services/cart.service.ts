@@ -1,17 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
-
-export interface CartItem {
-  productId: string;
-  quantity: number;
-}
+import { CartItem } from '../models/cart.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private readonly apiUrl = '/api/v1/cart/add-to-cart';
+  private readonly apiUrl = '/api/v1/cart/add';
   private cartItemsSignal = signal<CartItem[]>([]);
   readonly cartItems = this.cartItemsSignal.asReadonly();
 
@@ -19,7 +15,7 @@ export class CartService {
 
   /**
    * Adds an item to the cart
-   * @param item - The cart item containing productId and quantity
+   * @param item - The cart item containing beverageId and quantity
    */
   addToCart(item: CartItem): void {
     this.http.post<CartItem[]>(this.apiUrl, item).subscribe({

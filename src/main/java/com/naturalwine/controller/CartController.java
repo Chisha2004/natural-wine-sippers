@@ -1,10 +1,13 @@
 package com.naturalwine.controller;
 
+import com.naturalwine.dto.AddToCartRequest;
 import com.naturalwine.dto.CartDto;
 import com.naturalwine.service.CartService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/cart")
@@ -18,23 +21,17 @@ public class CartController {
     /**
      * Add a beverage to the user's cart
      *
-     * @param userId the ID of the user
-     * @param beverageId the ID of the beverage
-     * @param quantity the quantity to add
-     * @return the created/updated cart item
+     * @param request contains userId, beverageId, and quantity
+     * @return the complete cart for the user
      */
     @PostMapping("/add")
-    public ResponseEntity<CartDto> addToCart(
-            @RequestParam Long userId,
-            @RequestParam Long beverageId,
-            @RequestParam Integer quantity) {
-        try {
-            //TODO userId should be read from header or auth token
-            CartDto cartDto = cartService.addToCart(userId, beverageId, quantity);
-            return ResponseEntity.status(HttpStatus.CREATED).body(cartDto);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<List<CartDto>> addToCart(@RequestBody AddToCartRequest request) {
+        //TODO userId should be read from header or auth token
+        cartService.addToCart(request.userId(), request.beverageId(), request.quantity());
+
+        // Get the updated cart for the user
+        List<CartDto> userCart = cartService.getUserCart(request.userId());
+
+        return ResponseEntity.status(HttpStatus.OK).body(userCart);
     }
 }
-
