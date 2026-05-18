@@ -1,47 +1,6 @@
 "use strict";
 (self["webpackChunksmwine_fe_app"] = self["webpackChunksmwine_fe_app"] || []).push([["main"],{
 
-/***/ 329:
-/*!*****************************************************!*\
-  !*** ./libs/interceptor/src/lib/jwt.interceptor.ts ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   JwtInterceptor: () => (/* binding */ JwtInterceptor)
-/* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @smwine-fe-app/store */ 925);
-
-
-
-
-class JwtInterceptor {
-  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__.UserStore);
-  intercept(req, next) {
-    const token = this.userStore.token?.();
-    if (token) {
-      const clonedRequest = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      return next.handle(clonedRequest);
-    }
-    return next.handle(req);
-  }
-  static ɵfac = function JwtInterceptor_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || JwtInterceptor)();
-  };
-  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
-    token: JwtInterceptor,
-    factory: JwtInterceptor.ɵfac
-  });
-}
-
-/***/ }),
-
 /***/ 536:
 /*!**************************************************!*\
   !*** ./apps/smwine-fe-app/src/app/app.config.ts ***!
@@ -123,146 +82,6 @@ class RegisterUserService {
 
 /***/ }),
 
-/***/ 568:
-/*!*****************************************************************!*\
-  !*** ./libs/shared/src/lib/components/login/login.component.ts ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   LoginComponent: () => (/* binding */ LoginComponent)
-/* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _store_service_user_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/service/user.store */ 939);
-
-
-
-class LoginComponent {
-  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_store_service_user_store__WEBPACK_IMPORTED_MODULE_0__.UserStore);
-  // Reactive form state using standard Signals
-  email = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)('');
-  password = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)('');
-  onSubmit(event) {
-    event.preventDefault(); // Stop standard browser page reload
-    this.userStore.login(this.email(), this.password());
-  }
-  static ɵfac = function LoginComponent_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || LoginComponent)();
-  };
-  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
-    type: LoginComponent,
-    selectors: [["lib-login"]],
-    decls: 27,
-    vars: 2,
-    consts: [[1, "min-h-screen", "flex", "items-center", "justify-center", "bg-stone-50", "px-4", "sm:px-6", "lg:px-8"], [1, "max-w-md", "w-full", "space-y-8", "bg-white", "p-8", "rounded-xl", "shadow-md", "border", "border-stone-100"], [1, "text-center"], [1, "text-3xl", "font-extrabold", "text-stone-900", "tracking-tight"], [1, "mt-2", "text-sm", "text-stone-500"], [1, "mt-8", "space-y-6", 3, "submit"], [1, "space-y-4"], ["for", "email", 1, "block", "text-sm", "font-medium", "text-stone-700"], ["id", "email", "type", "email", "required", "", "placeholder", "you@example.com", 1, "mt-1", "block", "w-full", "px-3", "py-2", "bg-white", "border", "border-stone-300", "rounded-md", "text-sm", "shadow-sm", "placeholder-stone-400", "focus:outline-none", "focus:border-rose-900", "focus:ring-1", "focus:ring-rose-900", 3, "input", "value"], ["for", "password", 1, "block", "text-sm", "font-medium", "text-stone-700"], ["id", "password", "type", "password", "required", "", "placeholder", "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022", 1, "mt-1", "block", "w-full", "px-3", "py-2", "bg-white", "border", "border-stone-300", "rounded-md", "text-sm", "shadow-sm", "placeholder-stone-400", "focus:outline-none", "focus:border-rose-900", "focus:ring-1", "focus:ring-rose-900", 3, "input", "value"], [1, "flex", "items-center", "justify-between", "text-sm"], [1, "flex", "items-center"], ["id", "remember-me", "type", "checkbox", 1, "h-4", "w-4", "text-rose-900", "focus:ring-rose-900", "border-stone-300", "rounded"], ["for", "remember-me", 1, "ml-2", "block", "text-stone-900", "font-medium"], ["href", "#", 1, "font-medium", "text-rose-900", "hover:text-rose-800", "transition-colors"], ["type", "submit", 1, "group", "relative", "w-full", "flex", "justify-center", "py-2", "px-4", "border", "border-transparent", "text-sm", "font-medium", "rounded-md", "text-white", "bg-rose-900", "hover:bg-rose-800", "focus:outline-none", "focus:ring-2", "focus:ring-offset-2", "focus:ring-rose-900", "transition-colors"]],
-    template: function LoginComponent_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "h2", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, " Welcome Back ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "p", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, " Sign in to your Natural Sipper account ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "form", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("submit", function LoginComponent_Template_form_submit_7_listener($event) {
-          return ctx.onSubmit($event);
-        });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 6)(9, "div")(10, "label", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, "Email address");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "input", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("input", function LoginComponent_Template_input_input_12_listener($event) {
-          return ctx.email.set($event.target.value);
-        });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "div")(14, "label", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "Password");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](16, "input", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("input", function LoginComponent_Template_input_input_16_listener($event) {
-          return ctx.password.set($event.target.value);
-        });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "div", 11)(18, "div", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](19, "input", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](20, "label", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "Remember me");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "a", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "Forgot your password?");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "div")(25, "button", 16);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](26, " Sign In ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()()()();
-      }
-      if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", ctx.email());
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", ctx.password());
-      }
-    },
-    styles: ["/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsb2dpbi5jb21wb25lbnQuc2NzcyJ9 */\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL2xpYnMvc2hhcmVkL3NyYy9saWIvY29tcG9uZW50cy9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsZ0tBQWdLIiwic291cmNlUm9vdCI6IiJ9 */"]
-  });
-}
-
-/***/ }),
-
-/***/ 777:
-/*!*****************************************************!*\
-  !*** ./libs/shared/src/lib/model/user.interface.ts ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-
-//TODO in future we may have an admin user so we need to add userType or role
-
-/***/ }),
-
-/***/ 909:
-/*!********************************************************!*\
-  !*** ./libs/shared/src/lib/store/user/user.service.ts ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   UserService: () => (/* binding */ UserService)
-/* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 9648);
-
-
-
-class UserService {
-  http;
-  API_BASE_URL = '/api/v1/';
-  constructor(http) {
-    this.http = http;
-  }
-  getUser(userId) {
-    return this.http.get(`${this.API_BASE_URL}/users/${userId}`);
-  }
-  login(email, password) {
-    return this.http.post(`${this.API_BASE_URL}/auth/login`, {
-      email,
-      password
-    });
-  }
-  static ɵfac = function UserService_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || UserService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient));
-  };
-  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
-    token: UserService,
-    factory: UserService.ɵfac,
-    providedIn: 'root'
-  });
-}
-
-/***/ }),
-
 /***/ 925:
 /*!**********************************!*\
   !*** ./libs/shared/src/index.ts ***!
@@ -275,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   UserService: () => (/* reexport safe */ _lib_store_user_user_service__WEBPACK_IMPORTED_MODULE_1__.UserService),
 /* harmony export */   UserStore: () => (/* reexport safe */ _lib_store_service_user_store__WEBPACK_IMPORTED_MODULE_0__.UserStore)
 /* harmony export */ });
-/* harmony import */ var _lib_store_service_user_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/store/service/user.store */ 939);
-/* harmony import */ var _lib_store_user_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/store/user/user.service */ 909);
-/* harmony import */ var _lib_model_user_interface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/model/user.interface */ 777);
-/* harmony import */ var _lib_components_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/components/login/login.component */ 568);
+/* harmony import */ var _lib_store_service_user_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/store/service/user.store */ 4939);
+/* harmony import */ var _lib_store_user_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/store/user/user.service */ 3909);
+/* harmony import */ var _lib_model_user_interface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/model/user.interface */ 3777);
+/* harmony import */ var _lib_components_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/components/login/login.component */ 8568);
 
 
 
@@ -286,82 +105,42 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 939:
-/*!*********************************************************!*\
-  !*** ./libs/shared/src/lib/store/service/user.store.ts ***!
-  \*********************************************************/
+/***/ 1329:
+/*!*****************************************************!*\
+  !*** ./libs/interceptor/src/lib/jwt.interceptor.ts ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   UserStore: () => (/* binding */ UserStore)
+/* harmony export */   JwtInterceptor: () => (/* binding */ JwtInterceptor)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _ngrx_signals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ngrx/signals */ 1803);
-/* harmony import */ var _user_user_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../user/user.service */ 909);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @smwine-fe-app/store */ 925);
 
 
 
 
-const initialState = {
-  id: '',
-  email: '',
-  firstName: '',
-  lastName: '',
-  token: '',
-  hasError: false,
-  isLoading: false
-};
-class UserStore extends (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.signalStore)((0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.withState)(initialState), (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.withMethods)((store, userService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_user_user_service__WEBPACK_IMPORTED_MODULE_0__.UserService)) => ({
-  loadUser: userId => {
-    (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
-      isLoading: true
-    });
-    userService.getUser(userId).subscribe({
-      next: user => {
-        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, user, {
-          hasError: false,
-          isLoading: false
-        });
-      },
-      error: error => {
-        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
-          hasError: true,
-          isLoading: false
-        });
-      }
-    });
-  },
-  login: (email, password) => {
-    (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
-      isLoading: true
-    });
-    userService.login(email, password).subscribe({
-      next: user => {
-        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, user, {
-          hasError: false,
-          isLoading: false
-        });
-      },
-      error: error => {
-        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
-          hasError: true,
-          isLoading: false
-        });
-      }
-    });
+class JwtInterceptor {
+  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__.UserStore);
+  intercept(req, next) {
+    const token = this.userStore.token?.();
+    if (token) {
+      const clonedRequest = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      return next.handle(clonedRequest);
+    }
+    return next.handle(req);
   }
-}))) {
-  constructor() {
-    super();
-  }
-  static ɵfac = function UserStore_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || UserStore)();
+  static ɵfac = function JwtInterceptor_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || JwtInterceptor)();
   };
-  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
-    token: UserStore,
-    factory: UserStore.ɵfac,
-    providedIn: 'root'
+  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+    token: JwtInterceptor,
+    factory: JwtInterceptor.ɵfac
   });
 }
 
@@ -783,6 +562,60 @@ class RegisterComponent {
 
 /***/ }),
 
+/***/ 3777:
+/*!*****************************************************!*\
+  !*** ./libs/shared/src/lib/model/user.interface.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+
+//TODO in future we may have an admin user so we need to add userType or role
+
+/***/ }),
+
+/***/ 3909:
+/*!********************************************************!*\
+  !*** ./libs/shared/src/lib/store/user/user.service.ts ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UserService: () => (/* binding */ UserService)
+/* harmony export */ });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 9648);
+
+
+
+class UserService {
+  http;
+  API_BASE_URL = '/api/v1';
+  constructor(http) {
+    this.http = http;
+  }
+  getUser(userId) {
+    return this.http.get(`${this.API_BASE_URL}/users/${userId}`);
+  }
+  login(email, password) {
+    return this.http.post(`${this.API_BASE_URL}/auth/login`, {
+      email,
+      password
+    });
+  }
+  static ɵfac = function UserService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || UserService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient));
+  };
+  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+    token: UserService,
+    factory: UserService.ɵfac,
+    providedIn: 'root'
+  });
+}
+
+/***/ }),
+
 /***/ 4230:
 /*!**********************************************************************************************!*\
   !*** ./apps/smwine-fe-app/src/app/components/wine-card-detail/wine-card-detail.component.ts ***!
@@ -1159,6 +992,87 @@ class MockHttpInterceptor {
 
 /***/ }),
 
+/***/ 4939:
+/*!*********************************************************!*\
+  !*** ./libs/shared/src/lib/store/service/user.store.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UserStore: () => (/* binding */ UserStore)
+/* harmony export */ });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _ngrx_signals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ngrx/signals */ 1803);
+/* harmony import */ var _user_user_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../user/user.service */ 3909);
+
+
+
+
+const initialState = {
+  id: '',
+  email: '',
+  firstName: '',
+  lastName: '',
+  token: '',
+  hasError: false,
+  isLoading: false
+};
+class UserStore extends (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.signalStore)((0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.withState)(initialState), (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.withMethods)((store, userService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_user_user_service__WEBPACK_IMPORTED_MODULE_0__.UserService)) => ({
+  loadUser: userId => {
+    (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
+      isLoading: true
+    });
+    userService.getUser(userId).subscribe({
+      next: user => {
+        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, user, {
+          hasError: false,
+          isLoading: false
+        });
+      },
+      error: error => {
+        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
+          hasError: true,
+          isLoading: false
+        });
+      }
+    });
+  },
+  login: (email, password) => {
+    (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
+      isLoading: true
+    });
+    userService.login(email, password).subscribe({
+      next: user => {
+        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, user, {
+          hasError: false,
+          isLoading: false
+        });
+      },
+      error: error => {
+        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
+          hasError: true,
+          isLoading: false
+        });
+      }
+    });
+  }
+}))) {
+  constructor() {
+    super();
+  }
+  static ɵfac = function UserStore_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || UserStore)();
+  };
+  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
+    token: UserStore,
+    factory: UserStore.ɵfac,
+    providedIn: 'root'
+  });
+}
+
+/***/ }),
+
 /***/ 4998:
 /*!************************************************************************!*\
   !*** ./apps/smwine-fe-app/src/app/services/beverage/beverage.store.ts ***!
@@ -1242,6 +1156,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _smwine_fe_app_security__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @smwine-fe-app/security */ 5314);
 /* harmony import */ var _pages_register_register_register_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/register/register/register.component */ 3252);
 /* harmony import */ var _components_wine_card_detail_wine_card_detail_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/wine-card-detail/wine-card-detail.component */ 4230);
+/* harmony import */ var _smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @smwine-fe-app/store */ 925);
+
 
 
 
@@ -1262,6 +1178,9 @@ const appRoutes = [{
 }, {
   path: 'cider/:beverageId',
   component: _components_wine_card_detail_wine_card_detail_component__WEBPACK_IMPORTED_MODULE_4__.WineCardDetailComponent
+}, {
+  path: 'login',
+  component: _smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_5__.LoginComponent
 }, {
   path: 'admin',
   canMatch: [_smwine_fe_app_security__WEBPACK_IMPORTED_MODULE_2__.adminAuthGuard],
@@ -1646,7 +1565,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   MockHttpInterceptor: () => (/* reexport safe */ _lib_mock_mock_http_interceptor__WEBPACK_IMPORTED_MODULE_0__.MockHttpInterceptor)
 /* harmony export */ });
 /* harmony import */ var _lib_mock_mock_http_interceptor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/mock/mock-http-interceptor */ 4519);
-/* harmony import */ var _lib_jwt_interceptor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/jwt.interceptor */ 329);
+/* harmony import */ var _lib_jwt_interceptor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/jwt.interceptor */ 1329);
 
 
 
@@ -1706,6 +1625,152 @@ class ProfileHeaderComponent {
       }
     },
     styles: ["/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwcm9maWxlLWhlYWRlci5jb21wb25lbnQuc2NzcyJ9 */\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL2FwcHMvc213aW5lLWZlLWFwcC9zcmMvYXBwL2NvbXBvbmVudHMvcHJvZmlsZS1oZWFkZXIvcHJvZmlsZS1oZWFkZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBLDRLQUE0SyIsInNvdXJjZVJvb3QiOiIifQ== */"]
+  });
+}
+
+/***/ }),
+
+/***/ 8568:
+/*!*****************************************************************!*\
+  !*** ./libs/shared/src/lib/components/login/login.component.ts ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   LoginComponent: () => (/* binding */ LoginComponent)
+/* harmony export */ });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _store_service_user_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/service/user.store */ 4939);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 2596);
+
+
+
+
+function LoginComponent_Conditional_7_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 5)(1, "div", 18)(2, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "svg", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "path", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceHTML"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "p", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "button", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function LoginComponent_Conditional_7_Template_button_click_7_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r1);
+      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresetView"](ctx_r1.clearError());
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "svg", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](9, "path", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()()();
+  }
+  if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r1.errorMessage(), " ");
+  }
+}
+class LoginComponent {
+  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_store_service_user_store__WEBPACK_IMPORTED_MODULE_0__.UserStore);
+  router = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_angular_router__WEBPACK_IMPORTED_MODULE_2__.Router);
+  // Reactive form state using standard Signals
+  email = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)('');
+  password = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)('');
+  errorMessage = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)(null);
+  constructor() {
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.effect)(() => {
+      const error = this.userStore.hasError?.();
+      if (error) {
+        //TODO store should provide more specific error messages (e.g. invalid credentials, network error, etc.)
+        this.errorMessage.set('Invalid email or password.'); //TODO translate this message using i18n
+      }
+    });
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.effect)(() => {
+      const isLoading = this.userStore.isLoading?.();
+      const userEmail = this.userStore.email?.();
+      if (this.email() && !isLoading && userEmail === this.email()) {
+        this.router.navigate(['/wine']);
+      }
+    });
+  }
+  onSubmit(event) {
+    event.preventDefault(); // Stop standard browser page reload
+    this.clearError();
+    if (!this.email() || !this.password()) {
+      this.errorMessage.set('Please fill out all required fields.'); //TODO: Use i18n
+      return;
+    }
+    this.userStore.login(this.email(), this.password());
+  }
+  clearError() {
+    this.errorMessage.set(null);
+  }
+  static ɵfac = function LoginComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || LoginComponent)();
+  };
+  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+    type: LoginComponent,
+    selectors: [["lib-login"]],
+    decls: 28,
+    vars: 3,
+    consts: [[1, "min-h-screen", "flex", "items-center", "justify-center", "bg-slate-50", "px-4", "sm:px-6", "lg:px-8"], [1, "max-w-md", "w-full", "space-y-8", "bg-white", "p-8", "rounded-xl", "shadow-md", "border", "border-slate-100"], [1, "text-center"], [1, "text-3xl", "font-extrabold", "text-slate-900", "tracking-tight"], [1, "mt-2", "text-sm", "text-slate-500"], [1, "bg-red-50", "border-l-4", "border-red-500", "p-4", "rounded-md", "animate-fade-in"], [1, "mt-6", "space-y-6", 3, "submit"], [1, "space-y-4"], ["for", "email", 1, "block", "text-sm", "font-medium", "text-slate-700"], ["id", "email", "type", "email", "required", "", "placeholder", "you@example.com", 1, "mt-1", "block", "w-full", "px-3", "py-2", "bg-white", "border", "border-slate-300", "rounded-md", "text-sm", "shadow-sm", "placeholder-slate-400", "focus:outline-none", "focus:border-sky-500", "focus:ring-1", "focus:ring-sky-500", 3, "input", "value"], ["for", "password", 1, "block", "text-sm", "font-medium", "text-slate-700"], ["id", "password", "type", "password", "required", "", "placeholder", "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022", 1, "mt-1", "block", "w-full", "px-3", "py-2", "bg-white", "border", "border-slate-300", "rounded-md", "text-sm", "shadow-sm", "placeholder-slate-400", "focus:outline-none", "focus:border-sky-500", "focus:ring-1", "focus:ring-sky-500", 3, "input", "value"], [1, "flex", "items-center", "justify-between", "text-sm"], [1, "flex", "items-center"], ["id", "remember-me", "type", "checkbox", 1, "h-4", "w-4", "text-sky-600", "focus:ring-sky-500", "border-slate-300", "rounded"], ["for", "remember-me", 1, "ml-2", "block", "text-slate-900", "font-medium"], ["href", "#", 1, "font-medium", "text-sky-600", "hover:text-sky-500", "transition-colors"], ["type", "submit", 1, "group", "relative", "w-full", "flex", "justify-center", "py-2", "px-4", "border", "border-transparent", "text-sm", "font-medium", "rounded-md", "text-white", "bg-sky-600", "hover:bg-sky-500", "focus:outline-none", "focus:ring-2", "focus:ring-offset-2", "focus:ring-sky-500", "transition-colors", "shadow-sm"], [1, "flex", "items-center", "justify-between"], ["viewBox", "0 0 20 20", "fill", "currentColor", 1, "h-5", "w-5", "text-red-500"], ["fill-rule", "evenodd", "d", "M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z", "clip-rule", "evenodd"], [1, "ml-3", "text-sm", "font-medium", "text-red-700"], [1, "text-red-500", "hover:text-red-700", "focus:outline-none", 3, "click"], ["fill", "none", "viewBox", "0 0 24 24", "stroke", "currentColor", 1, "h-4", "w-4"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M6 18L18 6M6 6l12 12"]],
+    template: function LoginComponent_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "h2", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, " Welcome Back ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "p", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "Sign in to your account");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, LoginComponent_Conditional_7_Template, 10, 1, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "form", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("submit", function LoginComponent_Template_form_submit_8_listener($event) {
+          return ctx.onSubmit($event);
+        });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "div", 7)(10, "div")(11, "label", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "Email address");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "input", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("input", function LoginComponent_Template_input_input_13_listener($event) {
+          return ctx.email.set($event.target.value);
+        });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](14, "div")(15, "label", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "Password");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "input", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("input", function LoginComponent_Template_input_input_17_listener($event) {
+          return ctx.password.set($event.target.value);
+        });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "div", 12)(19, "div", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](20, "input", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "label", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](22, "Remember me");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](23, "a", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, "Forgot your password?");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](25, "div")(26, "button", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27, " Sign In ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()()()();
+      }
+      if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵconditional"](ctx.errorMessage() ? 7 : -1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", ctx.email());
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", ctx.password());
+      }
+    },
+    styles: ["/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsb2dpbi5jb21wb25lbnQuc2NzcyJ9 */\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL2xpYnMvc2hhcmVkL3NyYy9saWIvY29tcG9uZW50cy9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsZ0tBQWdLIiwic291cmNlUm9vdCI6IiJ9 */"]
   });
 }
 

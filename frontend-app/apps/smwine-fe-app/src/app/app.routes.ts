@@ -4,6 +4,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { adminAuthGuard } from '@smwine-fe-app/security';
 import { RegisterComponent } from './pages/register/register/register.component';
 import { WineCardDetailComponent } from './components/wine-card-detail/wine-card-detail.component';
+import { LoginComponent } from '@smwine-fe-app/store';
 
 export const appRoutes: Route[] = [
   { path: 'dashboard', component: DashboardComponent },
@@ -11,6 +12,7 @@ export const appRoutes: Route[] = [
   { path: 'beer/:beverageId', component: WineCardDetailComponent },
   { path: 'wine/:beverageId', component: WineCardDetailComponent },
   { path: 'cider/:beverageId', component: WineCardDetailComponent },
+  { path: 'login', component: LoginComponent },
   {
     path: 'admin',
     canMatch: [adminAuthGuard],
