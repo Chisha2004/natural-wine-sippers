@@ -1,7 +1,5 @@
-/* eslint-disable @angular-eslint/prefer-inject */
-import { Component, Signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { CartItem } from '../../models/cart.interface';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,18 +8,12 @@ import { CartItem } from '../../models/cart.interface';
   styleUrl: './shopping-cart.component.scss',
 })
 export class ShoppingCartComponent {
+  private readonly cartService: CartService = inject(CartService);
+
   showCart = false;
-  cartItems: Signal<CartItem[]>;
+  cart = this.cartService.cart;
 
-  constructor(private readonly cartService: CartService) {
-    this.cartItems = this.cartService.cartItems;
-  }
-
-  /**
-   * Adds an item to the cart
-   * @param item - The cart item to add
-   */
-  addToCart(item: CartItem): void {
-    this.cartService.addToCart(item);
+  addToCart(beverageId: string, quantity: number): void {
+    this.cartService.addToCart({ beverageId, quantity });
   }
 }

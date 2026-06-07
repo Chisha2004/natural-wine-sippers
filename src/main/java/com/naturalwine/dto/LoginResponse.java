@@ -1,7 +1,7 @@
 package com.naturalwine.dto;
 
 public record LoginResponse(
-    Long userId,
+    Long id,
     String email,
     String token
 ) {

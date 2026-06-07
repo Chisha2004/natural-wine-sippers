@@ -1,8 +1,38 @@
+@if (isLoggedIn()) {
 <button
-  class="flex items-center space-x-2 rounded-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 px-3 py-1"
+  class="flex flex-col items-center rounded-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 px-3 py-1"
   aria-haspopup="true"
   aria-expanded="false"
   aria-label="User profile button"
+>
+  <div class="flex items-center space-x-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+      />
+    </svg>
+  </div>
+  @if(isLoggedIn()) {
+  <span
+    class="first-name-container text-xs text-gray-700 font-medium first-letter:uppercase"
+    >{{ profileText() }}</span
+  >
+  }
+</button>
+} @else {
+<a
+  routerLink="/login"
+  class="flex items-center space-x-2 rounded-full bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 px-3 py-1 text-white font-medium text-sm"
+  aria-label="Login link"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -10,27 +40,14 @@
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="currentColor"
-    class="size-6"
+    class="size-5"
   >
     <path
       stroke-linecap="round"
       stroke-linejoin="round"
-      d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
     />
   </svg>
-
-  <svg
-    class="w-4 h-4 text-gray-600"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M19 9l-7 7-7-7"
-    ></path>
-  </svg>
-</button>
+  Login
+</a>
+}

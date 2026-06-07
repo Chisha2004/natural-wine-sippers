@@ -9,6 +9,7 @@ import com.naturalwine.repository.BeverageRepository;
 import com.naturalwine.repository.CartRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +34,7 @@ public class CartService {
      * @param quantity the quantity to add to cart
      * @throws IllegalArgumentException if beverage not found or insufficient stock
      */
-    public void addToCart(final Long userId, final Long beverageId, final Integer quantity) {
+    public void addToCart(final Long userId, final Long beverageId, final Integer quantity) throws InsufficientStockException, IllegalArgumentException {
         // Validate inputs
         if (quantity <= 0) {
             throw new IllegalArgumentException("Quantity must be greater than 0");
@@ -87,13 +88,20 @@ public class CartService {
                 .collect(Collectors.toList());
     }
 
-    private CartDto convertToDto(CartEntity cartEntity) {
+    private CartDto convertToDto(final CartEntity cartEntity) throws BeverageNotFoundException {
         if (cartEntity == null) {
             return null;
         }
+
+        final BeverageEntity beverage = beverageRepository.findById(cartEntity.getBeverageId())
+                .orElseThrow(() -> new BeverageNotFoundException(cartEntity.getBeverageId()));
+
         return new CartDto(
                 cartEntity.getBeverageId(),
-                cartEntity.getQuantity()
+                beverage.getImgUrl(),
+                cartEntity.getQuantity(),
+                beverage.getPrice(),
+                beverage.getPrice().multiply(BigDecimal.valueOf(cartEntity.getQuantity()))
         );
     }
 }

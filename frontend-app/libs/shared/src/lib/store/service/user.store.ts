@@ -1,5 +1,11 @@
-import { Injectable, inject } from '@angular/core';
-import { signalStore, withState, patchState, withMethods } from '@ngrx/signals';
+import { Injectable, inject, computed } from '@angular/core';
+import {
+  signalStore,
+  withState,
+  patchState,
+  withMethods,
+  withComputed,
+} from '@ngrx/signals';
 import { UserService } from '../user/user.service';
 
 export interface UserState {
@@ -27,12 +33,17 @@ const initialState: UserState = {
 })
 export class UserStore extends signalStore(
   withState(initialState),
+  withComputed((store) => ({
+    currentUser: computed(() => store),
+    isLoggedIn: computed(() => !!store.id()),
+  })),
   withMethods((store, userService = inject(UserService)) => ({
     loadUser: (userId: string) => {
       patchState(store, { isLoading: true });
       userService.getUser(userId).subscribe({
         next: (user: UserState) => {
           patchState(store, user, { hasError: false, isLoading: false });
+          persistUserToStorage(user);
         },
         error: (error) => {
           patchState(store, { hasError: true, isLoading: false });
@@ -44,15 +55,36 @@ export class UserStore extends signalStore(
       userService.login(email, password).subscribe({
         next: (user: UserState) => {
           patchState(store, user, { hasError: false, isLoading: false });
+          persistUserToStorage(user);
         },
         error: (error) => {
           patchState(store, { hasError: true, isLoading: false });
         },
       });
     },
+    logout: () => {
+      patchState(store, initialState);
+      localStorage.removeItem('user');
+    },
+    restoreUser: () => {
+      const stored = localStorage.getItem('user');
+      if (stored) {
+        try {
+          const user = JSON.parse(stored);
+          patchState(store, user);
+        } catch (_error) {
+          localStorage.removeItem('user');
+        }
+      }
+    },
   }))
 ) {
   constructor() {
     super();
+    this.restoreUser();
   }
+}
+
+function persistUserToStorage(user: UserState): void {
+  localStorage.setItem('user', JSON.stringify(user));
 }
