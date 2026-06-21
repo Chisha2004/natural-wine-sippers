@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    private final JwtService jwtService; // Inject your service here
+    private final JwtService jwtService;
 
     public SecurityConfig(JwtService jwtService) {
         this.jwtService = jwtService;
@@ -25,19 +25,28 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        // 1. CRITICAL: Allow forwarded requests to index.html
+                        // 1. Allow forwarded requests to index.html
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
 
-                        // 2. Allow static resources explicitly
+                        // 2. Allow static resources
                         .requestMatchers("/", "/index.html", "/static/**", "/*.js", "/*.css", "/*.ico").permitAll()
 
-                        // 3. Allow your API
-                        .requestMatchers("/api/**").permitAll()
+                        // 3. Allow public authentication endpoints (register, login, guest token)
+                        .requestMatchers("/v1/auth/**").permitAll()
 
-                        // 4. The rest
+                        // 4. Allow cart endpoints - both guest and registered users can access
+                        .requestMatchers("/v1/cart/**").permitAll()
+
+                        // 5. Allow all other API endpoints (can be protected separately if needed)
+                        .requestMatchers("/api/**").permitAll()
+                        .requestMatchers("/v1/**").permitAll()
+
+                        // 6. Everything else
                         .anyRequest().permitAll()
                 );
 
+        // Add JWT filter before UsernamePasswordAuthenticationFilter
+        // This processes JWT tokens in Authorization header
         http.addFilterBefore(new JwtAuthenticationFilter(jwtService), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
@@ -48,3 +57,5 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+
+

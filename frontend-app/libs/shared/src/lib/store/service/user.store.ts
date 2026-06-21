@@ -67,7 +67,7 @@ export class UserStore extends signalStore(
       localStorage.removeItem('user');
     },
     restoreUser: () => {
-      const stored = localStorage.getItem('user');
+      const stored = localStorage.getItem('user'); //TODO localUser store should not store actual user object but read everytime from
       if (stored) {
         try {
           const user = JSON.parse(stored);

@@ -1,9 +1,14 @@
 package com.naturalwine.dto;
 
+import com.naturalwine.model.UserType;
+
+import java.util.UUID;
+
 public record LoginResponse(
-    Long id,
+    UUID userUuid,
     String email,
-    String token
+    String token,
+    UserType userType
 ) {
 }
 

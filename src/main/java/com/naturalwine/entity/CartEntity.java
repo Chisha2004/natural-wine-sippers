@@ -7,20 +7,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
-@Entity
-@Table(name = "cart")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "cart")
 public class CartEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private Long userId;
+    private UUID userUuid;
 
     @Column(nullable = false)
     private Long beverageId;
@@ -39,4 +40,5 @@ public class CartEntity {
         dlu = LocalDateTime.now();
     }
 }
+
 

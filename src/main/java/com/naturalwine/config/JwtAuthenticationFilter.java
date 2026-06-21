@@ -1,6 +1,7 @@
 package com.naturalwine.config;
 
-import com.naturalwine.service.JwtService; // Import your service
+import com.naturalwine.model.UserType;
+import com.naturalwine.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,10 +11,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.UUID;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private final JwtService jwtService; // 1. Use your service here
+    private final JwtService jwtService;
 
     public JwtAuthenticationFilter(JwtService jwtService) {
         this.jwtService = jwtService;
@@ -29,13 +31,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
 
-            // 2. Use your validateToken method
             if (jwtService.validateToken(token)) {
-                // 3. Use your extract method (converting Long to String for the Principal)
-                Long userId = jwtService.extractUserIdFromToken(token);
+                // Extract user ID/UUID (works for both registered users and guests)
 
+                UUID userId = jwtService.extractUserIdFromToken(token);
+
+                // Extract user type to distinguish between guest and registered users
+                UserType userType = jwtService.extractUserTypeFromToken(token);
+
+                // Create authentication token with user ID and user type as detail
                 UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(userId.toString(), null, Collections.emptyList());
+                        new UsernamePasswordAuthenticationToken(userId, null, Collections.emptyList());
+
+                // Store userType in details for later retrieval if needed
+                authentication.setDetails(userType);
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }

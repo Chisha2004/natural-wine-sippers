@@ -1,8 +1,15 @@
 package com.naturalwine.entity;
 
+import com.naturalwine.model.UserType;
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class UserEntity {
@@ -10,11 +17,18 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
+    private UUID uuid;
+
     @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private UserType userType;
 
     @Column(name = "doe", nullable = false, updatable = false)
     private LocalDateTime doe;
@@ -25,51 +39,12 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(String email, String password) {
+    public UserEntity(String email, String password, UserType userType) {
         this.email = email;
         this.password = password;
+        this.userType = userType;
         this.doe = LocalDateTime.now();
         this.dlu = LocalDateTime.now();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public LocalDateTime getDoe() {
-        return doe;
-    }
-
-    public void setDoe(LocalDateTime doe) {
-        this.doe = doe;
-    }
-
-    public LocalDateTime getDlu() {
-        return dlu;
-    }
-
-    public void setDlu(LocalDateTime dlu) {
-        this.dlu = dlu;
     }
 }
 

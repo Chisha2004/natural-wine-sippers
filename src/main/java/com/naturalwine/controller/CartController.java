@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/v1/cart")
@@ -22,18 +23,38 @@ public class CartController {
 
     /**
      * Add a beverage to the user's cart
+     * Works for both authenticated registered users and guest users
      *
      * @param request contains beverageId and quantity
      * @return the complete cart for the user
      */
     @PostMapping("/add")
     public AddToCartResponse addToCart(@RequestBody AddToCartRequest request) {
-        Long userId = SecurityUtil.getCurrentUserId();
-        cartService.addToCart(userId, request.beverageId(), request.quantity());
+        UUID userUuid = SecurityUtil.getCurrentUserUuid();
 
-        List<CartDto> items = cartService.getUserCart(userId);
+        cartService.addToCart(userUuid, request.beverageId(), request.quantity());
+
+        List<CartDto> items = cartService.getUserCart(userUuid);
+        BigDecimal totalPrice = CartUtil.calculateTotalPriceByQuantity(items);
+
+        return new AddToCartResponse(items, totalPrice);
+    }
+
+    /**
+     * Get user's cart
+     * Works for both authenticated registered users and guest users
+     *
+     * @return the user's cart items
+     */
+    @GetMapping("")
+    public AddToCartResponse getCart() {
+        UUID userUuid = SecurityUtil.getCurrentUserUuid();
+
+        List<CartDto> items = cartService.getUserCart(userUuid);
         BigDecimal totalPrice = CartUtil.calculateTotalPriceByQuantity(items);
 
         return new AddToCartResponse(items, totalPrice);
     }
 }
+
+

@@ -1,5 +1,7 @@
 package com.naturalwine.service;
 
+import com.naturalwine.model.UserType;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
+import java.util.UUID;
 
 @Service
 public class JwtService {
@@ -17,17 +20,49 @@ public class JwtService {
     @Value("${jwt.expiration:86400000}")
     private long jwtExpirationMs;
 
-    public String generateToken(Long userId) {
+    public static final String CLAIM_USER_TYPE = "userType";
+
+    /**
+     * Generates a JWT token for a registered user with numeric ID
+     *
+     * @param userId the numeric user ID
+     * @return JWT token
+     */
+    public String generateToken(Long userId, UserType userType) {
+        return generateTokenWithUserType(userId.toString(), userType);
+    }
+
+    public String generateGuestToken(UUID guestUUID) {
+        return generateTokenWithUserType(guestUUID.toString(), UserType.GUEST);
+    }
+
+    /**
+     * Internal method to generate token with custom userType
+     *
+     * @param subject the token subject (user ID or guest UUID)
+     * @param userType the user type (Guest, Regular, Admin, etc.)
+     * @return JWT token
+     */
+    @SuppressWarnings("deprecation")
+    private String generateTokenWithUserType(String subject, UserType userType) {
         return Jwts.builder()
-                .subject(userId.toString())
+                .subject(subject)
+                .claim(CLAIM_USER_TYPE, userType)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public Long extractUserIdFromToken(String token) {
-        return Long.valueOf(Jwts.parser()
+    /**
+     * Extracts the user ID (as UUID) from token
+     * Works for both numeric user IDs and UUID guest IDs
+     *
+     * @param token JWT token
+     * @return user ID or guest UUID as UUID
+     */
+    public UUID extractUserIdFromToken(String token) {
+        return UUID.fromString(Jwts.parser()
                 .verifyWith(getSigningKey())
                 .build()
                 .parseSignedClaims(token)
@@ -35,6 +70,37 @@ public class JwtService {
                 .getSubject());
     }
 
+    /**
+     * Extracts the user type claim from token
+     *
+     * @param token JWT token
+     * @return userType (Guest, Regular, Admin, etc.)
+     */
+    public UserType extractUserTypeFromToken(String token) {
+        Claims claims = Jwts.parser()
+                .verifyWith(getSigningKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+        return claims.get(CLAIM_USER_TYPE, UserType.class);
+    }
+
+    /**
+     * Checks if token is for a guest user
+     *
+     * @param token JWT token
+     * @return true if userType is "Guest"
+     */
+    public boolean isGuestToken(String token) {
+        return UserType.GUEST == extractUserTypeFromToken(token);
+    }
+
+    /**
+     * Validates JWT token signature and expiration
+     *
+     * @param token JWT token
+     * @return true if valid
+     */
     public boolean validateToken(String token) {
         try {
             Jwts.parser()

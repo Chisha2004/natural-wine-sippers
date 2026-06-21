@@ -1,14 +1,12 @@
 package com.naturalwine.controller;
 
-import com.naturalwine.dto.LoginRequest;
-import com.naturalwine.dto.LoginResponse;
+import com.naturalwine.dto.*;
 import com.naturalwine.service.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/v1/auth")
@@ -19,16 +17,26 @@ public class LoginController {
         this.authService = authService;
     }
 
-    /**
-     * Login endpoint that authenticates user and returns JWT token
-     *
-     * @param loginRequest contains username and password
-     * @return LoginResponse with token containing userId
-     */
+    @GetMapping("/generate-quest-user")
+    public ResponseEntity<UserResponse> generateGuestUser() {
+        UserResponse response = authService.generateGuestUser();
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
-        LoginResponse response = authService.login(loginRequest);
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+    public LoginResponse login(
+            @RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<UserResponse> register(
+            @RequestParam String email,
+            @RequestParam String password,
+            @RequestParam(required = false) UUID guestUUID) {
+        UserResponse response = authService.registerBasicUser(email, password, guestUUID);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }
+
 
