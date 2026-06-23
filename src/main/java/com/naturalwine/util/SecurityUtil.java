@@ -25,13 +25,16 @@ public class SecurityUtil {
         return null;
     }
 
-    public static UUID getCurrentUserUuid() {
+    public static UUID getCurrentUserUuid() throws UserNotAuthenticatedException {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof UserEntity) {
             return ((UserEntity) authentication.getPrincipal()).getUuid();
+        }else if (isCurrentUserGuest()) {
+            return (UUID) authentication.getPrincipal();
         }
         throw new UserNotAuthenticatedException();
     }
+
     public static boolean isCurrentUserGuest() {
         return UserType.GUEST == getCurrentUserType();
     }

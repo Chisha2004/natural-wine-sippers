@@ -34,14 +34,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             if (jwtService.validateToken(token)) {
                 // Extract user ID/UUID (works for both registered users and guests)
 
-                UUID userId = jwtService.extractUserIdFromToken(token);
+                UUID userUuid = jwtService.extractUserIdFromToken(token);
 
                 // Extract user type to distinguish between guest and registered users
                 UserType userType = jwtService.extractUserTypeFromToken(token);
 
                 // Create authentication token with user ID and user type as detail
                 UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(userId, null, Collections.emptyList());
+                        new UsernamePasswordAuthenticationToken(userUuid, null, Collections.emptyList());
 
                 // Store userType in details for later retrieval if needed
                 authentication.setDetails(userType);

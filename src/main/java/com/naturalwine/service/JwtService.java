@@ -82,18 +82,9 @@ public class JwtService {
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
-        return claims.get(CLAIM_USER_TYPE, UserType.class);
+        return UserType.valueOf(claims.get(CLAIM_USER_TYPE, String.class));
     }
 
-    /**
-     * Checks if token is for a guest user
-     *
-     * @param token JWT token
-     * @return true if userType is "Guest"
-     */
-    public boolean isGuestToken(String token) {
-        return UserType.GUEST == extractUserTypeFromToken(token);
-    }
 
     /**
      * Validates JWT token signature and expiration
