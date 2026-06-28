@@ -2,6 +2,7 @@ package com.naturalwine.controller;
 
 import com.naturalwine.dto.*;
 import com.naturalwine.service.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public LoginResponse login(
-            @RequestBody LoginRequest loginRequest) {
+            @Valid @RequestBody LoginRequest loginRequest) {
         return authService.login(loginRequest);
     }
 

@@ -30,6 +30,8 @@ public class AuthService {
     }
 
     public LoginResponse login(LoginRequest loginRequest) {
+        UUID guestUUID = loginRequest.guestUuid() != null ? UUID.fromString(loginRequest.guestUuid()) : null;
+
         UserEntity user = userRepository.findByEmail(loginRequest.email())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
 
@@ -38,10 +40,11 @@ public class AuthService {
         }
 
         String token = jwtService.generateToken(user.getId(), user.getUserType());
+        //TODO we need a concept of long lived refresh token validity for logged in
 
         // Migrate guest cart to registered user if guestId provided
-        if (loginRequest.guestUuid() != null) {
-            cartService.migrateGuestCartToRegisteredUser(loginRequest.guestUuid(), user.getUuid());
+        if (guestUUID != null) {
+            cartService.migrateGuestCartToRegisteredUser(guestUUID, user.getUuid());
         }
 
         return new LoginResponse(
@@ -69,7 +72,7 @@ public class AuthService {
 
         // Migrate guest cart to registered user if guestUuid provided
         if (guestUuid != null) {
-            cartService.migrateGuestCartToRegisteredUser(guestUuid, user.getUuid());
+                cartService.migrateGuestCartToRegisteredUser(guestUuid, user.getUuid());
         }
 
         return new UserResponse(

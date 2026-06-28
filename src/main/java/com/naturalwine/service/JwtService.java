@@ -2,6 +2,7 @@ package com.naturalwine.service;
 
 import com.naturalwine.model.UserType;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -45,13 +46,17 @@ public class JwtService {
      */
     @SuppressWarnings("deprecation")
     private String generateTokenWithUserType(String subject, UserType userType) {
-        return Jwts.builder()
-                .subject(subject)
+        JwtBuilder jwtBuilder = Jwts.builder()
+                .setSubject(subject)
                 .claim(CLAIM_USER_TYPE, userType)
-                .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
-                .compact();
+                .setIssuedAt(new Date())
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256);
+
+        if (userType != UserType.GUEST) {
+            jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs));
+        }
+
+        return jwtBuilder.compact();
     }
 
     /**
