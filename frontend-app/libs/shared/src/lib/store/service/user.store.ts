@@ -43,9 +43,9 @@ export class UserStore extends signalStore(
       userService.getUser(userId).subscribe({
         next: (user: UserState) => {
           patchState(store, user, { hasError: false, isLoading: false });
-          persistUserToStorage(user);
+          persistUserTokenToStorage(user.token);
         },
-        error: (error) => {
+        error: () => {
           patchState(store, { hasError: true, isLoading: false });
         },
       });
@@ -55,26 +55,39 @@ export class UserStore extends signalStore(
       userService.login(email, password).subscribe({
         next: (user: UserState) => {
           patchState(store, user, { hasError: false, isLoading: false });
-          persistUserToStorage(user);
+          persistUserTokenToStorage(user.token);
         },
-        error: (error) => {
+        error: () => {
           patchState(store, { hasError: true, isLoading: false });
         },
       });
     },
     logout: () => {
       patchState(store, initialState);
-      localStorage.removeItem('user');
+      localStorage.removeItem('user_token');
     },
     restoreUser: () => {
-      const stored = localStorage.getItem('user'); //TODO localUser store should not store actual user object but read everytime from
-      if (stored) {
-        try {
-          const user = JSON.parse(stored);
-          patchState(store, user);
-        } catch (_error) {
-          localStorage.removeItem('user');
-        }
+      const token = localStorage.getItem('user_token');
+      if (token) {
+        patchState(store, { isLoading: true });
+        userService.loginWithToken(token).subscribe({
+          next: (user: UserState) => {
+            patchState(store, user, { hasError: false, isLoading: false });
+          },
+          error: (error) => {
+            if (error.status === 401) {
+              localStorage.removeItem('user_token');
+            }
+          },
+        });
+      } else {
+        userService.generateGuestUser().subscribe({
+          next: (user: UserState) => {
+            patchState(store, user, { hasError: false, isLoading: false });
+            persistUserTokenToStorage(user.token);
+          },
+          //TODO if we do not manage to generate guest token then when adding item to cart we can potentially attempt to generate it again.
+        });
       }
     },
   }))
@@ -85,6 +98,8 @@ export class UserStore extends signalStore(
   }
 }
 
-function persistUserToStorage(user: UserState): void {
-  localStorage.setItem('user', JSON.stringify(user));
+function persistUserTokenToStorage(token?: string): void {
+  if (!token) {
+    localStorage.removeItem('user_token');
+  }
 }

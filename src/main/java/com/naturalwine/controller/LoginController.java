@@ -18,7 +18,7 @@ public class LoginController {
         this.authService = authService;
     }
 
-    @GetMapping("/generate-quest-user")
+    @GetMapping("/generate-guest-user")
     public ResponseEntity<UserResponse> generateGuestUser() {
         UserResponse response = authService.generateGuestUser();
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
