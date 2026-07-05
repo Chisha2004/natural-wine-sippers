@@ -6,6 +6,7 @@ import com.naturalwine.model.UserType;
 import com.naturalwine.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.UUID;
 
@@ -26,10 +27,17 @@ public class AuthService {
     public UserResponse generateGuestUser() {
         UUID guestUUID = UUID.randomUUID();
         String token = jwtService.generateGuestToken(guestUUID);
-        return new UserResponse(guestUUID, null, token, UserType.GUEST);
+        return UserResponse.builder()
+                .uuid(guestUUID)
+                .token(token)
+                .userType(UserType.GUEST)
+                .build();
     }
 
     public LoginResponse login(LoginRequest loginRequest) {
+        if(StringUtils.hasLength(loginRequest.token())){
+            return loginWithToken(loginRequest.token());
+        }
         UUID guestUUID = loginRequest.guestUuid() != null ? UUID.fromString(loginRequest.guestUuid()) : null;
 
         UserEntity user = userRepository.findByEmail(loginRequest.email())
@@ -49,6 +57,8 @@ public class AuthService {
 
         return new LoginResponse(
             user.getUuid(),
+            user.getFirstName(),
+            user.getLastName(),
             user.getEmail(),
             token,
             user.getUserType()
@@ -77,10 +87,40 @@ public class AuthService {
 
         return new UserResponse(
             user.getUuid(),
+            user.getFirstName(),
+            user.getLastName(),
             user.getEmail(),
             token,
             user.getUserType()
         );
+    }
+
+    private LoginResponse loginWithToken(final String token) {
+        if(!jwtService.validateToken(token)){
+            throw new IllegalArgumentException("Invalid token");
+        }
+
+        UUID userUuid = jwtService.extractUserUuidFromToken(token);
+        UserType userType = jwtService.extractUserTypeFromToken(token);
+
+        LoginResponse.LoginResponseBuilder loginResponseBuilder = LoginResponse.builder();
+
+        loginResponseBuilder.userUuid(userUuid)
+                .token(token)
+                .userType(userType);
+
+        if(userType != UserType.GUEST) {
+            UserEntity user = userRepository.findByUuid(userUuid)
+                    .orElseThrow(() -> new IllegalArgumentException("User not found"));
+            loginResponseBuilder.email(user.getEmail());
+            loginResponseBuilder.userType(userType);
+
+            final String newToken = jwtService.generateToken(user.getId(), user.getUserType());
+
+            loginResponseBuilder.token(newToken);
+        }
+
+        return loginResponseBuilder.build();
     }
 }
 

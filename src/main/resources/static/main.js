@@ -92,7 +92,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   LoginComponent: () => (/* reexport safe */ _lib_components_login_login_component__WEBPACK_IMPORTED_MODULE_3__.LoginComponent),
 /* harmony export */   UserService: () => (/* reexport safe */ _lib_store_user_user_service__WEBPACK_IMPORTED_MODULE_1__.UserService),
-/* harmony export */   UserStore: () => (/* reexport safe */ _lib_store_service_user_store__WEBPACK_IMPORTED_MODULE_0__.UserStore)
+/* harmony export */   UserStore: () => (/* reexport safe */ _lib_store_service_user_store__WEBPACK_IMPORTED_MODULE_0__.UserStore),
+/* harmony export */   UserType: () => (/* reexport safe */ _lib_model_user_interface__WEBPACK_IMPORTED_MODULE_2__.UserType)
 /* harmony export */ });
 /* harmony import */ var _lib_store_service_user_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/store/service/user.store */ 4939);
 /* harmony import */ var _lib_store_user_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/store/user/user.service */ 3909);
@@ -122,9 +123,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class JwtInterceptor {
-  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__.UserStore);
   intercept(req, next) {
-    const token = this.userStore.token?.();
+    //Skip adding the Authorization header for authentication requests
+    if (req.url.includes('/auth')) {
+      return next.handle(req);
+    }
+    const userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__.UserStore);
+    const token = userStore.token?.();
     if (token) {
       const clonedRequest = req.clone({
         setHeaders: {
@@ -569,8 +574,15 @@ class RegisterComponent {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-
-//TODO in future we may have an admin user so we need to add userType or role
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UserType: () => (/* binding */ UserType)
+/* harmony export */ });
+var UserType;
+(function (UserType) {
+  UserType["ADMIN"] = "ADMIN";
+  UserType["BASIC"] = "BASIC";
+  UserType["GUEST"] = "GUEST";
+})(UserType || (UserType = {}));
 
 /***/ }),
 
@@ -584,17 +596,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   UserService: () => (/* binding */ UserService)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 7580);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 9648);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 7580);
 
 
 
 class UserService {
-  http;
   API_BASE_URL = '/api/v1';
-  constructor(http) {
-    this.http = http;
-  }
+  http = (0,_angular_core__WEBPACK_IMPORTED_MODULE_0__.inject)(_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient);
   getUser(userId) {
     return this.http.get(`${this.API_BASE_URL}/users/${userId}`);
   }
@@ -604,8 +613,16 @@ class UserService {
       password
     });
   }
+  loginWithToken(token) {
+    return this.http.post(`${this.API_BASE_URL}/auth/token-login`, {
+      token
+    });
+  }
+  generateGuestUser() {
+    return this.http.get(`${this.API_BASE_URL}/auth/generate-guest-user`);
+  }
   static ɵfac = function UserService_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || UserService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient));
+    return new (__ngFactoryType__ || UserService)();
   };
   static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
     token: UserService,
@@ -1002,15 +1019,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   UserStore: () => (/* binding */ UserStore)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _ngrx_signals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ngrx/signals */ 1803);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _ngrx_signals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ngrx/signals */ 1803);
 /* harmony import */ var _user_user_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../user/user.service */ 3909);
+/* harmony import */ var _model_user_interface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../model/user.interface */ 3777);
 
 
 
 
+
+const USER_STATE_STORAGE_KEY = 'user_state';
 const initialState = {
-  id: '',
+  uuid: '',
   email: '',
   firstName: '',
   lastName: '',
@@ -1018,24 +1038,26 @@ const initialState = {
   hasError: false,
   isLoading: false
 };
-class UserStore extends (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.signalStore)((0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.withState)(initialState), (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.withComputed)(store => ({
-  currentUser: (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.computed)(() => store),
-  isLoggedIn: (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.computed)(() => !!store.id())
-})), (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.withMethods)((store, userService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_user_user_service__WEBPACK_IMPORTED_MODULE_0__.UserService)) => ({
+class UserStore extends (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.signalStore)((0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.withState)(initialState), (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.withComputed)(store => ({
+  currentUser: (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.computed)(() => store),
+  isLoggedIn: (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.computed)(() => {
+    return store.email && !!store.email() && store.userType && store.userType() !== _model_user_interface__WEBPACK_IMPORTED_MODULE_1__.UserType.GUEST;
+  })
+})), (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.withMethods)((store, userService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.inject)(_user_user_service__WEBPACK_IMPORTED_MODULE_0__.UserService)) => ({
   loadUser: userId => {
-    (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
+    (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, {
       isLoading: true
     });
     userService.getUser(userId).subscribe({
       next: user => {
-        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, user, {
+        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, user, {
           hasError: false,
           isLoading: false
         });
         persistUserToStorage(user);
       },
-      error: error => {
-        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
+      error: () => {
+        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, {
           hasError: true,
           isLoading: false
         });
@@ -1043,19 +1065,19 @@ class UserStore extends (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.signalStor
     });
   },
   login: (email, password) => {
-    (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
+    (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, {
       isLoading: true
     });
     userService.login(email, password).subscribe({
       next: user => {
-        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, user, {
+        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, user, {
           hasError: false,
           isLoading: false
         });
         persistUserToStorage(user);
       },
-      error: error => {
-        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, {
+      error: () => {
+        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, {
           hasError: true,
           isLoading: false
         });
@@ -1063,36 +1085,63 @@ class UserStore extends (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.signalStor
     });
   },
   logout: () => {
-    (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, initialState);
-    localStorage.removeItem('user');
-  },
-  restoreUser: () => {
-    const stored = localStorage.getItem('user');
-    if (stored) {
-      try {
-        const user = JSON.parse(stored);
-        (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_1__.patchState)(store, user);
-      } catch (_error) {
-        localStorage.removeItem('user');
-      }
+    (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, initialState);
+    localStorage.removeItem(USER_STATE_STORAGE_KEY);
+  }
+})), (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.withHooks)((store, userService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.inject)(_user_user_service__WEBPACK_IMPORTED_MODULE_0__.UserService)) => ({
+  onInit: () => {
+    const userState = JSON.parse(localStorage.getItem(USER_STATE_STORAGE_KEY) || '{}');
+    if (userState.userType === _model_user_interface__WEBPACK_IMPORTED_MODULE_1__.UserType.GUEST) {
+      (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, userState, {
+        hasError: false,
+        isLoading: false
+      });
+    } else if (userState.token) {
+      (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, {
+        isLoading: true
+      });
+      userService.loginWithToken(userState.token).subscribe({
+        next: user => {
+          (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, user, {
+            hasError: false,
+            isLoading: false
+          });
+        },
+        error: error => {
+          if (error.status === 401) {
+            localStorage.removeItem(USER_STATE_STORAGE_KEY);
+          }
+        }
+      });
+    } else {
+      userService.generateGuestUser().subscribe({
+        next: user => {
+          (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, user, {
+            hasError: false,
+            isLoading: false
+          });
+          persistUserToStorage(user);
+        }
+      });
     }
   }
 }))) {
-  constructor() {
-    super();
-    this.restoreUser();
-  }
-  static ɵfac = function UserStore_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || UserStore)();
-  };
-  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
+  static ɵfac = /*@__PURE__*/(() => {
+    let ɵUserStore_BaseFactory;
+    return function UserStore_Factory(__ngFactoryType__) {
+      return (ɵUserStore_BaseFactory || (ɵUserStore_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetInheritedFactory"](UserStore)))(__ngFactoryType__ || UserStore);
+    };
+  })();
+  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({
     token: UserStore,
     factory: UserStore.ɵfac,
     providedIn: 'root'
   });
 }
 function persistUserToStorage(user) {
-  localStorage.setItem('user', JSON.stringify(user));
+  if (user) {
+    localStorage.setItem(USER_STATE_STORAGE_KEY, JSON.stringify(user));
+  }
 }
 
 /***/ }),
@@ -1677,7 +1726,7 @@ class ProfileHeaderComponent {
   isLoggedIn = this.userStore.isLoggedIn;
   profileText = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.computed)(() => {
     const currentUser = this.currentUser();
-    return currentUser?.firstName && currentUser?.firstName() ? currentUser?.firstName() : `Acc: ${currentUser?.id()}`;
+    return currentUser?.firstName && currentUser?.firstName() ? currentUser?.firstName() : `Acc: ${currentUser?.uuid()}`; //TOdo we should find better alternative than show uuid.
   });
   static ɵfac = function ProfileHeaderComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || ProfileHeaderComponent)();

@@ -5,21 +5,26 @@ import {
   patchState,
   withMethods,
   withComputed,
+  withHooks,
 } from '@ngrx/signals';
 import { UserService } from '../user/user.service';
+import { UserType } from '../../model/user.interface';
+
+const USER_STATE_STORAGE_KEY = 'user_state';
 
 export interface UserState {
-  id: string;
-  email: string;
+  uuid: string;
+  email?: string;
   firstName?: string;
   lastName?: string;
   token?: string;
+  userType?: UserType;
   hasError?: boolean;
   isLoading?: boolean;
 }
 
 const initialState: UserState = {
-  id: '',
+  uuid: '',
   email: '',
   firstName: '',
   lastName: '',
@@ -35,7 +40,14 @@ export class UserStore extends signalStore(
   withState(initialState),
   withComputed((store) => ({
     currentUser: computed(() => store),
-    isLoggedIn: computed(() => !!store.id()),
+    isLoggedIn: computed(() => {
+      return (
+        store.email &&
+        !!store.email() &&
+        store.userType &&
+        store.userType() !== UserType.GUEST
+      );
+    }),
   })),
   withMethods((store, userService = inject(UserService)) => ({
     loadUser: (userId: string) => {
@@ -43,7 +55,7 @@ export class UserStore extends signalStore(
       userService.getUser(userId).subscribe({
         next: (user: UserState) => {
           patchState(store, user, { hasError: false, isLoading: false });
-          persistUserTokenToStorage(user.token);
+          persistUserToStorage(user);
         },
         error: () => {
           patchState(store, { hasError: true, isLoading: false });
@@ -55,7 +67,7 @@ export class UserStore extends signalStore(
       userService.login(email, password).subscribe({
         next: (user: UserState) => {
           patchState(store, user, { hasError: false, isLoading: false });
-          persistUserTokenToStorage(user.token);
+          persistUserToStorage(user);
         },
         error: () => {
           patchState(store, { hasError: true, isLoading: false });
@@ -64,19 +76,26 @@ export class UserStore extends signalStore(
     },
     logout: () => {
       patchState(store, initialState);
-      localStorage.removeItem('user_token');
+      localStorage.removeItem(USER_STATE_STORAGE_KEY);
     },
-    restoreUser: () => {
-      const token = localStorage.getItem('user_token');
-      if (token) {
+  })),
+  withHooks((store, userService = inject(UserService)) => ({
+    onInit: () => {
+      const userState = JSON.parse(
+        localStorage.getItem(USER_STATE_STORAGE_KEY) || '{}'
+      );
+
+      if (userState.userType === UserType.GUEST) {
+        patchState(store, userState, { hasError: false, isLoading: false });
+      } else if (userState.token) {
         patchState(store, { isLoading: true });
-        userService.loginWithToken(token).subscribe({
+        userService.loginWithToken(userState.token).subscribe({
           next: (user: UserState) => {
             patchState(store, user, { hasError: false, isLoading: false });
           },
           error: (error) => {
             if (error.status === 401) {
-              localStorage.removeItem('user_token');
+              localStorage.removeItem(USER_STATE_STORAGE_KEY);
             }
           },
         });
@@ -84,22 +103,16 @@ export class UserStore extends signalStore(
         userService.generateGuestUser().subscribe({
           next: (user: UserState) => {
             patchState(store, user, { hasError: false, isLoading: false });
-            persistUserTokenToStorage(user.token);
+            persistUserToStorage(user);
           },
-          //TODO if we do not manage to generate guest token then when adding item to cart we can potentially attempt to generate it again.
         });
       }
     },
   }))
-) {
-  constructor() {
-    super();
-    this.restoreUser();
-  }
-}
+) {}
 
-function persistUserTokenToStorage(token?: string): void {
-  if (!token) {
-    localStorage.removeItem('user_token');
+function persistUserToStorage(user: UserState): void {
+  if (user) {
+    localStorage.setItem(USER_STATE_STORAGE_KEY, JSON.stringify(user));
   }
 }

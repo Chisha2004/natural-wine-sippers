@@ -1,7 +1,11 @@
-export type UserType = 'ADMIN' | 'BASIC' | 'GUEST';
+export enum UserType {
+  ADMIN = 'ADMIN',
+  BASIC = 'BASIC',
+  GUEST = 'GUEST',
+}
 
 export interface User {
-  id: string;
+  uuid: string;
   email: string;
   firstName?: string;
   lastName?: string;

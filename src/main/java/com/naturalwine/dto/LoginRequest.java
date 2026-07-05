@@ -15,7 +15,9 @@ public record LoginRequest(
     String password,
 
     @ValidUuidLength
-    String guestUuid //optional
+    String guestUuid, //optional
+
+    String token //optional
 ) {
 }
 

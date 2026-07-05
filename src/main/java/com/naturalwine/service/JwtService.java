@@ -44,7 +44,6 @@ public class JwtService {
      * @param userType the user type (Guest, Regular, Admin, etc.)
      * @return JWT token
      */
-    @SuppressWarnings("deprecation")
     private String generateTokenWithUserType(String subject, UserType userType) {
         JwtBuilder jwtBuilder = Jwts.builder()
                 .setSubject(subject)
@@ -64,9 +63,9 @@ public class JwtService {
      * Works for both numeric user IDs and UUID guest IDs
      *
      * @param token JWT token
-     * @return user ID or guest UUID as UUID
+     * @return user UUID or guest UUID as UUID
      */
-    public UUID extractUserIdFromToken(String token) {
+    public UUID extractUserUuidFromToken(String token) {
         return UUID.fromString(Jwts.parser()
                 .verifyWith(getSigningKey())
                 .build()

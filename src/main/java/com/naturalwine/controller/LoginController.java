@@ -30,6 +30,12 @@ public class LoginController {
         return authService.login(loginRequest);
     }
 
+    @PostMapping("/token-login")
+    public LoginResponse loginWithToken(@RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
+    }
+
+
     @PostMapping("/register")
     public ResponseEntity<UserResponse> register(
             @RequestParam String email,

@@ -10,13 +10,17 @@ import { UserStore } from '@smwine-fe-app/store';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  private readonly userStore = inject(UserStore);
-
   intercept<T>(
     req: HttpRequest<T>,
     next: HttpHandler
   ): Observable<HttpEvent<T>> {
-    const token = this.userStore.token?.();
+    //Skip adding the Authorization header for authentication requests
+    if (req.url.includes('/auth')) {
+      return next.handle(req);
+    }
+
+    const userStore = inject(UserStore);
+    const token = userStore.token?.();
 
     if (token) {
       const clonedRequest = req.clone({
