@@ -24,16 +24,16 @@ public class JwtService {
     public static final String CLAIM_USER_TYPE = "userType";
 
     /**
-     * Generates a JWT token for a registered user with numeric ID
+     * Generates a JWT token for a registered user with UUID
      *
-     * @param userId the numeric user ID
+     * @param uuid the UUID user ID
      * @return JWT token
      */
-    public String generateToken(Long userId, UserType userType) {
-        return generateTokenWithUserType(userId.toString(), userType);
+    public String generateToken(final UUID uuid, final UserType userType) {
+        return generateTokenWithUserType(uuid.toString(), userType);
     }
 
-    public String generateGuestToken(UUID guestUUID) {
+    public String generateGuestToken(final UUID guestUUID) {
         return generateTokenWithUserType(guestUUID.toString(), UserType.GUEST);
     }
 
@@ -44,15 +44,15 @@ public class JwtService {
      * @param userType the user type (Guest, Regular, Admin, etc.)
      * @return JWT token
      */
-    private String generateTokenWithUserType(String subject, UserType userType) {
+    private String generateTokenWithUserType(final String subject, final UserType userType) {
         JwtBuilder jwtBuilder = Jwts.builder()
-                .setSubject(subject)
+                .subject(subject)
                 .claim(CLAIM_USER_TYPE, userType)
-                .setIssuedAt(new Date())
+                .issuedAt(new Date())
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256);
 
         if (userType != UserType.GUEST) {
-            jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs));
+            jwtBuilder.expiration(new Date(System.currentTimeMillis() + jwtExpirationMs));
         }
 
         return jwtBuilder.compact();
@@ -65,13 +65,14 @@ public class JwtService {
      * @param token JWT token
      * @return user UUID or guest UUID as UUID
      */
-    public UUID extractUserUuidFromToken(String token) {
-        return UUID.fromString(Jwts.parser()
+    public UUID extractUserUuidFromToken(final String token) {
+        final String uuidStr = Jwts.parser()
                 .verifyWith(getSigningKey())
                 .build()
                 .parseSignedClaims(token)
                 .getPayload()
-                .getSubject());
+                .getSubject();
+        return UUID.fromString(uuidStr);
     }
 
     /**

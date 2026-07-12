@@ -47,7 +47,7 @@ public class AuthService {
             throw new IllegalArgumentException("Invalid email or password");
         }
 
-        String token = jwtService.generateToken(user.getId(), user.getUserType());
+        String token = jwtService.generateToken(user.getUuid(), user.getUserType());
         //TODO we need a concept of long lived refresh token validity for logged in
 
         // Migrate guest cart to registered user if guestId provided
@@ -78,7 +78,7 @@ public class AuthService {
 
         user = userRepository.save(user);
 
-        String token = jwtService.generateToken(user.getId(), user.getUserType());
+        String token = jwtService.generateToken(user.getUuid(), user.getUserType());
 
         // Migrate guest cart to registered user if guestUuid provided
         if (guestUuid != null) {
@@ -105,7 +105,7 @@ public class AuthService {
 
         LoginResponse.LoginResponseBuilder loginResponseBuilder = LoginResponse.builder();
 
-        loginResponseBuilder.userUuid(userUuid)
+        loginResponseBuilder.uuid(userUuid)
                 .token(token)
                 .userType(userType);
 
@@ -113,9 +113,10 @@ public class AuthService {
             UserEntity user = userRepository.findByUuid(userUuid)
                     .orElseThrow(() -> new IllegalArgumentException("User not found"));
             loginResponseBuilder.email(user.getEmail());
-            loginResponseBuilder.userType(userType);
+            loginResponseBuilder.firstName(user.getFirstName());
+            loginResponseBuilder.lastName(user.getLastName());
 
-            final String newToken = jwtService.generateToken(user.getId(), user.getUserType());
+            final String newToken = jwtService.generateToken(user.getUuid(), user.getUserType());
 
             loginResponseBuilder.token(newToken);
         }
@@ -123,6 +124,5 @@ public class AuthService {
         return loginResponseBuilder.build();
     }
 }
-
 
 

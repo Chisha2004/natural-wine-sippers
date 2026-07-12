@@ -1,5 +1,6 @@
 export interface CartItem {
   beverageId: string;
+  title: string;
   beverageImgUrl: string;
   quantity: number;
   priceEach: number;

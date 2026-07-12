@@ -31,6 +31,7 @@ const initialState: UserState = {
   token: '',
   hasError: false,
   isLoading: false,
+  userType: UserType.GUEST,
 };
 
 @Injectable({
@@ -39,7 +40,16 @@ const initialState: UserState = {
 export class UserStore extends signalStore(
   withState(initialState),
   withComputed((store) => ({
-    currentUser: computed(() => store),
+    currentUser: computed<UserState>(() => ({
+      uuid: store.uuid(),
+      email: store.email?.(),
+      firstName: store.firstName?.(),
+      lastName: store.lastName?.(),
+      token: store.token?.(),
+      userType: store.userType?.(),
+      hasError: store.hasError?.(),
+      isLoading: store.isLoading?.(),
+    })),
     isLoggedIn: computed(() => {
       return (
         store.email &&

@@ -121,6 +121,7 @@ public class CartService {
 
         return new CartDto(
                 cartEntity.getBeverageId(),
+                beverage.getName(),
                 beverage.getImgUrl(),
                 cartEntity.getQuantity(),
                 beverage.getPrice(),

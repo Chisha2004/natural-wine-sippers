@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Builder
 public record LoginResponse(
-    UUID userUuid,
+    UUID uuid,
     String firstName,
     String lastName,
     String email,

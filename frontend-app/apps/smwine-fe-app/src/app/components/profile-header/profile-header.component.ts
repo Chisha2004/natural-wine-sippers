@@ -17,8 +17,8 @@ export class ProfileHeaderComponent {
 
   readonly profileText = computed(() => {
     const currentUser = this.currentUser();
-    return currentUser?.firstName && currentUser?.firstName()
-      ? currentUser?.firstName()
-      : `Acc: ${currentUser?.uuid()}`; //TOdo we should find better alternative than show uuid.
+    return currentUser?.firstName && currentUser?.firstName
+      ? currentUser?.firstName
+      : `Acc: ${currentUser?.uuid}`; //TOdo we should find better alternative than show uuid.
   });
 }
