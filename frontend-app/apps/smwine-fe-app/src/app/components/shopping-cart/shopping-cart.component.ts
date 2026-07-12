@@ -12,6 +12,7 @@ export class ShoppingCartComponent {
 
   showCart = false;
   cart = this.cartService.cart;
+  //TODO on mobile we need to show the cart at the top of the page.
 
   addToCart(beverageId: string, quantity: number): void {
     this.cartService.addToCart({ beverageId, quantity });
