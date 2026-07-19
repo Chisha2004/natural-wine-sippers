@@ -1050,17 +1050,17 @@ function CheckoutComponent_Conditional_3_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
   }
 }
-function CheckoutComponent_Conditional_4_For_81_Template(rf, ctx) {
+function CheckoutComponent_Conditional_4_For_78_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "li", 51)(1, "div", 60);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "img", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div")(4, "div", 62);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "li", 50)(1, "div", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "img", 60);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div")(4, "div", 61);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div", 63);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div", 62);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 64);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 63);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
   }
@@ -1076,9 +1076,9 @@ function CheckoutComponent_Conditional_4_For_81_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", `€${item_r3.totalForQuantity}`, " ");
   }
 }
-function CheckoutComponent_Conditional_4_ForEmpty_82_Template(rf, ctx) {
+function CheckoutComponent_Conditional_4_ForEmpty_79_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "li", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "li", 51);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](2, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -1169,75 +1169,69 @@ function CheckoutComponent_Conditional_4_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](74);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](75, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](76, "h2", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](77);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](78, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](76, "ul", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrepeaterCreate"](77, CheckoutComponent_Conditional_4_For_78_Template, 10, 4, "li", 50, _forTrack0, false, CheckoutComponent_Conditional_4_ForEmpty_79_Template, 3, 3, "li", 51);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](79, "ul", 50);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrepeaterCreate"](80, CheckoutComponent_Conditional_4_For_81_Template, 10, 4, "li", 51, _forTrack0, false, CheckoutComponent_Conditional_4_ForEmpty_82_Template, 3, 3, "li", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](80, "div", 52)(81, "div", 53)(82, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](83);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](84, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](83, "div", 53)(84, "div", 54)(85, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](85, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](86);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](87, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](88, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](89);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](90, "div", 54)(91, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](87, "div", 53)(88, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](89);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](90, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](91, "span", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](92);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](93, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](94, "span", 55);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](95);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](96, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](97, "hr", 56);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](98, "div", 57)(99, "span", 58);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](100);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](101, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](94, "hr", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](95, "div", 56)(96, "span", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](97);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](98, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](102, "span", 59);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](103);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](99, "span", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](100);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()()()()();
   }
   if (rf & 2) {
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](4, 20, "CHECKOUT.TITLE"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](4, 19, "CHECKOUT.TITLE"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](9, 22, "CHECKOUT.DELIVERY_INFO"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](9, 21, "CHECKOUT.DELIVERY_INFO"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](14, 24, "CHECKOUT.FIRST_NAME"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](14, 23, "CHECKOUT.FIRST_NAME"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](19, 26, "CHECKOUT.LAST_NAME"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](19, 25, "CHECKOUT.LAST_NAME"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](24, 28, "CHECKOUT.ADDRESS"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](24, 27, "CHECKOUT.ADDRESS"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](29, 30, "CHECKOUT.POSTAL_CODE"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](29, 29, "CHECKOUT.POSTAL_CODE"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](34, 32, "CHECKOUT.CITY"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](34, 31, "CHECKOUT.CITY"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](41, 34, "CHECKOUT.PAYMENT_METHOD"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](41, 33, "CHECKOUT.PAYMENT_METHOD"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](44, 36, "CHECKOUT.REDIRECT_NOTICE"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](44, 35, "CHECKOUT.REDIRECT_NOTICE"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](70, 38, "CHECKOUT.PROCEED_BTN"), " (", `€${ctx_r1.cart().totalPrice}`, ") ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate2"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](70, 37, "CHECKOUT.PROCEED_BTN"), " (", `€${ctx_r1.cart().totalPrice}`, ") ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](75, 40, "WHY_CHOOSE_US.TITLE"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](78, 42, "CHECKOUT.ORDER_SUMMARY"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](75, 39, "CHECKOUT.ORDER_SUMMARY"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrepeater"](ctx_r1.cart().items);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](87, 44, "CHECKOUT.SUBTOTAL"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](84, 41, "CHECKOUT.SUBTOTAL"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](`€${ctx_r1.cart().totalPrice}`);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](93, 46, "CHECKOUT.SHIPPING"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](90, 43, "CHECKOUT.SHIPPING"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](96, 48, "CHECKOUT.FREE"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](93, 45, "CHECKOUT.FREE"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](101, 50, "CHECKOUT.TOTAL"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](98, 47, "CHECKOUT.TOTAL"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](`€${ctx_r1.cart().totalPrice}`);
   }
@@ -1260,11 +1254,11 @@ class CheckoutComponent {
     selectors: [["app-checkout"]],
     decls: 5,
     vars: 1,
-    consts: [[1, "min-h-screen", "bg-gray-50", "py-12", "px-4", "sm:px-6", "lg:px-8"], [1, "max-w-6xl", "mx-auto"], [1, "max-w-md", "mx-auto", "bg-white", "border", "border-gray-200", "rounded-2xl", "p-8", "text-center", "shadow-sm"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8", "animate-pulse"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8"], [1, "w-16", "h-16", "bg-red-50", "text-red-600", "rounded-full", "flex", "items-center", "justify-center", "mx-auto", "mb-4"], ["fill", "none", "stroke", "currentColor", "stroke-width", "2", "viewBox", "0 0 24 24", 1, "w-8", "h-8"], ["stroke-linecap", "round", "stroke-linejoin", "round", "d", "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"], [1, "text-xl", "font-bold", "text-gray-900", "mb-2"], [1, "text-gray-600", "text-sm", "mb-6", "leading-relaxed"], [1, "bg-gray-900", "hover:bg-gray-800", "text-white", "font-medium", "text-sm", "py-2.5", "px-6", "rounded-xl", "transition", "shadow-sm", 3, "click"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-100", "shadow-sm", "space-y-8"], [1, "h-8", "bg-gray-200", "rounded-md", "w-1/4"], [1, "space-y-4"], [1, "h-4", "bg-gray-200", "rounded-md", "w-1/3"], [1, "grid", "grid-cols-1", "sm:grid-cols-2", "gap-4"], [1, "h-10", "bg-gray-200", "rounded-lg"], [1, "sm:col-span-2", "h-10", "bg-gray-200", "rounded-lg"], [1, "border-gray-100"], [1, "h-12", "bg-gray-200", "rounded-xl", "w-full", "mt-6"], [1, "lg:col-span-5", "order-1", "lg:order-2", "bg-white", "border", "border-gray-100", "rounded-2xl", "p-6", "shadow-sm", "space-y-6"], [1, "h-5", "bg-gray-200", "rounded-md", "w-1/3"], [1, "h-12", "bg-gray-200", "rounded-lg"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-200", "shadow-sm"], [1, "text-2xl", "font-bold", "text-gray-900", "mb-8"], [1, "space-y-8"], [1, "text-base", "font-semibold", "text-gray-800", "mb-4"], [1, "block", "text-xs", "font-medium", "text-gray-600", "uppercase", "tracking-wider", "mb-1"], ["type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition"], [1, "sm:col-span-2"], [1, "border-gray-200"], [1, "mb-1"], [1, "text-base", "font-semibold", "text-gray-800"], [1, "text-xs", "text-gray-500"], [1, "mt-4", "space-y-3"], [1, "flex", "items-center", "justify-between", "border", "border-indigo-600", "bg-indigo-50/40", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-indigo-50/60", "transition"], [1, "flex", "items-center", "gap-3"], ["type", "radio", "name", "payment_method", "value", "ideal", "checked", "", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500"], [1, "font-medium", "text-gray-800", "text-sm"], [1, "text-xs", "font-bold", "text-teal-600", "bg-teal-50", "px-2", "py-1", "rounded"], [1, "flex", "items-center", "justify-between", "border", "border-gray-200", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-gray-50", "transition"], ["type", "radio", "name", "payment_method", "value", "paypal", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500"], [1, "flex", "gap-1", "text-gray-400"], [1, "text-xs"], ["type", "radio", "name", "payment_method", "value", "bancontact", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500"], ["type", "submit", 1, "w-full", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-3.5", "px-4", "rounded-xl", "transition", "shadow-sm", "mt-8", "block", "text-center", "text-sm", "tracking-wide"], [1, "lg:col-span-5", "order-1", "lg:order-2"], [1, "bg-white", "border", "border-gray-200", "rounded-2xl", "p-6", "shadow-sm", "sticky", "top-6"], [1, "text-3xl", "font-semibold", "mb-10"], [1, "text-lg", "font-bold", "text-gray-800", "mb-4"], [1, "divide-y", "divide-gray-100", "max-h-96", "overflow-y-auto", "pr-1"], [1, "flex", "items-center", "justify-between", "py-4"], [1, "py-6", "text-center", "text-gray-500", "text-sm"], [1, "border-t", "border-gray-100", "pt-4", "space-y-2.5", "text-sm"], [1, "flex", "justify-between", "text-gray-600"], [1, "text-green-600", "font-medium"], [1, "border-gray-100", "my-2"], [1, "flex", "justify-between", "items-center", "text-gray-900", "pt-1"], [1, "font-bold", "text-base"], [1, "text-xl", "font-extrabold", "text-gray-900"], [1, "flex", "items-center", "gap-4"], ["alt", "Beverage", 1, "w-12", "h-12", "rounded-lg", "object-cover", "border", "border-gray-100", "shadow-sm", 3, "src"], [1, "font-medium", "text-gray-800"], [1, "text-gray-500", "text-xs"], [1, "font-semibold", "text-gray-700"]],
+    consts: [[1, "min-h-screen", "bg-gray-50", "py-12", "px-4", "sm:px-6", "lg:px-8"], [1, "max-w-6xl", "mx-auto"], [1, "max-w-md", "mx-auto", "bg-white", "border", "border-gray-200", "rounded-2xl", "p-8", "text-center", "shadow-sm"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8", "animate-pulse"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8"], [1, "w-16", "h-16", "bg-red-50", "text-red-600", "rounded-full", "flex", "items-center", "justify-center", "mx-auto", "mb-4"], ["fill", "none", "stroke", "currentColor", "stroke-width", "2", "viewBox", "0 0 24 24", 1, "w-8", "h-8"], ["stroke-linecap", "round", "stroke-linejoin", "round", "d", "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"], [1, "text-xl", "font-bold", "text-gray-900", "mb-2"], [1, "text-gray-600", "text-sm", "mb-6", "leading-relaxed"], [1, "bg-gray-900", "hover:bg-gray-800", "text-white", "font-medium", "text-sm", "py-2.5", "px-6", "rounded-xl", "transition", "shadow-sm", 3, "click"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-100", "shadow-sm", "space-y-8"], [1, "h-8", "bg-gray-200", "rounded-md", "w-1/4"], [1, "space-y-4"], [1, "h-4", "bg-gray-200", "rounded-md", "w-1/3"], [1, "grid", "grid-cols-1", "sm:grid-cols-2", "gap-4"], [1, "h-10", "bg-gray-200", "rounded-lg"], [1, "sm:col-span-2", "h-10", "bg-gray-200", "rounded-lg"], [1, "border-gray-100"], [1, "h-12", "bg-gray-200", "rounded-xl", "w-full", "mt-6"], [1, "lg:col-span-5", "order-1", "lg:order-2", "bg-white", "border", "border-gray-100", "rounded-2xl", "p-6", "shadow-sm", "space-y-6"], [1, "h-5", "bg-gray-200", "rounded-md", "w-1/3"], [1, "h-12", "bg-gray-200", "rounded-lg"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-200", "shadow-sm"], [1, "text-2xl", "font-bold", "text-gray-900", "mb-8"], [1, "space-y-8"], [1, "text-base", "font-semibold", "text-gray-800", "mb-4"], [1, "block", "text-xs", "font-medium", "text-gray-600", "uppercase", "tracking-wider", "mb-1"], ["type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition"], [1, "sm:col-span-2"], [1, "border-gray-200"], [1, "mb-1"], [1, "text-base", "font-semibold", "text-gray-800"], [1, "text-xs", "text-gray-500"], [1, "mt-4", "space-y-3"], [1, "flex", "items-center", "justify-between", "border", "border-indigo-600", "bg-indigo-50/40", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-indigo-50/60", "transition"], [1, "flex", "items-center", "gap-3"], ["type", "radio", "name", "payment_method", "value", "ideal", "checked", "", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500"], [1, "font-medium", "text-gray-800", "text-sm"], [1, "text-xs", "font-bold", "text-teal-600", "bg-teal-50", "px-2", "py-1", "rounded"], [1, "flex", "items-center", "justify-between", "border", "border-gray-200", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-gray-50", "transition"], ["type", "radio", "name", "payment_method", "value", "paypal", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500"], [1, "flex", "gap-1", "text-gray-400"], [1, "text-xs"], ["type", "radio", "name", "payment_method", "value", "bancontact", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500"], ["type", "submit", 1, "w-full", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-3.5", "px-4", "rounded-xl", "transition", "shadow-sm", "mt-8", "block", "text-center", "text-sm", "tracking-wide"], [1, "lg:col-span-5", "order-1", "lg:order-2"], [1, "bg-white", "border", "border-gray-200", "rounded-2xl", "p-6", "shadow-sm", "sticky", "top-6"], [1, "text-lg", "font-bold", "text-gray-800", "mb-4"], [1, "divide-y", "divide-gray-100", "max-h-96", "overflow-y-auto", "pr-1"], [1, "flex", "items-center", "justify-between", "py-4"], [1, "py-6", "text-center", "text-gray-500", "text-sm"], [1, "border-t", "border-gray-100", "pt-4", "space-y-2.5", "text-sm"], [1, "flex", "justify-between", "text-gray-600"], [1, "text-green-600", "font-medium"], [1, "border-gray-100", "my-2"], [1, "flex", "justify-between", "items-center", "text-gray-900", "pt-1"], [1, "font-bold", "text-base"], [1, "text-xl", "font-extrabold", "text-gray-900"], [1, "flex", "items-center", "gap-4"], ["alt", "Beverage", 1, "w-12", "h-12", "rounded-lg", "object-cover", "border", "border-gray-100", "shadow-sm", 3, "src"], [1, "font-medium", "text-gray-800"], [1, "text-gray-500", "text-xs"], [1, "font-semibold", "text-gray-700"]],
     template: function CheckoutComponent_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0)(1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, CheckoutComponent_Conditional_2_Template, 13, 9, "div", 2)(3, CheckoutComponent_Conditional_3_Template, 17, 0, "div", 3)(4, CheckoutComponent_Conditional_4_Template, 104, 52, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, CheckoutComponent_Conditional_2_Template, 13, 9, "div", 2)(3, CheckoutComponent_Conditional_3_Template, 17, 0, "div", 3)(4, CheckoutComponent_Conditional_4_Template, 101, 49, "div", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
       }
       if (rf & 2) {
