@@ -10,7 +10,7 @@ import {
 import { HeaderComponent } from '../../components/header/header.component';
 import { HttpClient } from '@angular/common/http';
 import { BeverageListComponent } from '../../components/beverage-list/beverage-list-component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { BeverageStore } from '../../services/beverage/beverage.store';
 import { BeverageType } from '../../models/beverage-category.interface';
 import { ActivatedRoute } from '@angular/router';
@@ -18,7 +18,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-landing',
-  imports: [TranslateModule, HeaderComponent, BeverageListComponent],
+  imports: [TranslatePipe, HeaderComponent, BeverageListComponent],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
   providers: [HttpClient],

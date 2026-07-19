@@ -10,10 +10,11 @@ import { RegisterUserService } from '../../../services/register-user/register-us
 import { RegisterUserResponse } from '../../../services/register-user/model/register-user-response.interface';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockHttpInterceptor } from '@smwine-fe-app/interceptor';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, TranslatePipe],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
   providers: [
@@ -25,7 +26,7 @@ import { MockHttpInterceptor } from '@smwine-fe-app/interceptor';
   ],
 })
 export class RegisterComponent {
-  userForm: FormGroup;
+  userForm: FormGroup; //TODO add translations.
 
   constructor(
     private fb: FormBuilder,

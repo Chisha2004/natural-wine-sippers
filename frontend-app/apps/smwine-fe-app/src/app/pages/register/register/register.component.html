@@ -3,6 +3,12 @@
     <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
       Create User Account
     </h2>
+    <h2 class="text-3xl font-semibold mb-10">
+      {{ 'WHY_CHOOSE_US.TITLE' | translate }}
+    </h2>
+    <h2 class="text-lg font-bold text-gray-800 mb-4">
+      {{ 'CHECKOUT.ORDER_SUMMARY' | translate }}
+    </h2>
 
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="space-y-4">
       <!-- First Name -->

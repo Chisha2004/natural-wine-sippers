@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-checkout',
-  imports: [TranslateModule],
+  imports: [TranslatePipe],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
 })

@@ -1,194 +1,74 @@
-<div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row gap-8">
-    <div
-      class="flex-grow bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-sm"
+<!-- Shopping Cart Button -->
+<div class="relative">
+  <button
+    class="relative p-2 rounded-full hover:bg-gray-100 transition"
+    aria-label="Cart"
+    (click)="showCart = !showCart"
+  >
+    <svg
+      class="w-6 h-6 text-gray-700"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <h1 class="text-2xl font-bold text-gray-900 mb-8">Checkout</h1>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.2M16 17a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"
+      />
+    </svg>
+    @if (cart() && cart().items.length > 0) {
+    <span
+      class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-semibold rounded-full px-1.5 py-0.5"
+      >{{ cart().items.length }}</span
+    >
+    }
+  </button>
 
-      <form class="space-y-6">
-        <div>
-          <h2 class="text-base font-semibold text-gray-800 mb-4">
-            Shipping Information
-          </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label
-                class="block text-xs font-medium text-gray-600 uppercase tracking-wider mb-1"
-                >First Name</label
-              >
-              <input
-                type="text"
-                class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition"
-              />
-            </div>
-            <div>
-              <label
-                class="block text-xs font-medium text-gray-600 uppercase tracking-wider mb-1"
-                >Last Name</label
-              >
-              <input
-                type="text"
-                class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition"
-              />
-            </div>
-            <div class="sm:col-span-2">
-              <label
-                class="block text-xs font-medium text-gray-600 uppercase tracking-wider mb-1"
-                >Address</label
-              >
-              <input
-                type="text"
-                class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition"
-              />
-            </div>
-            <div>
-              <label
-                class="block text-xs font-medium text-gray-600 uppercase tracking-wider mb-1"
-                >Postal Code</label
-              >
-              <input
-                type="text"
-                class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition"
-              />
-            </div>
-            <div>
-              <label
-                class="block text-xs font-medium text-gray-600 uppercase tracking-wider mb-1"
-                >City</label
-              >
-              <input
-                type="text"
-                class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition"
-              />
-            </div>
+  <!-- Dropdown -->
+  @if(showCart){
+  <div
+    class="absolute right-0 mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-lg z-50 text-sm divide-y divide-gray-100"
+  >
+    <div class="p-4 font-medium text-gray-700">Your Cart</div>
+    <ul class="max-h-60 overflow-y-auto">
+      <!-- Item from cart service -->
+      @for (item of cart().items; track item.beverageId) {
+      <li class="flex items-center justify-between px-4 py-3 hover:bg-gray-50">
+        <div class="flex items-center gap-3">
+          <img
+            [src]="item.beverageImgUrl"
+            class="w-10 h-10 rounded-md object-cover"
+            alt="Item"
+          />
+          <div>
+            <div class="font-medium text-gray-800">{{ item.title }}</div>
+            <div class="text-gray-500 text-xs">: {{ item.quantity }}</div>
           </div>
         </div>
-
-        <hr class="border-gray-200 my-6" />
-
-        <div>
-          <h2 class="text-base font-semibold text-gray-800 mb-4">
-            Payment Details
-          </h2>
-          <div class="space-y-4">
-            <div>
-              <label
-                class="block text-xs font-medium text-gray-600 uppercase tracking-wider mb-1"
-                >Card Number</label
-              >
-              <div class="relative">
-                <input
-                  type="text"
-                  placeholder="0000 0000 0000 0000"
-                  class="w-full bg-gray-50 border border-gray-300 rounded-lg pl-3 pr-10 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition"
-                />
-                <span class="absolute right-3 top-2.5 text-gray-400">
-                  <svg
-                    class="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                    />
-                  </svg>
-                </span>
-              </div>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label
-                  class="block text-xs font-medium text-gray-600 uppercase tracking-wider mb-1"
-                  >Expiry Date</label
-                >
-                <input
-                  type="text"
-                  placeholder="MM/YY"
-                  class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition"
-                />
-              </div>
-              <div>
-                <label
-                  class="block text-xs font-medium text-gray-600 uppercase tracking-wider mb-1"
-                  >CVC</label
-                >
-                <input
-                  type="text"
-                  placeholder="123"
-                  class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition"
-                />
-              </div>
-            </div>
-          </div>
+        <div class="font-semibold text-gray-700">
+          {{ `€${item.totalForQuantity}` }}
         </div>
-
-        <button
-          type="submit"
-          class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-xl transition shadow-sm mt-8 block text-center"
-        >
-          Place Order ({{ `€${cart().totalPrice}` }})
-        </button>
-      </form>
-    </div>
-
-    <div class="lg:w-96 lg:flex-shrink-0">
-      <div
-        class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm sticky top-6"
+      </li>
+      }
+    </ul>
+    <div class="p-4 flex justify-between items-center">
+      <span class="font-semibold text-gray-800">Total:</span>
+      <span
+        class="text-lg font-bold text-gray-900"
+        >{{ `€${cart().totalPrice}` }}</span
       >
-        <h2 class="text-lg font-bold text-gray-800 mb-4">Order Summary</h2>
-
-        <ul class="divide-y divide-gray-100 max-h-96 overflow-y-auto pr-1">
-          @for (item of cart().items; track item.beverageId) {
-          <li class="flex items-center justify-between py-4">
-            <div class="flex items-center gap-4">
-              <img
-                [src]="item.beverageImgUrl"
-                class="w-12 h-12 rounded-lg object-cover border border-gray-100 shadow-sm"
-                alt="Beverage"
-              />
-              <div>
-                <div class="font-medium text-gray-800">{{ item.title }}</div>
-                <div class="text-gray-500 text-xs">
-                  Qty: {{ item.quantity }}
-                </div>
-              </div>
-            </div>
-            <div class="font-semibold text-gray-700">
-              {{ `€${item.totalForQuantity}` }}
-            </div>
-          </li>
-          } @empty {
-          <li class="py-6 text-center text-gray-500 text-sm">
-            Your cart is empty.
-          </li>
-          }
-        </ul>
-
-        <div class="border-t border-gray-100 pt-4 space-y-2.5 text-sm">
-          <div class="flex justify-between text-gray-600">
-            <span>Subtotal</span>
-            <span>{{ `€${cart().totalPrice}` }}</span>
-          </div>
-          <div class="flex justify-between text-gray-600">
-            <span>Shipping</span>
-            <span class="text-green-600 font-medium">Free</span>
-          </div>
-
-          <hr class="border-gray-100 my-2" />
-
-          <div class="flex justify-between items-center text-gray-900 pt-1">
-            <span class="font-bold text-base">Total Total</span>
-            <span
-              class="text-xl font-extrabold text-gray-900"
-              >{{ `€${cart().totalPrice}` }}</span
-            >
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="p-4">
+      <a
+        href="/checkout"
+        class="block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-lg transition"
+      >
+        Checkout
+      </a>
     </div>
   </div>
+  }
 </div>

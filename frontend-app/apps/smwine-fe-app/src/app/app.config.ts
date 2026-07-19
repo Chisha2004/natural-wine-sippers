@@ -16,7 +16,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { JwtInterceptor } from '@smwine-fe-app/interceptor';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient, './i18n/', '.json');
+  return new TranslateHttpLoader(httpClient, '/i18n/', '.json');
 }
 
 export const appConfig: ApplicationConfig = {
