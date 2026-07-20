@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -8,20 +8,17 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrl: './language-selector.component.scss',
 })
 export class LanguageSelectorComponent {
+  private translateService = inject(TranslateService);
+
+  currentLang = this.translateService.currentLang;
   supportedLangs = [
     { code: 'en', label: 'EN' },
     { code: 'de', label: 'DE' },
     // add more languages here
   ];
 
-  constructor(public readonly translate: TranslateService) {
-    translate.setDefaultLang('en');
-    translate.use('en'); //TODO maybe store in cookie and init read on load
-    //TODO the wine or beverage cards need to return translated values form the backend
-  }
-
   changeLanguage(event: Event) {
     const selectEl = event.target as HTMLSelectElement;
-    this.translate.use(selectEl.value);
+    this.translateService.use(selectEl.value);
   }
 }
