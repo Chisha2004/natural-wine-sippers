@@ -23,7 +23,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class DeliveryAddress {
-
+//TODO maybe it makes sense to have a transactions table which can store transaction log for every order
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
