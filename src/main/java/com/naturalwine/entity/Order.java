@@ -45,7 +45,7 @@ public class Order {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 30)
-    private OrderStatus status = OrderStatus.PENDING;
+    private OrderStatus status;
 
     @NotBlank
     @Size(max = 50)
@@ -73,7 +73,7 @@ public class Order {
     @NotBlank
     @Size(max = 3)
     @Column(name = "currency", nullable = false, length = 3)
-    private String currency = "EUR";
+    private String currency;
 
     @NotBlank
     @Size(max = 255)
@@ -121,12 +121,10 @@ public class Order {
     //TODO this should move to a service
     public void addItem(OrderItem item) {
         items.add(item);
-        item.setOrder(this);
     }
 
     //TODO this should move to a service
     public void removeItem(OrderItem item) {
         items.remove(item);
-        item.setOrder(null);
     }
 }
