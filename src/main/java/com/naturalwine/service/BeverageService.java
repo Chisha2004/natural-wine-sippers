@@ -1,7 +1,7 @@
 package com.naturalwine.service;
 
 import com.naturalwine.dto.BeverageDto;
-import com.naturalwine.entity.BeverageEntity;
+import com.naturalwine.entity.Beverage;
 import com.naturalwine.repository.BeverageRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class BeverageService {
                 .map(this::convertToDto).toList();
     }
 
-    private BeverageDto convertToDto(BeverageEntity beverage) {
+    private BeverageDto convertToDto(Beverage beverage) {
         if (beverage == null) {
             return null;
         }

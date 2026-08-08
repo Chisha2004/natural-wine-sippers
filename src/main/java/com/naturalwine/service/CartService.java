@@ -1,8 +1,8 @@
 package com.naturalwine.service;
 
 import com.naturalwine.dto.CartDto;
-import com.naturalwine.entity.BeverageEntity;
-import com.naturalwine.entity.CartEntity;
+import com.naturalwine.entity.Beverage;
+import com.naturalwine.entity.Cart;
 import com.naturalwine.exception.BeverageNotFoundException;
 import com.naturalwine.exception.InsufficientStockException;
 import com.naturalwine.repository.BeverageRepository;
@@ -35,7 +35,7 @@ public class CartService {
         }
 
         // Fetch the beverage and check stock
-        BeverageEntity beverage = beverageRepository.findById(beverageId)
+        Beverage beverage = beverageRepository.findById(beverageId)
                 .orElseThrow(() -> new BeverageNotFoundException(beverageId));
 
         if (beverage.getStock() < quantity) {
@@ -43,31 +43,31 @@ public class CartService {
         }
 
         // Check if item already exists in cart (find by userUuid string and beverageId)
-        Optional<CartEntity> existingCartItem = cartRepository.findByUserUuidAndBeverageId(userUuid, beverageId);
+        Optional<Cart> existingCartItem = cartRepository.findByUserUuidAndBeverageId(userUuid, beverageId);
 
-        CartEntity cartEntity;
+        Cart cart;
         if (existingCartItem.isPresent()) {
             // Update existing cart item
-            cartEntity = existingCartItem.get();
-            int newQuantity = cartEntity.getQuantity() + quantity;
+            cart = existingCartItem.get();
+            int newQuantity = cart.getQuantity() + quantity;
 
             // Check if new quantity exceeds available stock
             if (beverage.getStock() < newQuantity) {
                 throw new InsufficientStockException(beverageId, beverage.getStock(), newQuantity);
             }
 
-            cartEntity.setQuantity(newQuantity);
+            cart.setQuantity(newQuantity);
         } else {
             // Create new cart item
-            cartEntity = new CartEntity();
+            cart = new Cart();
             // Store userUuid as is (works for both numeric and UUID)
-            cartEntity.setUserUuid(userUuid);
-            cartEntity.setBeverageId(beverageId);
-            cartEntity.setQuantity(quantity);
+            cart.setUserUuid(userUuid);
+            cart.setBeverageId(beverageId);
+            cart.setQuantity(quantity);
         }
 
-        cartEntity.setDlu(LocalDateTime.now());
-        cartRepository.save(cartEntity);
+        cart.setDlu(LocalDateTime.now());
+        cartRepository.save(cart);
     }
 
     public List<CartDto> getUserCart(final UUID userUuid) {
@@ -79,18 +79,18 @@ public class CartService {
 
     @Transactional
     public void migrateGuestCartToRegisteredUser(final UUID guestUuid, final UUID registeredUserUuid) {
-        List<CartEntity> guestCartItems = cartRepository.findByUserUuid(guestUuid);
+        List<Cart> guestCartItems = cartRepository.findByUserUuid(guestUuid);
 
-        for (CartEntity guestItem : guestCartItems) {
+        for (Cart guestItem : guestCartItems) {
             // Check if registered user already has this item in cart
-            Optional<CartEntity> existingItem = cartRepository.findByUserUuidAndBeverageId(
+            Optional<Cart> existingItem = cartRepository.findByUserUuidAndBeverageId(
                     registeredUserUuid,
                     guestItem.getBeverageId()
             );
 
             if (existingItem.isPresent()) {
                 // Merge quantities
-                CartEntity registered = existingItem.get();
+                Cart registered = existingItem.get();
                 registered.setQuantity(registered.getQuantity() + guestItem.getQuantity());
                 registered.setDlu(LocalDateTime.now());
                 cartRepository.save(registered);
@@ -111,21 +111,21 @@ public class CartService {
         cartRepository.deleteAllByUserUuid(userUuid);
     }
 
-    private CartDto convertToDto(final CartEntity cartEntity) throws BeverageNotFoundException {
-        if (cartEntity == null) {
+    private CartDto convertToDto(final Cart cart) throws BeverageNotFoundException {
+        if (cart == null) {
             return null;
         }
 
-        final BeverageEntity beverage = beverageRepository.findById(cartEntity.getBeverageId())
-                .orElseThrow(() -> new BeverageNotFoundException(cartEntity.getBeverageId()));
+        final Beverage beverage = beverageRepository.findById(cart.getBeverageId())
+                .orElseThrow(() -> new BeverageNotFoundException(cart.getBeverageId()));
 
         return new CartDto(
-                cartEntity.getBeverageId(),
+                cart.getBeverageId(),
                 beverage.getName(),
                 beverage.getImgUrl(),
-                cartEntity.getQuantity(),
+                cart.getQuantity(),
                 beverage.getPrice(),
-                beverage.getPrice().multiply(BigDecimal.valueOf(cartEntity.getQuantity()))
+                beverage.getPrice().multiply(BigDecimal.valueOf(cart.getQuantity()))
         );
     }
 }

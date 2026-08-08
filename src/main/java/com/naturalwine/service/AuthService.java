@@ -1,7 +1,7 @@
 package com.naturalwine.service;
 
 import com.naturalwine.dto.*;
-import com.naturalwine.entity.UserEntity;
+import com.naturalwine.entity.User;
 import com.naturalwine.model.UserType;
 import com.naturalwine.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,7 +40,7 @@ public class AuthService {
         }
         UUID guestUUID = loginRequest.guestUuid() != null ? UUID.fromString(loginRequest.guestUuid()) : null;
 
-        UserEntity user = userRepository.findByEmail(loginRequest.email())
+        User user = userRepository.findByEmail(loginRequest.email())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
 
         if (!passwordEncoder.matches(loginRequest.password(), user.getPassword())) {
@@ -70,7 +70,7 @@ public class AuthService {
             throw new IllegalArgumentException("Email already exists");
         }
 
-        UserEntity user = new UserEntity(
+        User user = new User(
             email,
             passwordEncoder.encode(password),
             UserType.BASIC
@@ -110,7 +110,7 @@ public class AuthService {
                 .userType(userType);
 
         if(userType != UserType.GUEST) {
-            UserEntity user = userRepository.findByUuid(userUuid)
+            User user = userRepository.findByUuid(userUuid)
                     .orElseThrow(() -> new IllegalArgumentException("User not found"));
             loginResponseBuilder.email(user.getEmail());
             loginResponseBuilder.firstName(user.getFirstName());

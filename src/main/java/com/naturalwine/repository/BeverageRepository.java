@@ -1,6 +1,6 @@
 package com.naturalwine.repository;
 
-import com.naturalwine.entity.BeverageEntity;
+import com.naturalwine.entity.Beverage;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BeverageRepository extends JpaRepository<BeverageEntity, Long> { }
+public interface BeverageRepository extends JpaRepository<Beverage, Long> { }

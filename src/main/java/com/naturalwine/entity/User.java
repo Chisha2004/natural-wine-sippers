@@ -12,7 +12,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -42,10 +42,10 @@ public class UserEntity {
     @Column(name = "dlu", nullable = false)
     private LocalDateTime dlu;
 
-    public UserEntity() {
+    public User() {
     }
 
-    public UserEntity(String email, String password, UserType userType) {
+    public User(String email, String password, UserType userType) {
         this.email = email;
         this.password = password;
         this.userType = userType;

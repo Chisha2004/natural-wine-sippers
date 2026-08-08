@@ -4,9 +4,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
+
+import jakarta.persistence.Id;
 
 @Entity
 @Table(name = "order_item")
@@ -20,8 +21,8 @@ class OrderItem { //TODO improve this to match cart
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(nullable = false)
+    @NotNull
+    @Column(nullable = false)
     private Long orderId;
 
     @NotNull

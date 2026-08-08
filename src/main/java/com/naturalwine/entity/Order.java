@@ -9,26 +9,16 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(
-        name = "orders",
-        indexes = {
-                @Index(name = "idx_orders_user_id", columnList = "user_id"),
-                @Index(name = "idx_orders_order_number", columnList = "order_number", unique = true),
-                @Index(name = "idx_orders_status", columnList = "status")
-        }
-)
+@Table(name = "orders") //TODO maybe these indexes should move to mysql not in code.
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,6 +31,10 @@ public class Order {
     @NotNull
     @Column(name = "user_id", nullable = false, updatable = false)
     private UUID userId;
+
+    @NotNull
+    @Column(name = "cart_id", nullable = false, updatable = false)
+    private Long cartId;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -95,10 +89,6 @@ public class Order {
     @Column(name = "shipping_country", nullable = false, length = 100)
     private String shippingCountry;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<OrderItem> items = new ArrayList<>();
-
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -116,15 +106,5 @@ public class Order {
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = LocalDateTime.now();
-    }
-
-    //TODO this should move to a service
-    public void addItem(OrderItem item) {
-        items.add(item);
-    }
-
-    //TODO this should move to a service
-    public void removeItem(OrderItem item) {
-        items.remove(item);
     }
 }

@@ -52,7 +52,7 @@ public class DeliveryAddress {
     private String country;
 
     @Column(name = "is_default", nullable = false)
-    private boolean isDefault = false;
+    private boolean isDefault;
 
     /* STREAMING_CHUNK: Audit timestamps setup */
     @Column(name = "created_at", nullable = false, updatable = false)
