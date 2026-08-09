@@ -10,9 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
-    List<Cart> findByUserUuid(UUID userIdString);
-
-    Optional<Cart> findByUserUuidAndBeverageId(UUID userUuid, Long beverageId);
+    Optional<Cart> findByUserUuid(UUID userUuid);
 
     @Modifying(clearAutomatically = true)
     @Query("DELETE FROM Cart c WHERE c.userUuid = :guestUuid")

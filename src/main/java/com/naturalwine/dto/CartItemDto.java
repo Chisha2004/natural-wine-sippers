@@ -2,7 +2,7 @@ package com.naturalwine.dto;
 
 import java.math.BigDecimal;
 
-public record CartDto(
+public record CartItemDto(
         Long beverageId,
         String title,
         String beverageImgUrl,

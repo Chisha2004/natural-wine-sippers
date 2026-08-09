@@ -33,21 +33,13 @@ public class Order {
     private UUID userId;
 
     @NotNull
-    @Column(name = "cart_id", nullable = false, updatable = false)
+    @Column(name = "cart_id", nullable = false, updatable = false, unique = true)
     private Long cartId;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 30)
     private OrderStatus status;
-
-    @NotBlank
-    @Size(max = 50)
-    @Column(name = "payment_method", nullable = false, length = 50)
-    private String paymentMethod; // e.g. "ideal", "paypal", "bancontact"
-
-    @Column(name = "payment_transaction_id")
-    private String paymentTransactionId;
 
     @NotNull
     @PositiveOrZero
@@ -63,11 +55,6 @@ public class Order {
     @PositiveOrZero
     @Column(name = "total_amount", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalAmount;
-
-    @NotBlank
-    @Size(max = 3)
-    @Column(name = "currency", nullable = false, length = 3)
-    private String currency;
 
     @NotBlank
     @Size(max = 255)

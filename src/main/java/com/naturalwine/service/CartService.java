@@ -1,8 +1,10 @@
 package com.naturalwine.service;
 
-import com.naturalwine.dto.CartDto;
+import com.naturalwine.dto.CartItemDto;
+import com.naturalwine.dto.CartResponse;
 import com.naturalwine.entity.Beverage;
 import com.naturalwine.entity.Cart;
+import com.naturalwine.entity.CartItem;
 import com.naturalwine.exception.BeverageNotFoundException;
 import com.naturalwine.exception.InsufficientStockException;
 import com.naturalwine.repository.BeverageRepository;
@@ -13,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -27,6 +28,7 @@ public class CartService {
         this.beverageRepository = beverageRepository;
     }
 
+    @Transactional
     public void addToCart(final UUID userUuid, final Long beverageId, final Integer quantity)
             throws InsufficientStockException, IllegalArgumentException {
         // Validate inputs
@@ -43,89 +45,98 @@ public class CartService {
         }
 
         // Check if item already exists in cart (find by userUuid string and beverageId)
-        Optional<Cart> existingCartItem = cartRepository.findByUserUuidAndBeverageId(userUuid, beverageId);
+        final Cart cart = cartRepository.findByUserUuid(userUuid)
+                .orElseGet(()-> Cart.builder()
+                        .userUuid(userUuid)
+                        .build());
 
-        Cart cart;
-        if (existingCartItem.isPresent()) {
-            // Update existing cart item
-            cart = existingCartItem.get();
-            int newQuantity = cart.getQuantity() + quantity;
+        cart.getItems().stream()
+                .filter(item -> item.getBeverageId().equals(beverageId))
+                .findFirst()
+                .ifPresentOrElse(existingCartItem -> {
+                    // Update existing cart item
+                    int newQuantity = existingCartItem.getQuantity() + quantity;
 
-            // Check if new quantity exceeds available stock
-            if (beverage.getStock() < newQuantity) {
-                throw new InsufficientStockException(beverageId, beverage.getStock(), newQuantity);
-            }
+                    if (beverage.getStock() < newQuantity) {
+                        throw new InsufficientStockException(beverageId, beverage.getStock(), newQuantity);
+                    }
 
-            cart.setQuantity(newQuantity);
-        } else {
-            // Create new cart item
-            cart = new Cart();
-            // Store userUuid as is (works for both numeric and UUID)
-            cart.setUserUuid(userUuid);
-            cart.setBeverageId(beverageId);
-            cart.setQuantity(quantity);
-        }
+                    existingCartItem.setQuantity(newQuantity);
+                },
+                () -> {
+                    cart.addItem(CartItem.builder()
+                            .beverageId(beverageId)
+                            .quantity(quantity)
+                            .build());
+                });
 
         cart.setDlu(LocalDateTime.now());
         cartRepository.save(cart);
     }
 
-    public List<CartDto> getUserCart(final UUID userUuid) {
-        return cartRepository.findByUserUuid(userUuid)
-                .stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
+    public Cart getCart(final UUID userUuid) {
+        final Cart cart = cartRepository.findByUserUuid(userUuid).orElse(null);
+
+        if (cart == null && cart.getItems() != null && !cart.getItems().isEmpty()) {
+            final List<Beverage> beverages = beverageRepository.findAll();
+            cart.getItems().stream()
+                    .forEach(item -> {
+                        final Beverage beverage = beverages.stream()
+                                .filter(b -> b.getId().equals(item.getBeverageId()))
+                                .findFirst()
+                                .orElse(null);
+                        if (beverage != null) {
+                            item.setPriceEach(beverage.getPrice());
+                            item.setTotalForQuantity(beverage.getPrice()
+                                    .multiply(BigDecimal.valueOf(item.getQuantity())));
+                        }
+                    });
+            //TODO future add VAT and any other added bits to price, bonus, etc
+            cart.setTotalPrice(cart.getItems().stream()
+                    .map(CartItem::getTotalForQuantity)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add));
+        }
+
+        return cart;
+    }
+
+    public CartResponse getCartResponse(final UUID userUuid) {
+        final Cart cart = getCart(userUuid);
+
+        return CartResponse.builder()
+                .id(cart.getId())
+                .items(cart.getItems()
+                        .stream()
+                        .map(this::convertToDto)
+                        .collect(Collectors.toList()))
+                .totalPrice(cart.getTotalPrice())
+                .build();
     }
 
     @Transactional
     public void migrateGuestCartToRegisteredUser(final UUID guestUuid, final UUID registeredUserUuid) {
-        List<Cart> guestCartItems = cartRepository.findByUserUuid(guestUuid);
-
-        for (Cart guestItem : guestCartItems) {
-            // Check if registered user already has this item in cart
-            Optional<Cart> existingItem = cartRepository.findByUserUuidAndBeverageId(
-                    registeredUserUuid,
-                    guestItem.getBeverageId()
-            );
-
-            if (existingItem.isPresent()) {
-                // Merge quantities
-                Cart registered = existingItem.get();
-                registered.setQuantity(registered.getQuantity() + guestItem.getQuantity());
-                registered.setDlu(LocalDateTime.now());
-                cartRepository.save(registered);
-                // Delete guest item
-            } else {
-                // Transfer guest item to registered user
-                guestItem.setUserUuid(registeredUserUuid);
-                guestItem.setDlu(LocalDateTime.now());
-            }
-        }
-
-        cartRepository.saveAll(guestCartItems);
-
-        cartRepository.deleteAllByUserUuid(guestUuid);
-    }
-
-    public void clearUserCart(final UUID userUuid) {
-        cartRepository.deleteAllByUserUuid(userUuid);
-    }
-
-    private CartDto convertToDto(final Cart cart) throws BeverageNotFoundException {
+        final Cart cart = cartRepository.findByUserUuid(guestUuid).orElse(null);
         if (cart == null) {
+            cart.setUserUuid(registeredUserUuid);
+            cartRepository.save(cart);
+        }
+    }
+
+    private CartItemDto convertToDto(final CartItem cartItem) throws BeverageNotFoundException {
+        if (cartItem == null) {
             return null;
         }
 
-        final Beverage beverage = beverageRepository.findById(cart.getBeverageId())
-                .orElseThrow(() -> new BeverageNotFoundException(cart.getBeverageId()));
+        final Beverage beverage = beverageRepository.findById(cartItem.getBeverageId())
+                .orElseThrow(() -> new BeverageNotFoundException(cartItem.getBeverageId()));
 
-        return new CartDto(
-                cart.getBeverageId(),
+        return new CartItemDto(
+                cartItem.getBeverageId(),
                 beverage.getName(),
                 beverage.getImgUrl(),
-                cart.getQuantity(),
-                beverage.getPrice(),
-                beverage.getPrice().multiply(BigDecimal.valueOf(cart.getQuantity()))
+                cartItem.getQuantity(),
+                cartItem.getPriceEach(),
+                cartItem.getTotalForQuantity()
         );
     }
 }

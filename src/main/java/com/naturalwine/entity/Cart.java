@@ -1,12 +1,11 @@
 package com.naturalwine.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -14,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "cart")
 public class Cart {
     @Id
@@ -23,11 +23,8 @@ public class Cart {
     @Column(nullable = false)
     private UUID userUuid;
 
-    @Column(nullable = false)
-    private Long beverageId;
-
-    @Column(nullable = false)
-    private Integer quantity;
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> items;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 30)
@@ -38,6 +35,20 @@ public class Cart {
 
     @Column(name = "dlu", nullable = false)
     private LocalDateTime dlu = LocalDateTime.now();
+
+    @Transient
+    private BigDecimal totalPrice = BigDecimal.ZERO;
+
+    public void addItem(CartItem item) {
+        this.items.add(item);
+        item.setCart(this);
+
+    }
+
+    public void removeItem(CartItem item) {
+        this.items.remove(item);
+        item.setCart(null);
+    }
 
     @PreUpdate
     protected void onUpdate() {
