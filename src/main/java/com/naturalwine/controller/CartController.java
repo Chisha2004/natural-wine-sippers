@@ -11,6 +11,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/v1/cart")
 public class CartController {
+    //TODO all data coming from frontend should be sanitized
     private final CartService cartService;
 
     public CartController(CartService cartService) {
@@ -26,12 +27,17 @@ public class CartController {
 
     @PostMapping("/add")
     public CartResponse addToCart(@RequestBody AddToCartRequest request) {
+        //TODO if payment is in progress and successfull then we should not add to it but create new cart.
+        //TODO if the order is in progress and payment is not yet made then we need to invalidate this order and create a new
+
         UUID userUuid = SecurityUtil.getCurrentUserUuid();
 
         cartService.addToCart(userUuid, request.beverageId(), request.quantity());
 
         return cartService.getCartResponse(userUuid);
     }
+
+    //TODO add remove item or reduce item numbers in cart.
 }
 
 

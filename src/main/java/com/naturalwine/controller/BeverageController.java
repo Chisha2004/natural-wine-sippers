@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/beverages")
 public class BeverageController {
+    //TODO all data coming from frontend should be sanitized
     private final BeverageService beverageService;
 
     public BeverageController(final BeverageService beverageService){

@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -24,5 +26,35 @@ public class Transaction {
     @Enumerated(EnumType.STRING)
     private TransactionStatus  status;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "payment_method", nullable = false)
+    private PaymentMethod paymentMethod;
+
+    /**
+     * Unique ID returned by the external PSP (e.g., PayPal Order ID, Stripe PaymentIntent ID).
+     */
+    @Column(name = "gateway_transaction_id")
+    private String gatewayTransactionId;
+
+    private String redirectUrl;
+
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        if (this.status == null) {
+            this.status = TransactionStatus.PENDING;
+        }
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
     //TODO add transaction history of an order. links logs when using payment gateway, etc
 }

@@ -31,6 +31,10 @@ public class CartService {
     @Transactional
     public void addToCart(final UUID userUuid, final Long beverageId, final Integer quantity)
             throws InsufficientStockException, IllegalArgumentException {
+
+        //TODO if payment is in progress and successfull then we should not add to it but create new cart.
+        //TODO if the order is in progress and payment is not yet made then we need to invalidate this order and create a new
+
         // Validate inputs
         if (quantity <= 0) {
             throw new IllegalArgumentException("Quantity must be greater than 0");

@@ -12,6 +12,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/v1/auth")
 public class LoginController {
+    //TODO all data coming from frontend should be sanitized
     private final AuthService authService;
 
     public LoginController(AuthService authService) {

@@ -17,6 +17,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/checkout")
 public class CheckoutController {
+    //TODO all data coming from frontend should be sanitized
     private CheckoutService checkoutService;
 
     public CheckoutController(final CheckoutService checkoutService) {

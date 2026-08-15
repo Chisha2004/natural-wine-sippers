@@ -5,8 +5,8 @@ import com.naturalwine.dto.CheckoutResponseDto;
 import com.naturalwine.entity.Cart;
 import com.naturalwine.entity.Order;
 import com.naturalwine.repository.OrderRepository;
+import com.naturalwine.service.payment.PaymentService;
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
