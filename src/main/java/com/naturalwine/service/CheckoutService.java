@@ -47,6 +47,8 @@ public class CheckoutService {
             return newOrder;
         });
 
+        paymentService.generatePaymentUrl(request.paymentMethod(), order);
+
         //TODO do not start a new transaction without checking existing. If payment method has changed from previous then start new or if no transaction already exists in pending
         //TODO payment method should be used at transaction level
 

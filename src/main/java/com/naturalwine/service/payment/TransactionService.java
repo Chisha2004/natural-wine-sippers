@@ -18,4 +18,8 @@ class TransactionService {
     List<Transaction> getTransactionsForOrder(Long orderId) {
         return transactionRepository.findAllByOrderId(orderId);
     }
+
+    void save(Transaction transaction){
+        transactionRepository.save(transaction);
+    }
 }

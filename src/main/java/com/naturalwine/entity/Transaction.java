@@ -2,11 +2,13 @@ package com.naturalwine.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,6 +27,11 @@ public class Transaction {
 
     @Enumerated(EnumType.STRING)
     private TransactionStatus  status;
+
+    @NotNull
+    @PositiveOrZero
+    @Column(name = "total_amount", nullable = false, precision = 10, scale = 2)
+    private BigDecimal totalAmount;
 
     @NotNull
     @Enumerated(EnumType.STRING)

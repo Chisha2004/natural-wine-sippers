@@ -7,4 +7,5 @@ public enum CartStatus {
     CONVERTED,
     EXPIRED,
     MERGED,
+    NONE
 }

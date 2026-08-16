@@ -5,6 +5,7 @@ import com.naturalwine.dto.CartResponse;
 import com.naturalwine.entity.Beverage;
 import com.naturalwine.entity.Cart;
 import com.naturalwine.entity.CartItem;
+import com.naturalwine.entity.CartStatus;
 import com.naturalwine.exception.BeverageNotFoundException;
 import com.naturalwine.exception.InsufficientStockException;
 import com.naturalwine.repository.BeverageRepository;
@@ -79,9 +80,15 @@ public class CartService {
     }
 
     public Cart getCart(final UUID userUuid) {
-        final Cart cart = cartRepository.findByUserUuid(userUuid).orElse(null);
+        Cart cart = cartRepository.findByUserUuid(userUuid).orElseGet(() -> {
+            Cart newCart = new Cart();
+            newCart.setStatus(CartStatus.NONE);
+            newCart.setItems(List.of());
+            newCart.setUserUuid(userUuid);
+            return newCart;
+        });
 
-        if (cart == null && cart.getItems() != null && !cart.getItems().isEmpty()) {
+        if (cart.getItems() != null && !cart.getItems().isEmpty()) {
             final List<Beverage> beverages = beverageRepository.findAll();
             cart.getItems().stream()
                     .forEach(item -> {
@@ -120,7 +127,7 @@ public class CartService {
     @Transactional
     public void migrateGuestCartToRegisteredUser(final UUID guestUuid, final UUID registeredUserUuid) {
         final Cart cart = cartRepository.findByUserUuid(guestUuid).orElse(null);
-        if (cart == null) {
+        if (cart != null) {
             cart.setUserUuid(registeredUserUuid);
             cartRepository.save(cart);
         }
