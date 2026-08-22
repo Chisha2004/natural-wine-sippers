@@ -82,6 +82,234 @@ class RegisterUserService {
 
 /***/ }),
 
+/***/ 788:
+/*!*****************************************************************!*\
+  !*** ./libs/shared/src/lib/components/toast/toast.component.ts ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ToastComponent: () => (/* binding */ ToastComponent)
+/* harmony export */ });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 4460);
+/* harmony import */ var _service_toast_toast_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../service/toast/toast.service */ 7539);
+
+
+
+
+
+const _forTrack0 = ($index, $item) => $item.id;
+function ToastComponent_For_2_Case_2_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "svg", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "path", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+  }
+}
+function ToastComponent_For_2_Case_3_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "svg", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "path", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+  }
+}
+function ToastComponent_For_2_Case_4_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "svg", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "path", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+  }
+}
+function ToastComponent_For_2_Case_5_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "svg", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "path", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+  }
+}
+function ToastComponent_For_2_Conditional_9_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "p", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+  }
+  if (rf & 2) {
+    const toast_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("id", "toast-desc-" + toast_r2.id);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", toast_r2.message, " ");
+  }
+}
+function ToastComponent_For_2_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("keydown.escape", function ToastComponent_For_2_Template_div_keydown_escape_0_listener() {
+      const toast_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r1).$implicit;
+      const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresetView"](ctx_r2.toastService.remove(toast_r2.id));
+    })("mouseenter", function ToastComponent_For_2_Template_div_mouseenter_0_listener() {
+      const toast_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r1).$implicit;
+      const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresetView"](ctx_r2.onMouseEnter(toast_r2.id));
+    })("mouseleave", function ToastComponent_For_2_Template_div_mouseleave_0_listener() {
+      const toast_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r1).$implicit;
+      const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresetView"](ctx_r2.onMouseLeave(toast_r2.id));
+    })("touchstart", function ToastComponent_For_2_Template_div_touchstart_0_listener($event) {
+      const toast_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r1).$implicit;
+      const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresetView"](ctx_r2.onTouchStart(toast_r2.id, $event));
+    })("touchmove", function ToastComponent_For_2_Template_div_touchmove_0_listener($event) {
+      const toast_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r1).$implicit;
+      const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresetView"](ctx_r2.onTouchMove(toast_r2.id, $event));
+    })("touchend", function ToastComponent_For_2_Template_div_touchend_0_listener() {
+      const toast_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r1).$implicit;
+      const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresetView"](ctx_r2.onTouchEnd(toast_r2.id));
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, ToastComponent_For_2_Case_2_Template, 2, 0, ":svg:svg", 4)(3, ToastComponent_For_2_Case_3_Template, 2, 0, ":svg:svg", 5)(4, ToastComponent_For_2_Case_4_Template, 2, 0, ":svg:svg", 6)(5, ToastComponent_For_2_Case_5_Template, 2, 0, ":svg:svg", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div", 8)(7, "h4", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](9, ToastComponent_For_2_Conditional_9_Template, 2, 2, "p", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "button", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ToastComponent_For_2_Template_button_click_10_listener() {
+      const toast_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r1).$implicit;
+      const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresetView"](ctx_r2.toastService.remove(toast_r2.id));
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "span", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "Close");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "svg", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](14, "path", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
+  }
+  if (rf & 2) {
+    let tmp_18_0;
+    const toast_r2 = ctx.$implicit;
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstyleProp"]("transform", ctx_r2.getTranslateX(toast_r2.id))("opacity", ctx_r2.getOpacity(toast_r2.id));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngClass", ctx_r2.getStyles(toast_r2.type));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("role", ctx_r2.getAriaRole(toast_r2.type))("aria-live", ctx_r2.getAriaLive(toast_r2.type))("aria-atomic", true)("aria-labelledby", "toast-title-" + toast_r2.id)("aria-describedby", toast_r2.message ? "toast-desc-" + toast_r2.id : null);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵconditional"]((tmp_18_0 = toast_r2.type) === "error" ? 2 : tmp_18_0 === "success" ? 3 : tmp_18_0 === "warning" ? 4 : 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("id", "toast-title-" + toast_r2.id);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", toast_r2.title, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵconditional"](toast_r2.message ? 9 : -1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵattribute"]("aria-label", "Close " + toast_r2.title + " notification");
+  }
+}
+class ToastComponent {
+  toastService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_service_toast_toast_service__WEBPACK_IMPORTED_MODULE_0__.ToastService);
+  touchStates = new Map();
+  getAriaRole(type) {
+    return type === 'error' || type === 'warning' ? 'alert' : 'status';
+  }
+  getAriaLive(type) {
+    return type === 'error' || type === 'warning' ? 'assertive' : 'polite';
+  }
+  getStyles(type) {
+    switch (type) {
+      case 'error':
+        return 'bg-red-50/95 border-red-200 text-red-900 focus-visible:ring-red-500 shadow-red-500/10';
+      case 'success':
+        return 'bg-emerald-50/95 border-emerald-200 text-emerald-900 focus-visible:ring-emerald-500 shadow-emerald-500/10';
+      case 'warning':
+        return 'bg-amber-50/95 border-amber-200 text-amber-900 focus-visible:ring-amber-500 shadow-amber-500/10';
+      default:
+        return 'bg-blue-50/95 border-blue-200 text-blue-900 focus-visible:ring-blue-500 shadow-blue-500/10';
+    }
+  }
+  // --- Mouse Hover Handlers ---
+  onMouseEnter(id) {
+    this.toastService.pause(id);
+  }
+  onMouseLeave(id) {
+    this.toastService.resume(id);
+  }
+  // --- Touch & Swipe Handlers ---
+  onTouchStart(id, event) {
+    this.toastService.pause(id); // Pause auto-dismiss timer on press/hold
+    const touch = event.touches[0];
+    this.touchStates.set(id, {
+      startX: touch.clientX,
+      currentX: touch.clientX,
+      swiping: true
+    });
+  }
+  onTouchMove(id, event) {
+    const state = this.touchStates.get(id);
+    if (!state || !state.swiping) return;
+    state.currentX = event.touches[0].clientX;
+  }
+  onTouchEnd(id) {
+    const state = this.touchStates.get(id);
+    if (!state) return;
+    const deltaX = state.currentX - state.startX;
+    const swipeThreshold = 75;
+    if (Math.abs(deltaX) > swipeThreshold) {
+      this.toastService.remove(id);
+    } else {
+      this.toastService.resume(id); // Resume timer if gesture didn't dismiss
+    }
+    this.touchStates.delete(id);
+  }
+  getTranslateX(id) {
+    const state = this.touchStates.get(id);
+    if (!state || !state.swiping) return 'translateX(0px)';
+    const deltaX = state.currentX - state.startX;
+    return `translateX(${deltaX}px)`;
+  }
+  getOpacity(id) {
+    const state = this.touchStates.get(id);
+    if (!state || !state.swiping) return 1;
+    const deltaX = Math.abs(state.currentX - state.startX);
+    return Math.max(0, 1 - deltaX / 150);
+  }
+  static ɵfac = function ToastComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || ToastComponent)();
+  };
+  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+    type: ToastComponent,
+    selectors: [["lib-toast"]],
+    decls: 3,
+    vars: 0,
+    consts: [["aria-label", "Notifications", 1, "toast-container", "fixed", "z-50", "flex", "flex-col", "gap-3", "pointer-events-none", "transition-all", "duration-300", "top-4", "inset-x-0", "px-4", "items-center", "sm:top-5", "sm:left-auto", "sm:right-5", "sm:px-0", "sm:items-end", "sm:max-w-sm", "sm:w-full"], ["tabindex", "0", 1, "toast-card", "pointer-events-auto", "flex", "items-start", "gap-3", "p-4", "rounded-xl", "shadow-xl", "border", "backdrop-blur-md", "w-full", "transition-transform", "duration-75", "ease-out", "focus:outline-none", "focus-visible:ring-2", "focus-visible:ring-offset-2", "touch-pan-x", "select-none", 3, "transform", "opacity", "ngClass"], ["tabindex", "0", 1, "toast-card", "pointer-events-auto", "flex", "items-start", "gap-3", "p-4", "rounded-xl", "shadow-xl", "border", "backdrop-blur-md", "w-full", "transition-transform", "duration-75", "ease-out", "focus:outline-none", "focus-visible:ring-2", "focus-visible:ring-offset-2", "touch-pan-x", "select-none", 3, "keydown.escape", "mouseenter", "mouseleave", "touchstart", "touchmove", "touchend", "ngClass"], ["aria-hidden", "true", 1, "shrink-0", "mt-0.5"], ["fill", "none", "viewBox", "0 0 24 24", "stroke", "currentColor", 1, "w-5", "h-5", "text-red-600"], ["fill", "none", "viewBox", "0 0 24 24", "stroke", "currentColor", 1, "w-5", "h-5", "text-emerald-600"], ["fill", "none", "viewBox", "0 0 24 24", "stroke", "currentColor", 1, "w-5", "h-5", "text-amber-600"], ["fill", "none", "viewBox", "0 0 24 24", "stroke", "currentColor", 1, "w-5", "h-5", "text-blue-600"], [1, "flex-1", "min-w-0"], [1, "text-sm", "font-semibold", "text-gray-900", "leading-snug", 3, "id"], [1, "text-xs", "text-gray-600", "mt-1", "leading-relaxed", "break-words", 3, "id"], ["type", "button", 1, "shrink-0", "text-gray-400", "hover:text-gray-600", "focus:outline-none", "focus-visible:ring-2", "focus-visible:ring-gray-400", "p-1", "rounded-lg", "transition-colors", 3, "click"], [1, "sr-only"], ["aria-hidden", "true", "fill", "none", "viewBox", "0 0 24 24", "stroke", "currentColor", 1, "w-4", "h-4"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M6 18L18 6M6 6l12 12"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M5 13l4 4L19 7"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"]],
+    template: function ToastComponent_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "section", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrepeaterCreate"](1, ToastComponent_For_2_Template, 15, 15, "div", 1, _forTrack0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+      }
+      if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrepeater"](ctx.toastService.toasts());
+      }
+    },
+    dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_2__.CommonModule, _angular_common__WEBPACK_IMPORTED_MODULE_2__.NgClass],
+    styles: ["@keyframes _ngcontent-%COMP%_mobileSlideUp {\n  from {\n    transform: translateY(100%);\n    opacity: 0;\n  }\n  to {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n@keyframes _ngcontent-%COMP%_desktopSlideIn {\n  from {\n    transform: translateX(100%);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0);\n    opacity: 1;\n  }\n}\n.toast-card[_ngcontent-%COMP%] {\n  animation: _ngcontent-%COMP%_mobileSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);\n}\n@media (min-width: 640px) {\n  .toast-card[_ngcontent-%COMP%] {\n    animation: _ngcontent-%COMP%_desktopSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRvYXN0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7SUFDRSwyQkFBQTtJQUNBLFVBQUE7RUFDRjtFQUNBO0lBQ0Usd0JBQUE7SUFDQSxVQUFBO0VBQ0Y7QUFDRjtBQUVBO0VBQ0U7SUFDRSwyQkFBQTtJQUNBLFVBQUE7RUFBRjtFQUVBO0lBQ0Usd0JBQUE7SUFDQSxVQUFBO0VBQUY7QUFDRjtBQUdBO0VBQ0UsMkRBQUE7QUFERjtBQUdFO0VBSEY7SUFJSSw2REFBQTtFQUFGO0FBQ0YiLCJmaWxlIjoidG9hc3QuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAa2V5ZnJhbWVzIG1vYmlsZVNsaWRlVXAge1xyXG4gIGZyb20ge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDEwMCUpO1xyXG4gICAgb3BhY2l0eTogMDtcclxuICB9XHJcbiAgdG8ge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDApO1xyXG4gICAgb3BhY2l0eTogMTtcclxuICB9XHJcbn1cclxuXHJcbkBrZXlmcmFtZXMgZGVza3RvcFNsaWRlSW4ge1xyXG4gIGZyb20ge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDEwMCUpO1xyXG4gICAgb3BhY2l0eTogMDtcclxuICB9XHJcbiAgdG8ge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDApO1xyXG4gICAgb3BhY2l0eTogMTtcclxuICB9XHJcbn1cclxuXHJcbi50b2FzdC1jYXJkIHtcclxuICBhbmltYXRpb246IG1vYmlsZVNsaWRlVXAgMC4zcyBjdWJpYy1iZXppZXIoMC4xNiwgMSwgMC4zLCAxKTtcclxuXHJcbiAgQG1lZGlhIChtaW4td2lkdGg6IDY0MHB4KSB7XHJcbiAgICBhbmltYXRpb246IGRlc2t0b3BTbGlkZUluIDAuMjVzIGN1YmljLWJlemllcigwLjE2LCAxLCAwLjMsIDEpO1xyXG4gIH1cclxufVxyXG4iXX0= */\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL2xpYnMvc2hhcmVkL3NyYy9saWIvY29tcG9uZW50cy90b2FzdC90b2FzdC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0lBQ0UsMkJBQUE7SUFDQSxVQUFBO0VBQ0Y7RUFDQTtJQUNFLHdCQUFBO0lBQ0EsVUFBQTtFQUNGO0FBQ0Y7QUFFQTtFQUNFO0lBQ0UsMkJBQUE7SUFDQSxVQUFBO0VBQUY7RUFFQTtJQUNFLHdCQUFBO0lBQ0EsVUFBQTtFQUFGO0FBQ0Y7QUFHQTtFQUNFLDJEQUFBO0FBREY7QUFHRTtFQUhGO0lBSUksNkRBQUE7RUFBRjtBQUNGO0FBQ0Esb3RDQUFvdEMiLCJzb3VyY2VzQ29udGVudCI6WyJAa2V5ZnJhbWVzIG1vYmlsZVNsaWRlVXAge1xyXG4gIGZyb20ge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDEwMCUpO1xyXG4gICAgb3BhY2l0eTogMDtcclxuICB9XHJcbiAgdG8ge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDApO1xyXG4gICAgb3BhY2l0eTogMTtcclxuICB9XHJcbn1cclxuXHJcbkBrZXlmcmFtZXMgZGVza3RvcFNsaWRlSW4ge1xyXG4gIGZyb20ge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDEwMCUpO1xyXG4gICAgb3BhY2l0eTogMDtcclxuICB9XHJcbiAgdG8ge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDApO1xyXG4gICAgb3BhY2l0eTogMTtcclxuICB9XHJcbn1cclxuXHJcbi50b2FzdC1jYXJkIHtcclxuICBhbmltYXRpb246IG1vYmlsZVNsaWRlVXAgMC4zcyBjdWJpYy1iZXppZXIoMC4xNiwgMSwgMC4zLCAxKTtcclxuXHJcbiAgQG1lZGlhIChtaW4td2lkdGg6IDY0MHB4KSB7XHJcbiAgICBhbmltYXRpb246IGRlc2t0b3BTbGlkZUluIDAuMjVzIGN1YmljLWJlemllcigwLjE2LCAxLCAwLjMsIDEpO1xyXG4gIH1cclxufVxyXG4iXSwic291cmNlUm9vdCI6IiJ9 */"]
+  });
+}
+
+/***/ }),
+
 /***/ 925:
 /*!**********************************!*\
   !*** ./libs/shared/src/index.ts ***!
@@ -91,6 +319,9 @@ class RegisterUserService {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   LoginComponent: () => (/* reexport safe */ _lib_components_login_login_component__WEBPACK_IMPORTED_MODULE_3__.LoginComponent),
+/* harmony export */   ToastComponent: () => (/* reexport safe */ _lib_components_toast_toast_component__WEBPACK_IMPORTED_MODULE_6__.ToastComponent),
+/* harmony export */   ToastService: () => (/* reexport safe */ _lib_service_toast_toast_service__WEBPACK_IMPORTED_MODULE_4__.ToastService),
+/* harmony export */   ToastType: () => (/* reexport safe */ _lib_model_toast_interface__WEBPACK_IMPORTED_MODULE_5__.ToastType),
 /* harmony export */   UserService: () => (/* reexport safe */ _lib_store_user_user_service__WEBPACK_IMPORTED_MODULE_1__.UserService),
 /* harmony export */   UserStore: () => (/* reexport safe */ _lib_store_service_user_store__WEBPACK_IMPORTED_MODULE_0__.UserStore),
 /* harmony export */   UserType: () => (/* reexport safe */ _lib_model_user_interface__WEBPACK_IMPORTED_MODULE_2__.UserType)
@@ -99,10 +330,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_store_user_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/store/user/user.service */ 3909);
 /* harmony import */ var _lib_model_user_interface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/model/user.interface */ 3777);
 /* harmony import */ var _lib_components_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/components/login/login.component */ 8568);
+/* harmony import */ var _lib_service_toast_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/service/toast/toast.service */ 7539);
+/* harmony import */ var _lib_model_toast_interface__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./lib/model/toast.interface */ 977);
+/* harmony import */ var _lib_components_toast_toast_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lib/components/toast/toast.component */ 788);
 
 
 
 
+
+
+
+
+/***/ }),
+
+/***/ 977:
+/*!******************************************************!*\
+  !*** ./libs/shared/src/lib/model/toast.interface.ts ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ToastType: () => (/* binding */ ToastType)
+/* harmony export */ });
+var ToastType;
+(function (ToastType) {
+  ToastType["SUCCESS"] = "success";
+  ToastType["ERROR"] = "error";
+  ToastType["INFO"] = "info";
+  ToastType["WARNING"] = "warning";
+})(ToastType || (ToastType = {}));
 
 /***/ }),
 
@@ -117,7 +374,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   JwtInterceptor: () => (/* binding */ JwtInterceptor)
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @smwine-fe-app/store */ 925);
+/* harmony import */ var _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @smwine-fe-app/shared */ 925);
 
 
 
@@ -128,7 +385,7 @@ class JwtInterceptor {
     if (req.url.includes('/auth')) {
       return next.handle(req);
     }
-    const userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__.UserStore);
+    const userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.UserStore);
     const token = userStore.token?.();
     if (token) {
       const clonedRequest = req.clone({
@@ -334,11 +591,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AppComponent: () => (/* binding */ AppComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 2596);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 2596);
 /* harmony import */ var _services_beverage_beverage_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/beverage/beverage.store */ 4998);
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ngx-translate/core */ 8503);
-/* harmony import */ var _angular_core_rxjs_interop__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core/rxjs-interop */ 9074);
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ngx-translate/core */ 8503);
+/* harmony import */ var _angular_core_rxjs_interop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core/rxjs-interop */ 9074);
+/* harmony import */ var _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @smwine-fe-app/shared */ 925);
+
 
 
 
@@ -346,9 +605,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class AppComponent {
-  beverageStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_services_beverage_beverage_store__WEBPACK_IMPORTED_MODULE_0__.BeverageStore);
-  translate = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_ngx_translate_core__WEBPACK_IMPORTED_MODULE_2__.TranslateService);
-  destroyRef = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_angular_core__WEBPACK_IMPORTED_MODULE_1__.DestroyRef);
+  beverageStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_services_beverage_beverage_store__WEBPACK_IMPORTED_MODULE_0__.BeverageStore);
+  translate = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_ngx_translate_core__WEBPACK_IMPORTED_MODULE_3__.TranslateService);
+  destroyRef = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_angular_core__WEBPACK_IMPORTED_MODULE_2__.DestroyRef);
   LANGUAGE_STORAGE_KEY = 'lang';
   constructor() {
     //TODO maybe store in cookie and init read on load
@@ -366,7 +625,7 @@ class AppComponent {
     // Set the language across your pages
     this.translate.use(activeLang);
     // 3. Listen to language changes to keep localStorage synchronized
-    this.translate.onLangChange.pipe((0,_angular_core_rxjs_interop__WEBPACK_IMPORTED_MODULE_3__.takeUntilDestroyed)(this.destroyRef)).subscribe(event => {
+    this.translate.onLangChange.pipe((0,_angular_core_rxjs_interop__WEBPACK_IMPORTED_MODULE_4__.takeUntilDestroyed)(this.destroyRef)).subscribe(event => {
       localStorage.setItem(this.LANGUAGE_STORAGE_KEY, event.lang);
     });
   }
@@ -376,17 +635,17 @@ class AppComponent {
   static ɵfac = function AppComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || AppComponent)();
   };
-  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
     type: AppComponent,
     selectors: [["app-root"]],
-    decls: 1,
+    decls: 2,
     vars: 0,
     template: function AppComponent_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "router-outlet");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](0, "router-outlet")(1, "lib-toast");
       }
     },
-    dependencies: [_angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterOutlet],
+    dependencies: [_angular_router__WEBPACK_IMPORTED_MODULE_5__.RouterOutlet, _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_1__.ToastComponent],
     styles: ["/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MifQ== */\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL2FwcHMvc213aW5lLWZlLWFwcC9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsZ0tBQWdLIiwic291cmNlUm9vdCI6IiJ9 */"]
   });
 }
@@ -1491,11 +1750,7 @@ class UserStore extends (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.signalStor
             isLoading: false
           });
         },
-        error: error => {
-          if (error.status === 401) {
-            localStorage.removeItem(USER_STATE_STORAGE_KEY);
-          }
-        }
+        error: () => localStorage.removeItem(USER_STATE_STORAGE_KEY)
       });
     } else {
       userService.generateGuestUser().subscribe({
@@ -1613,7 +1868,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _smwine_fe_app_security__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @smwine-fe-app/security */ 5314);
 /* harmony import */ var _pages_register_register_register_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/register/register/register.component */ 3252);
 /* harmony import */ var _components_wine_card_detail_wine_card_detail_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/wine-card-detail/wine-card-detail.component */ 4230);
-/* harmony import */ var _smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @smwine-fe-app/store */ 925);
+/* harmony import */ var _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @smwine-fe-app/shared */ 925);
 /* harmony import */ var _pages_checkout_checkout_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/checkout/checkout.component */ 4418);
 
 
@@ -1642,7 +1897,7 @@ const appRoutes = [{
   component: _components_wine_card_detail_wine_card_detail_component__WEBPACK_IMPORTED_MODULE_4__.WineCardDetailComponent
 }, {
   path: 'login',
-  component: _smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_5__.LoginComponent
+  component: _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_5__.LoginComponent
 }, {
   path: 'admin',
   canMatch: [_smwine_fe_app_security__WEBPACK_IMPORTED_MODULE_2__.adminAuthGuard],
@@ -1977,6 +2232,7 @@ class ShoppingCartComponent {
       beverageId,
       quantity
     });
+    //TODO maybe show a toast message on error that the item was not added to the cart
   }
   static ɵfac = function ShoppingCartComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || ShoppingCartComponent)();
@@ -2033,6 +2289,115 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 7539:
+/*!************************************************************!*\
+  !*** ./libs/shared/src/lib/service/toast/toast.service.ts ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ToastService: () => (/* binding */ ToastService)
+/* harmony export */ });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 8148);
+/* harmony import */ var _model_toast_interface__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../model/toast.interface */ 977);
+
+
+
+
+class ToastService {
+  platformId = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_angular_core__WEBPACK_IMPORTED_MODULE_1__.PLATFORM_ID);
+  isBrowser = (0,_angular_common__WEBPACK_IMPORTED_MODULE_2__.isPlatformBrowser)(this.platformId);
+  rawToasts = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)([]);
+  isMobile = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)(this.checkIsMobile());
+  timers = new Map();
+  constructor() {
+    if (this.isBrowser) {
+      const mediaQuery = window.matchMedia('(max-width: 639px)');
+      mediaQuery.addEventListener('change', e => this.isMobile.set(e.matches));
+    }
+  }
+  toasts = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.computed)(() => {
+    const list = this.rawToasts();
+    const limit = this.isMobile() ? 1 : 3;
+    return list.slice(-limit);
+  });
+  show(toastInput) {
+    const existing = this.rawToasts().find(t => t.title === toastInput.title && t.message === toastInput.message);
+    // If found, close the old instance and clear its timer first
+    if (existing) {
+      this.remove(existing.id);
+    }
+    // Generate a fresh unique ID for the new toast
+    const id = crypto.randomUUID();
+    const duration = toastInput.duration ?? 5000;
+    const type = toastInput.type ?? _model_toast_interface__WEBPACK_IMPORTED_MODULE_0__.ToastType.INFO;
+    const newToast = {
+      ...toastInput,
+      id,
+      duration,
+      type
+    };
+    this.rawToasts.update(current => [...current, newToast]);
+    if (duration > 0) {
+      this.startTimer(id, duration);
+    }
+  }
+  remove(id) {
+    if (!id) {
+      return;
+    }
+    this.clearTimer(id);
+    this.rawToasts.update(current => current.filter(t => t.id !== id));
+  }
+  pause(id) {
+    const timer = this.timers.get(id);
+    if (!timer || !timer.timerId) return;
+    clearTimeout(timer.timerId);
+    timer.timerId = null;
+    timer.remaining -= Date.now() - timer.startTime;
+  }
+  resume(id) {
+    const timer = this.timers.get(id);
+    if (!timer || timer.timerId !== null || timer.remaining <= 0) return;
+    this.startTimer(id, timer.remaining);
+  }
+  clear() {
+    this.timers.forEach((_, id) => this.clearTimer(id));
+    this.rawToasts.set([]);
+  }
+  startTimer(id, duration) {
+    const timerId = setTimeout(() => this.remove(id), duration);
+    this.timers.set(id, {
+      timerId,
+      startTime: Date.now(),
+      remaining: duration
+    });
+  }
+  clearTimer(id) {
+    const timer = this.timers.get(id);
+    if (timer?.timerId) {
+      clearTimeout(timer.timerId);
+    }
+    this.timers.delete(id);
+  }
+  checkIsMobile() {
+    if (!this.isBrowser) return false;
+    return window.matchMedia('(max-width: 639px)').matches;
+  }
+  static ɵfac = function ToastService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || ToastService)();
+  };
+  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+    token: ToastService,
+    factory: ToastService.ɵfac,
+    providedIn: 'root'
+  });
+}
+
+/***/ }),
+
 /***/ 8356:
 /*!******************************************************************!*\
   !*** ./libs/security/src/lib/security/guard/admin-auth.guard.ts ***!
@@ -2065,7 +2430,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 4460);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 8431);
-/* harmony import */ var _smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @smwine-fe-app/store */ 925);
+/* harmony import */ var _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @smwine-fe-app/shared */ 925);
 
 
 
@@ -2111,7 +2476,7 @@ function ProfileHeaderComponent_Conditional_1_Template(rf, ctx) {
   }
 }
 class ProfileHeaderComponent {
-  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__.UserStore);
+  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.UserStore);
   currentUser = this.userStore.currentUser;
   isLoggedIn = this.userStore.isLoggedIn;
   profileText = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.computed)(() => {
@@ -2492,7 +2857,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 9648);
-/* harmony import */ var _smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @smwine-fe-app/store */ 925);
+/* harmony import */ var _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @smwine-fe-app/shared */ 925);
 
 
 
@@ -2500,13 +2865,14 @@ __webpack_require__.r(__webpack_exports__);
 
 class CartService {
   API_BASE_URL = '/api/v1/cart';
-  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_store__WEBPACK_IMPORTED_MODULE_0__.UserStore);
+  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.UserStore);
   http = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient);
+  toastService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.ToastService);
   cartSignal = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)({
     items: [],
     totalPrice: 0
   });
-  _isLoading = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)(true);
+  _isLoading = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)(true); //TODO these might not be used including hasError.
   _hasError = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)(false);
   cart = this.cartSignal.asReadonly();
   isLoading = this._isLoading.asReadonly();
@@ -2537,25 +2903,25 @@ class CartService {
     }).subscribe({
       next: cartItems => {
         this.cartSignal.set(cartItems);
-        this._isLoading.set(false);
-        this._hasError.set(false);
       },
       error: () => {
-        this._hasError.set(true);
-        this._isLoading.set(false);
+        this.toastService.show({
+          type: _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.ToastType.ERROR,
+          title: 'Failed to add item to cart. Please try again. Or refresh the page.' //TODO we need translation for this message
+        });
       }
     });
   }
   loadCart() {
-    this._isLoading.set(true);
     this.http.get(`${this.API_BASE_URL}`).subscribe({
       next: cartItems => {
         this.cartSignal.set(cartItems);
-        this._isLoading.set(false);
       },
       error: () => {
-        this._hasError.set(true);
-        this._isLoading.set(false);
+        this.toastService.show({
+          type: _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.ToastType.ERROR,
+          title: 'Failed to load cart. You can try refreshing the page.' //TODO we need translation for this message
+        });
       }
     });
   }

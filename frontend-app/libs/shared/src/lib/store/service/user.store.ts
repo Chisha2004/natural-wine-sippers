@@ -103,11 +103,7 @@ export class UserStore extends signalStore(
           next: (user: UserState) => {
             patchState(store, user, { hasError: false, isLoading: false });
           },
-          error: (error) => {
-            if (error.status === 401) {
-              localStorage.removeItem(USER_STATE_STORAGE_KEY);
-            }
-          },
+          error: () => localStorage.removeItem(USER_STATE_STORAGE_KEY),
         });
       } else {
         userService.generateGuestUser().subscribe({

@@ -16,5 +16,6 @@ export class ShoppingCartComponent {
 
   addToCart(beverageId: string, quantity: number): void {
     this.cartService.addToCart({ beverageId, quantity });
+    //TODO maybe show a toast message on error that the item was not added to the cart
   }
 }

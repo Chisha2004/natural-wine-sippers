@@ -4,7 +4,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { adminAuthGuard } from '@smwine-fe-app/security';
 import { RegisterComponent } from './pages/register/register/register.component';
 import { WineCardDetailComponent } from './components/wine-card-detail/wine-card-detail.component';
-import { LoginComponent } from '@smwine-fe-app/store';
+import { LoginComponent } from '@smwine-fe-app/shared';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 export const appRoutes: Route[] = [

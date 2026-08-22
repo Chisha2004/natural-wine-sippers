@@ -6,7 +6,7 @@ import {
   HttpEvent,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserStore } from '@smwine-fe-app/store';
+import { UserStore } from '@smwine-fe-app/shared';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {

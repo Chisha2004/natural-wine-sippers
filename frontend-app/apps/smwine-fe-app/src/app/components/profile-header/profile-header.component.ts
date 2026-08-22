@@ -1,7 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { UserStore } from '@smwine-fe-app/store';
+import { UserStore } from '@smwine-fe-app/shared';
 
 @Component({
   selector: 'app-profile-header',

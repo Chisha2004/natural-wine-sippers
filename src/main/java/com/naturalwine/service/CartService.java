@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -53,28 +54,30 @@ public class CartService {
         final Cart cart = cartRepository.findByUserUuid(userUuid)
                 .orElseGet(()-> Cart.builder()
                         .userUuid(userUuid)
+                        .items(new ArrayList<>())
                         .build());
+        if(cart.getItems() != null) {
+            cart.getItems().stream()
+                    .filter(item -> item.getBeverageId().equals(beverageId))
+                    .findFirst()
+                    .ifPresentOrElse(existingCartItem -> {
+                                // Update existing cart item
+                                int newQuantity = existingCartItem.getQuantity() + quantity;
 
-        cart.getItems().stream()
-                .filter(item -> item.getBeverageId().equals(beverageId))
-                .findFirst()
-                .ifPresentOrElse(existingCartItem -> {
-                    // Update existing cart item
-                    int newQuantity = existingCartItem.getQuantity() + quantity;
+                                if (beverage.getStock() < newQuantity) {
+                                    throw new InsufficientStockException(beverageId, beverage.getStock(), newQuantity);
+                                }
+                                existingCartItem.setQuantity(newQuantity);
+                                updateQuantityAndPriceEach(existingCartItem, newQuantity, beverage);
+                            },
+                            () -> {
+                                CartItem cartItem = updateQuantityAndPriceEach(CartItem.builder()
+                                        .beverageId(beverageId)
+                                        .build(), quantity, beverage);
+                                cart.addItem(cartItem);
+                            });
 
-                    if (beverage.getStock() < newQuantity) {
-                        throw new InsufficientStockException(beverageId, beverage.getStock(), newQuantity);
-                    }
-
-                    existingCartItem.setQuantity(newQuantity);
-                },
-                () -> {
-                    cart.addItem(CartItem.builder()
-                            .beverageId(beverageId)
-                            .quantity(quantity)
-                            .build());
-                });
-
+        }
         cart.setDlu(LocalDateTime.now());
         cartRepository.save(cart);
     }
@@ -149,6 +152,13 @@ public class CartService {
                 cartItem.getPriceEach(),
                 cartItem.getTotalForQuantity()
         );
+    }
+
+    private static CartItem updateQuantityAndPriceEach(final CartItem cartItem, final int newQuantity, Beverage beverage) {
+        cartItem.setQuantity(newQuantity);
+        cartItem.setPriceEach(beverage.getPrice());
+        cartItem.setTotalForQuantity(beverage.getPrice().multiply(BigDecimal.valueOf(newQuantity)));
+        return cartItem;
     }
 }
 

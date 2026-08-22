@@ -2,7 +2,7 @@ import { effect, inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
 import { Cart } from '../models/cart.interface';
-import { UserStore } from '@smwine-fe-app/store';
+import { ToastService, ToastType, UserStore } from '@smwine-fe-app/shared';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +12,10 @@ export class CartService {
 
   private readonly userStore = inject(UserStore);
   private readonly http = inject(HttpClient);
+  private readonly toastService = inject(ToastService);
 
   private cartSignal = signal<Cart>({ items: [], totalPrice: 0 });
-  private readonly _isLoading = signal(true);
+  private readonly _isLoading = signal(true); //TODO these might not be used including hasError.
   private readonly _hasError = signal(false);
 
   readonly cart = this.cartSignal.asReadonly();
@@ -51,27 +52,27 @@ export class CartService {
       .subscribe({
         next: (cartItems) => {
           this.cartSignal.set(cartItems);
-          this._isLoading.set(false);
-          this._hasError.set(false);
         },
         error: () => {
-          this._hasError.set(true);
-          this._isLoading.set(false);
+          this.toastService.show({
+            type: ToastType.ERROR,
+            title:
+              'Failed to add item to cart. Please try again. Or refresh the page.', //TODO we need translation for this message
+          });
         },
       });
   }
 
   private loadCart(): void {
-    this._isLoading.set(true);
-
     this.http.get<Cart>(`${this.API_BASE_URL}`).subscribe({
       next: (cartItems) => {
         this.cartSignal.set(cartItems);
-        this._isLoading.set(false);
       },
       error: () => {
-        this._hasError.set(true);
-        this._isLoading.set(false);
+        this.toastService.show({
+          type: ToastType.ERROR,
+          title: 'Failed to load cart. You can try refreshing the page.', //TODO we need translation for this message
+        });
       },
     });
   }

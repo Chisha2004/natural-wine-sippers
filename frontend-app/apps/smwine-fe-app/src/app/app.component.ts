@@ -1,14 +1,22 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  DestroyRef,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BeverageStore } from './services/beverage/beverage.store';
 import { TranslateService } from '@ngx-translate/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ToastComponent } from '@smwine-fe-app/shared';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ToastComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppComponent implements OnInit {
   private readonly beverageStore = inject(BeverageStore);

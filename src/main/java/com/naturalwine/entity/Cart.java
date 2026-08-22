@@ -7,6 +7,7 @@ import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,7 +28,7 @@ public class Cart {
     private UUID userUuid;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CartItem> items;
+    private List<CartItem> items =  new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 30)
@@ -45,7 +46,6 @@ public class Cart {
     public void addItem(CartItem item) {
         this.items.add(item);
         item.setCart(this);
-
     }
 
     public void removeItem(CartItem item) {
