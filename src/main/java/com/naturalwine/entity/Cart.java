@@ -35,10 +35,10 @@ public class Cart {
     private CartStatus status;
 
     @Column(name = "doe", nullable = false, updatable = false)
-    private LocalDateTime doe = LocalDateTime.now();
+    private LocalDateTime doe;
 
     @Column(name = "dlu", nullable = false)
-    private LocalDateTime dlu = LocalDateTime.now();
+    private LocalDateTime dlu;
 
     @Transient
     private BigDecimal totalPrice = BigDecimal.ZERO;
@@ -51,6 +51,13 @@ public class Cart {
     public void removeItem(CartItem item) {
         this.items.remove(item);
         item.setCart(null);
+    }
+
+    @PrePersist
+    protected void onPrePersist() { // Name can be anything
+        LocalDateTime now = LocalDateTime.now();
+        this.doe = now;
+        this.dlu = now;
     }
 
     @PreUpdate

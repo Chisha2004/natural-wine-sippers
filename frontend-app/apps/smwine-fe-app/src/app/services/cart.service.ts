@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
 import { Cart } from '../models/cart.interface';
 import { ToastService, ToastType, UserStore } from '@smwine-fe-app/shared';
+import { finalize } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -45,8 +46,6 @@ export class CartService {
     beverageId: string;
     quantity: number;
   }): void {
-    this._isLoading.set(true);
-
     this.http
       .post<Cart>(`${this.API_BASE_URL}/add`, { beverageId, quantity })
       .subscribe({
@@ -64,16 +63,21 @@ export class CartService {
   }
 
   private loadCart(): void {
-    this.http.get<Cart>(`${this.API_BASE_URL}`).subscribe({
-      next: (cartItems) => {
-        this.cartSignal.set(cartItems);
-      },
-      error: () => {
-        this.toastService.show({
-          type: ToastType.ERROR,
-          title: 'Failed to load cart. You can try refreshing the page.', //TODO we need translation for this message
-        });
-      },
-    });
+    this._isLoading.set(true);
+
+    this.http
+      .get<Cart>(`${this.API_BASE_URL}`)
+      .pipe(finalize(() => this._isLoading.set(false)))
+      .subscribe({
+        next: (cartItems) => {
+          this.cartSignal.set(cartItems);
+        },
+        error: () => {
+          this.toastService.show({
+            type: ToastType.ERROR,
+            title: 'Failed to load cart. You can try refreshing the page.', //TODO we need translation for this message
+          });
+        },
+      });
   }
 }

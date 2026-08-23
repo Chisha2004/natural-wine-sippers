@@ -15,9 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -78,6 +77,7 @@ public class CartService {
                             });
 
         }
+        cart.setStatus(CartStatus.ACTIVE);
         cart.setDlu(LocalDateTime.now());
         cartRepository.save(cart);
     }
@@ -129,10 +129,51 @@ public class CartService {
 
     @Transactional
     public void migrateGuestCartToRegisteredUser(final UUID guestUuid, final UUID registeredUserUuid) {
-        final Cart cart = cartRepository.findByUserUuid(guestUuid).orElse(null);
-        if (cart != null) {
-            cart.setUserUuid(registeredUserUuid);
-            cartRepository.save(cart);
+        final Optional<Cart> guestCartOpt = cartRepository.findByUserUuid(guestUuid);
+
+        if (guestCartOpt.isEmpty()) {
+            return;
+        }
+
+        final Cart guestCart = guestCartOpt.get();
+        final Optional<Cart> userCartOpt = cartRepository.findByUserUuid(registeredUserUuid);
+
+        if (userCartOpt.isPresent()) {
+            final Cart userCart = userCartOpt.get();
+
+            mergeCartItems(guestCart, userCart);
+
+            // Remove old guest cart
+            cartRepository.delete(guestCart);
+            cartRepository.saveAndFlush(userCart);
+            //TODO save here is not updating owner
+        } else {
+            // Simple ownership transfer
+            guestCart.setUserUuid(registeredUserUuid);
+            cartRepository.saveAndFlush(guestCart);
+        }
+    }
+
+    private void mergeCartItems(final Cart guestCart, final Cart userCart) {
+        // Map existing user items by Product/Wine ID for fast lookup
+        final Map<Long, CartItem> userItemMap = userCart.getItems().stream()
+                .collect(Collectors.toMap(
+                        item -> item.getBeverageId(),
+                        Function.identity()
+                ));
+
+        for (final CartItem guestItem : guestCart.getItems()) {
+            final Long productId = guestItem.getBeverageId();
+
+            if (userItemMap.containsKey(productId)) {
+                // Match found: update quantity on existing item
+                final CartItem existingItem = userItemMap.get(productId);
+                existingItem.setQuantity(existingItem.getQuantity() + guestItem.getQuantity());
+            } else {
+                // No match: reassign guest item to the target user cart
+                guestItem.setCart(userCart);
+                userCart.getItems().add(guestItem);
+            }
         }
     }
 

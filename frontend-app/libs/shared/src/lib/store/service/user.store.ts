@@ -74,7 +74,11 @@ export class UserStore extends signalStore(
     },
     login: (email: string, password: string) => {
       patchState(store, { isLoading: true });
-      userService.login(email, password).subscribe({
+      const guestUserUuid =
+        store.userType && store.userType() === UserType.GUEST
+          ? store.uuid()
+          : undefined;
+      userService.login(email, password, guestUserUuid).subscribe({
         next: (user: UserState) => {
           patchState(store, user, { hasError: false, isLoading: false });
           persistUserToStorage(user);

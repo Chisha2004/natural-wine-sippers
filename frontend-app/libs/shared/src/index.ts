@@ -5,3 +5,4 @@ export * from './lib/components/login/login.component';
 export * from './lib/service/toast/toast.service';
 export * from './lib/model/toast.interface';
 export * from './lib/components/toast/toast.component';
+export * from './lib/util/route-util';

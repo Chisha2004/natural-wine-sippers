@@ -7,7 +7,6 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -34,8 +33,8 @@ public class CartItem {
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    @Column(name = "doe", nullable = false, updatable = false)
+    private LocalDateTime doe;
 
     @Transient
     private BigDecimal priceEach;
@@ -45,7 +44,7 @@ public class CartItem {
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
+        this.doe = LocalDateTime.now();
     }
 }
 

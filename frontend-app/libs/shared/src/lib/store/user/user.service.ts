@@ -15,10 +15,15 @@ export class UserService {
     return this.http.get<User>(`${this.API_BASE_URL}/users/${userId}`);
   }
 
-  login(email: string, password: string): Observable<User> {
+  login(
+    email: string,
+    password: string,
+    guestUserUuid?: string
+  ): Observable<User> {
     return this.http.post<User>(`${this.API_BASE_URL}/auth/login`, {
       email,
       password,
+      guestUserUuid,
     });
   }
 

@@ -1,6 +1,7 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { UserStore } from '../../store/service/user.store';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { resolveRouteCode } from '../../util/route-util';
 
 @Component({
   selector: 'lib-login',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   private readonly userStore = inject(UserStore);
+  private route = inject(ActivatedRoute);
   private router = inject(Router);
   // Reactive form state using standard Signals
   readonly email = signal('');
@@ -29,7 +31,9 @@ export class LoginComponent {
       const isLoading = this.userStore.isLoading?.();
       const userEmail = this.userStore.email?.();
       if (this.email() && !isLoading && userEmail === this.email()) {
-        this.router.navigate(['/wine']);
+        const code = this.route.snapshot.queryParamMap.get('rd');
+        const targetPath = resolveRouteCode(code);
+        this.router.navigate([targetPath]);
       }
     });
   }

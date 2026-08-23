@@ -38,7 +38,7 @@ public class AuthService {
         if(StringUtils.hasLength(loginRequest.token())){
             return loginWithToken(loginRequest.token());
         }
-        UUID guestUUID = loginRequest.guestUuid() != null ? UUID.fromString(loginRequest.guestUuid()) : null;
+        UUID guestUUID = loginRequest.guestUserUuid() != null ? UUID.fromString(loginRequest.guestUserUuid()) : null;
 
         User user = userRepository.findByEmail(loginRequest.email())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
@@ -80,7 +80,7 @@ public class AuthService {
 
         String token = jwtService.generateToken(user.getUuid(), user.getUserType());
 
-        // Migrate guest cart to registered user if guestUuid provided
+        // Migrate guest cart to registered user if guestUserUuid provided
         if (guestUuid != null) {
                 cartService.migrateGuestCartToRegisteredUser(guestUuid, user.getUuid());
         }

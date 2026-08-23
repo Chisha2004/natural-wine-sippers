@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record LoginRequest(
-    @NotBlank(message = "Email cannot be empty")
+        @NotBlank(message = "Email cannot be empty")
     @Email(message = "Invalid email format")
     String email,
 
@@ -15,7 +15,7 @@ public record LoginRequest(
     String password,
 
     @ValidUuidLength
-    String guestUuid, //optional
+    String guestUserUuid, //optional
 
     String token //optional
 ) {
