@@ -11,6 +11,7 @@ import com.naturalwine.exception.InsufficientStockException;
 import com.naturalwine.repository.BeverageRepository;
 import com.naturalwine.repository.CartRepository;
 import jakarta.transaction.Transactional;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -19,6 +20,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Log4j2
 @Service
 public class CartService {
     private final CartRepository cartRepository;
@@ -93,8 +95,7 @@ public class CartService {
 
         if (cart.getItems() != null && !cart.getItems().isEmpty()) {
             final List<Beverage> beverages = beverageRepository.findAll();
-            cart.getItems().stream()
-                    .forEach(item -> {
+            cart.getItems().forEach(item -> {
                         final Beverage beverage = beverages.stream()
                                 .filter(b -> b.getId().equals(item.getBeverageId()))
                                 .findFirst()
@@ -146,7 +147,6 @@ public class CartService {
             // Remove old guest cart
             cartRepository.delete(guestCart);
             cartRepository.saveAndFlush(userCart);
-            //TODO save here is not updating owner
         } else {
             // Simple ownership transfer
             guestCart.setUserUuid(registeredUserUuid);
@@ -158,7 +158,7 @@ public class CartService {
         // Map existing user items by Product/Wine ID for fast lookup
         final Map<Long, CartItem> userItemMap = userCart.getItems().stream()
                 .collect(Collectors.toMap(
-                        item -> item.getBeverageId(),
+                        CartItem::getBeverageId,
                         Function.identity()
                 ));
 
@@ -168,7 +168,8 @@ public class CartService {
             if (userItemMap.containsKey(productId)) {
                 // Match found: update quantity on existing item
                 final CartItem existingItem = userItemMap.get(productId);
-                existingItem.setQuantity(existingItem.getQuantity() + guestItem.getQuantity());
+                final int newQuantity = existingItem.getQuantity() + guestItem.getQuantity();
+                existingItem.setQuantity(newQuantity);
             } else {
                 // No match: reassign guest item to the target user cart
                 guestItem.setCart(userCart);

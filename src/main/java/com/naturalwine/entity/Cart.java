@@ -24,7 +24,7 @@ public class Cart {
     private Long id;
 
     @JdbcTypeCode(SqlTypes.VARCHAR)
-    @Column(nullable = false, length = 36, updatable = false)
+    @Column(nullable = false, length = 36)
     private UUID userUuid;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)

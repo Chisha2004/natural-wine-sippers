@@ -2,9 +2,11 @@ package com.naturalwine.service;
 
 import com.naturalwine.dto.CheckoutRequestDto;
 import com.naturalwine.dto.CheckoutResponseDto;
+import com.naturalwine.dto.ShippingAddressDto;
 import com.naturalwine.entity.Cart;
 import com.naturalwine.entity.Order;
 import com.naturalwine.repository.OrderRepository;
+import com.naturalwine.repository.DefaultShippingAddressRepo;
 import com.naturalwine.service.payment.PaymentService;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -23,11 +25,16 @@ public class CheckoutService {
     private final CartService cartService;
     private final PaymentService paymentService;
     private final OrderRepository orderRepository;
+    private final DefaultShippingAddressRepo defaultShippingAddressRepo;
 
-    public CheckoutService(CartService cartService, PaymentService paymentService, OrderRepository orderRepository) {
+    public CheckoutService(CartService cartService,
+                           PaymentService paymentService,
+                           OrderRepository orderRepository,
+                           DefaultShippingAddressRepo defaultShippingAddressRepo) {
         this.cartService = cartService;
         this.paymentService = paymentService;
         this.orderRepository = orderRepository;
+        this.defaultShippingAddressRepo = defaultShippingAddressRepo;
     }
 
     @Transactional
@@ -67,5 +74,19 @@ public class CheckoutService {
         }
         //TODO is this order number okay
         return String.format("ORD-%s-%s", datePart, randomPart);
+    }
+
+    public ShippingAddressDto getDefaultShippingAddress(UUID userUuid) {
+      return defaultShippingAddressRepo.findByUserUuid(userUuid)
+              .map( defaultShippingAddress -> ShippingAddressDto.builder()
+              .firstName(defaultShippingAddress.getFirstName())
+              .lastName(defaultShippingAddress.getLastName())
+              .streetName(defaultShippingAddress.getStreetName())
+              .postcode(defaultShippingAddress.getPostcode())
+              .city(defaultShippingAddress.getCity())
+              .country(defaultShippingAddress.getCountry())
+              .build()
+              )
+              .orElse(null);
     }
 }

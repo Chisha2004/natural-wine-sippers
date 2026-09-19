@@ -10,5 +10,5 @@ public record CheckoutRequestDto(
                                  boolean useDefaultShippingAddress,
                                  @NotNull(message = "Payment method is required")
                                  PaymentMethod paymentMethod,
-                                 ShipmentAddress shipmentAddress) {
+                                 ShippingAddressDto shipmentAddress) {
 }

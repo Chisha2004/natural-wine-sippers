@@ -2,15 +2,13 @@ package com.naturalwine.controller;
 
 import com.naturalwine.dto.CheckoutRequestDto;
 import com.naturalwine.dto.CheckoutResponseDto;
+import com.naturalwine.dto.ShippingAddressDto;
 import com.naturalwine.service.CheckoutService;
 import com.naturalwine.util.SecurityUtil;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -32,4 +30,18 @@ public class CheckoutController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @GetMapping("/shipping-address")
+    public ResponseEntity<ShippingAddressDto> getDefaultShippingAddress() {
+        final UUID userUuid = SecurityUtil.getCurrentUserUuid();
+        ShippingAddressDto shippingAddressDto = checkoutService.getDefaultShippingAddress(userUuid);
+        if (shippingAddressDto != null) {
+            return ResponseEntity.ok(shippingAddressDto);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    //TODO each order should have and managed its own delivery address.
+    // We have a default shipping address which can be set when you buy first time.
 }
