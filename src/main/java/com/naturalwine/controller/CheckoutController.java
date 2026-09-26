@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/checkout")
+@RequestMapping("/v1/checkout")
 public class CheckoutController {
     //TODO all data coming from frontend should be sanitized
-    private CheckoutService checkoutService;
+    private final CheckoutService checkoutService;
 
     public CheckoutController(final CheckoutService checkoutService) {
         this.checkoutService = checkoutService;
@@ -39,7 +39,7 @@ public class CheckoutController {
             return ResponseEntity.ok(shippingAddressDto);
         }
 
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
 
     //TODO each order should have and managed its own delivery address.

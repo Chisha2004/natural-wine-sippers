@@ -1,6 +1,7 @@
 {
-  "CHECKOUT.ADDRESS": "Address",
+  "CHECKOUT.STREET_ADDRESS": "Street",
   "CHECKOUT.CITY": "City",
+  "CHECKOUT.COUNTRY": "Country",
   "CHECKOUT.DELIVERY_INFO": "Delivery Information",
   "CHECKOUT.EMPTY_CART": "Your cart is empty.",
   "CHECKOUT.ERROR_MESSAGE": "We could not load your checkout session. Please check your connection and try again.",

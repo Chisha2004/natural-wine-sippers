@@ -1,6 +1,6 @@
 {
-  "CHECKOUT.ADDRESS": "Adresse",
   "CHECKOUT.CITY": "Stadt",
+  "CHECKOUT.COUNTRY": "Land",
   "CHECKOUT.DELIVERY_INFO": "Lieferinformationen",
   "CHECKOUT.EMPTY_CART": "Ihr Warenkorb ist leer.",
   "CHECKOUT.ERROR_MESSAGE": "Wir konnten Ihre Checkout-Sitzung nicht laden. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
@@ -18,6 +18,7 @@
   "CHECKOUT.REDIRECT_NOTICE": "Sie werden sicher weitergeleitet, um Ihre Zahlung abzuschließen.",
   "CHECKOUT.RETRY_BTN": "Verbindung erneut versuchen",
   "CHECKOUT.SHIPPING": "Versand",
+  "CHECKOUT.STREET_ADDRESS": "Straße",
   "CHECKOUT.SUBTOTAL": "Zwischensumme",
   "CHECKOUT.TITLE": "Kasse",
   "CHECKOUT.TOTAL": "Gesamtsumme",

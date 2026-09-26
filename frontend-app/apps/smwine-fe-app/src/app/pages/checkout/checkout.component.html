@@ -83,7 +83,11 @@
           {{ 'CHECKOUT.TITLE' | translate }}
         </h1>
 
-        <form class="space-y-8">
+        <form
+          [formGroup]="shippingForm"
+          (ngSubmit)="onSubmit()"
+          class="space-y-8"
+        >
           <!-- Guest Alert Banner -->
           @if (!isLoggedIn()) {
           <div
@@ -126,6 +130,7 @@
                   {{ 'CHECKOUT.FIRST_NAME' | translate }}
                 </label>
                 <input
+                  formControlName="firstName"
                   type="text"
                   class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition disabled:bg-gray-100 disabled:cursor-not-allowed"
                 />
@@ -137,6 +142,7 @@
                   {{ 'CHECKOUT.LAST_NAME' | translate }}
                 </label>
                 <input
+                  formControlName="lastName"
                   type="text"
                   class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition disabled:bg-gray-100 disabled:cursor-not-allowed"
                 />
@@ -145,9 +151,10 @@
                 <label
                   class="block text-xs font-medium text-gray-600 uppercase tracking-wider mb-1"
                 >
-                  {{ 'CHECKOUT.ADDRESS' | translate }}
+                  {{ 'CHECKOUT.STREET_ADDRESS' | translate }}
                 </label>
                 <input
+                  formControlName="streetName"
                   type="text"
                   class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition disabled:bg-gray-100 disabled:cursor-not-allowed"
                 />
@@ -159,6 +166,7 @@
                   {{ 'CHECKOUT.POSTAL_CODE' | translate }}
                 </label>
                 <input
+                  formControlName="postcode"
                   type="text"
                   class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition disabled:bg-gray-100 disabled:cursor-not-allowed"
                 />
@@ -170,6 +178,19 @@
                   {{ 'CHECKOUT.CITY' | translate }}
                 </label>
                 <input
+                  formControlName="city"
+                  type="text"
+                  class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition disabled:bg-gray-100 disabled:cursor-not-allowed"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-xs font-medium text-gray-600 uppercase tracking-wider mb-1"
+                >
+                  {{ 'CHECKOUT.COUNTRY' | translate }}
+                </label>
+                <input
+                  formControlName="country"
                   type="text"
                   class="w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-indigo-500 text-sm transition disabled:bg-gray-100 disabled:cursor-not-allowed"
                 />
