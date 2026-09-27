@@ -2,12 +2,18 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { RouteCode, UserStore } from '@smwine-fe-app/shared';
+import {
+  RouteCode,
+  ToastService,
+  ToastType,
+  UserStore,
+} from '@smwine-fe-app/shared';
 import { take } from 'rxjs';
 import { HeaderComponent } from '../../components/header/header.component';
 import { ShippingAddress } from '../../models/shipping-address.interface';
 import { CartService } from '../../services/cart.service';
 import { CheckoutService } from '../../services/checkout/checkout.service';
+import { CheckoutRequest } from '../../models/checkout.interface';
 
 @Component({
   selector: 'app-checkout',
@@ -21,6 +27,7 @@ export class CheckoutComponent {
   private readonly checkoutService = inject(CheckoutService);
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
+  private readonly toastService = inject(ToastService);
 
   readonly cart = this.cartService.cart;
   readonly isLoading = this.cartService.isLoading;
@@ -54,8 +61,12 @@ export class CheckoutComponent {
                 this.shippingForm.patchValue(address);
               }
             },
-            error: (error) => {
-              console.error('Error loading default shipping address:', error);
+            error: () => {
+              this.toastService.show({
+                type: ToastType.ERROR,
+                title:
+                  'Failed to load default shipping address. Please try again. Or refresh the page.', //TODO we need translation for this message
+              });
             },
           });
       }
@@ -78,12 +89,23 @@ export class CheckoutComponent {
       return;
     }
 
-    const payload = {
+    const payload: CheckoutRequest = {
       address: this.shippingForm.getRawValue(),
       paymentMethod: this.selectedPaymentMethod(),
+      cartId: this.cart().id,
     };
 
-    console.log('Submitting checkout payload:', payload);
-    // Call checkoutService.placeOrder(payload)...
+    this.checkoutService.initiateCheckout(payload).subscribe({
+      next: (response) => {
+        window.location.href = response.paymentUrl; //Maybe we have a page which indicates that the user is being redirected to the payment gateway. This is a better UX than just redirecting them without any indication.
+      },
+      error: () => {
+        this.toastService.show({
+          type: ToastType.ERROR,
+          title:
+            'Failed to initiate checkout. Please try again. Or refresh the page.', //TODO we need translation for this message
+        });
+      },
+    });
   }
 }

@@ -1,6 +1,6 @@
 package com.naturalwine.controller;
 
-import com.naturalwine.dto.CheckoutRequestDto;
+import com.naturalwine.dto.CheckoutRequest;
 import com.naturalwine.dto.CheckoutResponseDto;
 import com.naturalwine.dto.ShippingAddressDto;
 import com.naturalwine.service.CheckoutService;
@@ -22,8 +22,8 @@ public class CheckoutController {
         this.checkoutService = checkoutService;
     }
 
-    @PostMapping
-    public ResponseEntity<CheckoutResponseDto> initiateCheckout(@Valid @RequestBody CheckoutRequestDto request) {
+    @PostMapping("/initiate-checkout")
+    public ResponseEntity<CheckoutResponseDto> initiateCheckout(@Valid @RequestBody CheckoutRequest request) {
         final UUID userUuid = SecurityUtil.getCurrentUserUuid();
 
         CheckoutResponseDto response = checkoutService.processCheckout(userUuid, request);

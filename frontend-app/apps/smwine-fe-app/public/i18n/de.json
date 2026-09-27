@@ -19,6 +19,7 @@
   "CHECKOUT.RETRY_BTN": "Verbindung erneut versuchen",
   "CHECKOUT.SHIPPING": "Versand",
   "CHECKOUT.STREET_ADDRESS": "Straße",
+  "CHECKOUT.STREET_NUMBER": "Hausnummer",
   "CHECKOUT.SUBTOTAL": "Zwischensumme",
   "CHECKOUT.TITLE": "Kasse",
   "CHECKOUT.TOTAL": "Gesamtsumme",

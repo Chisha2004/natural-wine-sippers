@@ -82,39 +82,6 @@ class RegisterUserService {
 
 /***/ }),
 
-/***/ 758:
-/*!**************************************************************************!*\
-  !*** ./apps/smwine-fe-app/src/app/services/checkout/checkout.service.ts ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   CheckoutService: () => (/* binding */ CheckoutService)
-/* harmony export */ });
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 9648);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 7580);
-
-
-
-class CheckoutService {
-  http = (0,_angular_core__WEBPACK_IMPORTED_MODULE_0__.inject)(_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient);
-  API_BASE_URL = '/api/v1/checkout';
-  loadDefaultShippingAddress() {
-    return this.http.get(`${this.API_BASE_URL}/shipping-address`);
-  }
-  static ɵfac = function CheckoutService_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || CheckoutService)();
-  };
-  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
-    token: CheckoutService,
-    factory: CheckoutService.ɵfac,
-    providedIn: 'root'
-  });
-}
-
-/***/ }),
-
 /***/ 788:
 /*!*****************************************************************!*\
   !*** ./libs/shared/src/lib/components/toast/toast.component.ts ***!
@@ -942,6 +909,42 @@ class RegisterComponent {
 
 /***/ }),
 
+/***/ 3758:
+/*!**************************************************************************!*\
+  !*** ./apps/smwine-fe-app/src/app/services/checkout/checkout.service.ts ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CheckoutService: () => (/* binding */ CheckoutService)
+/* harmony export */ });
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 9648);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 7580);
+
+
+
+class CheckoutService {
+  http = (0,_angular_core__WEBPACK_IMPORTED_MODULE_0__.inject)(_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient);
+  API_BASE_URL = '/api/v1/checkout';
+  loadDefaultShippingAddress() {
+    return this.http.get(`${this.API_BASE_URL}/shipping-address`);
+  }
+  initiateCheckout(payload) {
+    return this.http.post(`${this.API_BASE_URL}/initiate-checkout`, payload);
+  }
+  static ɵfac = function CheckoutService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || CheckoutService)();
+  };
+  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+    token: CheckoutService,
+    factory: CheckoutService.ɵfac,
+    providedIn: 'root'
+  });
+}
+
+/***/ }),
+
 /***/ 3777:
 /*!*****************************************************!*\
   !*** ./libs/shared/src/lib/model/user.interface.ts ***!
@@ -1359,7 +1362,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs */ 4334);
 /* harmony import */ var _components_header_header_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/header/header.component */ 6168);
 /* harmony import */ var _services_cart_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/cart.service */ 9507);
-/* harmony import */ var _services_checkout_checkout_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/checkout/checkout.service */ 758);
+/* harmony import */ var _services_checkout_checkout_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/checkout/checkout.service */ 3758);
 
 
 
@@ -1456,7 +1459,7 @@ function CheckoutComponent_Conditional_5_Conditional_6_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](10, 7, "CHECKOUT.LOGIN_BTN"), " ");
   }
 }
-function CheckoutComponent_Conditional_5_For_84_Template(rf, ctx) {
+function CheckoutComponent_Conditional_5_For_89_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "li", 58)(1, "div", 70);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](2, "img", 71);
@@ -1483,7 +1486,7 @@ function CheckoutComponent_Conditional_5_For_84_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", `€${item_r5.totalForQuantity}`, " ");
   }
 }
-function CheckoutComponent_Conditional_5_ForEmpty_85_Template(rf, ctx) {
+function CheckoutComponent_Conditional_5_ForEmpty_90_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "li", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
@@ -1525,102 +1528,108 @@ function CheckoutComponent_Conditional_5_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](21, "input", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](22, "div", 33)(23, "label", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](22, "div")(23, "label", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](24);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](25, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](26, "input", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](26, "input", 33);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](27, "div")(28, "label", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](29);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](30, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](31, "input", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](31, "input", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](32, "div")(33, "label", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](34);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](35, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](36, "input", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](36, "input", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](37, "div")(38, "label", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](39);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](40, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](41, "input", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](42, "hr", 38);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](43, "fieldset", 28)(44, "div", 39)(45, "h2", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](47, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](41, "input", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](48, "p", 41);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](50, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](51, "div", 42)(52, "label", 43)(53, "div", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](54, "input", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](55, "span", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](56, "iDEAL");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](57, "span", 47);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](58, " EU Standard ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](59, "label", 48)(60, "div", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](61, "input", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](62, "span", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](63, "PayPal");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](64, "div", 50)(65, "span", 51);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](66, "Worldwide");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](42, "div")(43, "label", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](45, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](46, "input", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](67, "label", 48)(68, "div", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](69, "input", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](70, "span", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](71, " Bancontact ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](47, "hr", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](48, "fieldset", 28)(49, "div", 39)(50, "h2", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](52, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](53, "p", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](55, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](72, "span", 41);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](73, "Belgium");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](56, "div", 42)(57, "label", 43)(58, "div", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](59, "input", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](60, "span", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](61, "iDEAL");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](62, "span", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](63, " EU Standard ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](64, "label", 48)(65, "div", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](66, "input", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](67, "span", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](68, "PayPal");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](69, "div", 50)(70, "span", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](71, "Worldwide");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](72, "label", 48)(73, "div", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](74, "input", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](75, "span", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](76, " Bancontact ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](77, "span", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](78, "Belgium");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](74, "button", 53);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](75);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](76, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](77, "div", 54)(78, "div", 55)(79, "h2", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](79, "button", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](80);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](81, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](82, "div", 54)(83, "div", 55)(84, "h2", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](85);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](86, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](82, "ul", 57);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrepeaterCreate"](83, CheckoutComponent_Conditional_5_For_84_Template, 11, 7, "li", 58, _forTrack0, false, CheckoutComponent_Conditional_5_ForEmpty_85_Template, 3, 3, "li", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](87, "ul", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrepeaterCreate"](88, CheckoutComponent_Conditional_5_For_89_Template, 11, 7, "li", 58, _forTrack0, false, CheckoutComponent_Conditional_5_ForEmpty_90_Template, 3, 3, "li", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](86, "div", 60)(87, "div", 61)(88, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](89);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](90, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](91, "div", 60)(92, "div", 61)(93, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](94);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](95, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](91, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](92);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](96, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](97);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](93, "div", 61)(94, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](95);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](96, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](98, "div", 61)(99, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](100);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](101, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](97, "span", 62);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](98);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](99, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](100, "hr", 63);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](101, "div", 64)(102, "span", 65);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](102, "span", 62);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](103);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](104, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](105, "hr", 63);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](106, "div", 64)(107, "span", 65);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](108);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](109, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](105, "span", 66);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](106);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](110, "span", 66);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](111);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()()()()();
   }
   if (rf & 2) {
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](4, 37, "CHECKOUT.TITLE"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](4, 38, "CHECKOUT.TITLE"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("formGroup", ctx_r1.shippingForm);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"]();
@@ -1629,44 +1638,46 @@ function CheckoutComponent_Conditional_5_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵclassProp"]("opacity-50", !ctx_r1.isLoggedIn())("pointer-events-none", !ctx_r1.isLoggedIn())("select-none", !ctx_r1.isLoggedIn());
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("disabled", !ctx_r1.isLoggedIn());
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](10, 39, "CHECKOUT.DELIVERY_INFO"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](10, 40, "CHECKOUT.DELIVERY_INFO"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](15, 41, "CHECKOUT.FIRST_NAME"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](15, 42, "CHECKOUT.FIRST_NAME"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](20, 43, "CHECKOUT.LAST_NAME"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](20, 44, "CHECKOUT.LAST_NAME"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](25, 45, "CHECKOUT.STREET_ADDRESS"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](25, 46, "CHECKOUT.STREET_ADDRESS"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](30, 47, "CHECKOUT.POSTAL_CODE"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](30, 48, "CHECKOUT.STREET_NUMBER"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](35, 49, "CHECKOUT.CITY"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](35, 50, "CHECKOUT.POSTAL_CODE"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](40, 51, "CHECKOUT.COUNTRY"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](40, 52, "CHECKOUT.CITY"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](45, 54, "CHECKOUT.COUNTRY"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵclassProp"]("opacity-50", !ctx_r1.isLoggedIn())("pointer-events-none", !ctx_r1.isLoggedIn())("select-none", !ctx_r1.isLoggedIn());
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("disabled", !ctx_r1.isLoggedIn());
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](47, 53, "CHECKOUT.PAYMENT_METHOD"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](52, 56, "CHECKOUT.PAYMENT_METHOD"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](50, 55, "CHECKOUT.REDIRECT_NOTICE"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](55, 58, "CHECKOUT.REDIRECT_NOTICE"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](25);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("disabled", !ctx_r1.isLoggedIn());
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate2"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](76, 57, "CHECKOUT.PROCEED_BTN"), " (", `€${ctx_r1.cart().totalPrice}`, ") ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate2"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](81, 60, "CHECKOUT.PROCEED_BTN"), " (", `€${ctx_r1.cart().totalPrice}`, ") ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](81, 59, "CHECKOUT.ORDER_SUMMARY"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](86, 62, "CHECKOUT.ORDER_SUMMARY"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrepeater"](ctx_r1.cart().items);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](90, 61, "CHECKOUT.SUBTOTAL"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](95, 64, "CHECKOUT.SUBTOTAL"));
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](`€${ctx_r1.cart().totalPrice}`);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](96, 63, "CHECKOUT.SHIPPING"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](101, 66, "CHECKOUT.SHIPPING"));
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](99, 65, "CHECKOUT.FREE"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](104, 68, "CHECKOUT.FREE"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](104, 67, "CHECKOUT.TOTAL"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](109, 70, "CHECKOUT.TOTAL"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", `€${ctx_r1.cart().totalPrice}`, " ");
   }
@@ -1677,6 +1688,7 @@ class CheckoutComponent {
   checkoutService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.inject)(_services_checkout_checkout_service__WEBPACK_IMPORTED_MODULE_3__.CheckoutService);
   router = (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.inject)(_angular_router__WEBPACK_IMPORTED_MODULE_5__.Router);
   fb = (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.inject)(_angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder);
+  toastService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.inject)(_smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.ToastService);
   cart = this.cartService.cart;
   isLoading = this.cartService.isLoading;
   hasError = this.cartService.hasError;
@@ -1703,8 +1715,11 @@ class CheckoutComponent {
               this.shippingForm.patchValue(address);
             }
           },
-          error: error => {
-            console.error('Error loading default shipping address:', error);
+          error: () => {
+            this.toastService.show({
+              type: _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.ToastType.ERROR,
+              title: 'Failed to load default shipping address. Please try again. Or refresh the page.' //TODO we need translation for this message
+            });
           }
         });
       }
@@ -1727,10 +1742,20 @@ class CheckoutComponent {
     }
     const payload = {
       address: this.shippingForm.getRawValue(),
-      paymentMethod: this.selectedPaymentMethod()
+      paymentMethod: this.selectedPaymentMethod(),
+      cartId: this.cart().id
     };
-    console.log('Submitting checkout payload:', payload);
-    // Call checkoutService.placeOrder(payload)...
+    this.checkoutService.initiateCheckout(payload).subscribe({
+      next: response => {
+        window.location.href = response.paymentUrl; //Maybe we have a page which indicates that the user is being redirected to the payment gateway. This is a better UX than just redirecting them without any indication.
+      },
+      error: () => {
+        this.toastService.show({
+          type: _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.ToastType.ERROR,
+          title: 'Failed to initiate checkout. Please try again. Or refresh the page.' //TODO we need translation for this message
+        });
+      }
+    });
   }
   static ɵfac = function CheckoutComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || CheckoutComponent)();
@@ -1740,12 +1765,12 @@ class CheckoutComponent {
     selectors: [["app-checkout"]],
     decls: 6,
     vars: 1,
-    consts: [[1, "block"], [1, "min-h-screen", "bg-gray-50", "py-12", "px-4", "sm:px-6", "lg:px-8"], [1, "max-w-6xl", "mx-auto"], [1, "max-w-md", "mx-auto", "bg-white", "border", "border-gray-200", "rounded-2xl", "p-8", "text-center", "shadow-sm"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8", "animate-pulse"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8"], [1, "w-16", "h-16", "bg-red-50", "text-red-600", "rounded-full", "flex", "items-center", "justify-center", "mx-auto", "mb-4"], ["fill", "none", "stroke", "currentColor", "stroke-width", "2", "viewBox", "0 0 24 24", 1, "w-8", "h-8"], ["stroke-linecap", "round", "stroke-linejoin", "round", "d", "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"], [1, "text-xl", "font-bold", "text-gray-900", "mb-2"], [1, "text-gray-600", "text-sm", "mb-6", "leading-relaxed"], [1, "bg-gray-900", "hover:bg-gray-800", "text-white", "font-medium", "text-sm", "py-2.5", "px-6", "rounded-xl", "transition", "shadow-sm", 3, "click"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-100", "shadow-sm", "space-y-8"], [1, "h-8", "bg-gray-200", "rounded-md", "w-1/4"], [1, "space-y-4"], [1, "h-4", "bg-gray-200", "rounded-md", "w-1/3"], [1, "grid", "grid-cols-1", "sm:grid-cols-2", "gap-4"], [1, "h-10", "bg-gray-200", "rounded-lg"], [1, "sm:col-span-2", "h-10", "bg-gray-200", "rounded-lg"], [1, "border-gray-100"], [1, "h-12", "bg-gray-200", "rounded-xl", "w-full", "mt-6"], [1, "lg:col-span-5", "order-1", "lg:order-2", "bg-white", "border", "border-gray-100", "rounded-2xl", "p-6", "shadow-sm", "space-y-6"], [1, "h-5", "bg-gray-200", "rounded-md", "w-1/3"], [1, "h-12", "bg-gray-200", "rounded-lg"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-200", "shadow-sm"], [1, "text-2xl", "font-bold", "text-gray-900", "mb-8"], [1, "space-y-8", 3, "ngSubmit", "formGroup"], [1, "bg-indigo-50/70", "border", "border-indigo-100", "rounded-xl", "p-4", "flex", "flex-col", "sm:flex-row", "items-start", "sm:items-center", "justify-between", "gap-4"], [1, "transition-opacity", "duration-200", 3, "disabled"], [1, "text-base", "font-semibold", "text-gray-800", "mb-4"], [1, "block", "text-xs", "font-medium", "text-gray-600", "uppercase", "tracking-wider", "mb-1"], ["formControlName", "firstName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "lastName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], [1, "sm:col-span-2"], ["formControlName", "streetName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "postcode", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "city", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "country", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], [1, "border-gray-200"], [1, "mb-1"], [1, "text-base", "font-semibold", "text-gray-800"], [1, "text-xs", "text-gray-500"], [1, "mt-4", "space-y-3"], [1, "flex", "items-center", "justify-between", "border", "border-indigo-600", "bg-indigo-50/40", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-indigo-50/60", "transition"], [1, "flex", "items-center", "gap-3"], ["type", "radio", "name", "payment_method", "value", "ideal", "checked", "", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed"], [1, "font-medium", "text-gray-800", "text-sm"], [1, "text-xs", "font-bold", "text-teal-600", "bg-teal-50", "px-2", "py-1", "rounded"], [1, "flex", "items-center", "justify-between", "border", "border-gray-200", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-gray-50", "transition"], ["type", "radio", "name", "payment_method", "value", "paypal", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed"], [1, "flex", "gap-1", "text-gray-400"], [1, "text-xs"], ["type", "radio", "name", "payment_method", "value", "bancontact", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed"], ["type", "submit", 1, "w-full", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-3.5", "px-4", "rounded-xl", "transition", "shadow-sm", "mt-8", "block", "text-center", "text-sm", "tracking-wide", "disabled:bg-gray-300", "disabled:cursor-not-allowed", "disabled:shadow-none", 3, "disabled"], [1, "lg:col-span-5", "order-1", "lg:order-2"], [1, "bg-white", "border", "border-gray-200", "rounded-2xl", "p-6", "shadow-sm", "sticky", "top-6"], [1, "text-lg", "font-bold", "text-gray-800", "mb-4"], [1, "divide-y", "divide-gray-100", "max-h-96", "overflow-y-auto", "pr-1"], [1, "flex", "items-center", "justify-between", "py-4"], [1, "py-6", "text-center", "text-gray-500", "text-sm"], [1, "border-t", "border-gray-100", "pt-4", "space-y-2.5", "text-sm"], [1, "flex", "justify-between", "text-gray-600"], [1, "text-green-600", "font-medium"], [1, "border-gray-100", "my-2"], [1, "flex", "justify-between", "items-center", "text-gray-900", "pt-1"], [1, "font-bold", "text-base"], [1, "text-xl", "font-extrabold", "text-gray-900"], [1, "font-semibold", "text-indigo-950", "text-sm"], [1, "text-xs", "text-indigo-700", "mt-0.5"], ["type", "button", 1, "shrink-0", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-2", "px-5", "rounded-lg", "transition", "shadow-sm", "text-sm", 3, "click"], [1, "flex", "items-center", "gap-4"], ["alt", "Beverage", 1, "w-12", "h-12", "rounded-lg", "object-cover", "border", "border-gray-100", "shadow-sm", 3, "src"], [1, "font-medium", "text-gray-800"], [1, "text-gray-500", "text-xs"], [1, "font-semibold", "text-gray-700"]],
+    consts: [[1, "block"], [1, "min-h-screen", "bg-gray-50", "py-12", "px-4", "sm:px-6", "lg:px-8"], [1, "max-w-6xl", "mx-auto"], [1, "max-w-md", "mx-auto", "bg-white", "border", "border-gray-200", "rounded-2xl", "p-8", "text-center", "shadow-sm"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8", "animate-pulse"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8"], [1, "w-16", "h-16", "bg-red-50", "text-red-600", "rounded-full", "flex", "items-center", "justify-center", "mx-auto", "mb-4"], ["fill", "none", "stroke", "currentColor", "stroke-width", "2", "viewBox", "0 0 24 24", 1, "w-8", "h-8"], ["stroke-linecap", "round", "stroke-linejoin", "round", "d", "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"], [1, "text-xl", "font-bold", "text-gray-900", "mb-2"], [1, "text-gray-600", "text-sm", "mb-6", "leading-relaxed"], [1, "bg-gray-900", "hover:bg-gray-800", "text-white", "font-medium", "text-sm", "py-2.5", "px-6", "rounded-xl", "transition", "shadow-sm", 3, "click"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-100", "shadow-sm", "space-y-8"], [1, "h-8", "bg-gray-200", "rounded-md", "w-1/4"], [1, "space-y-4"], [1, "h-4", "bg-gray-200", "rounded-md", "w-1/3"], [1, "grid", "grid-cols-1", "sm:grid-cols-2", "gap-4"], [1, "h-10", "bg-gray-200", "rounded-lg"], [1, "sm:col-span-2", "h-10", "bg-gray-200", "rounded-lg"], [1, "border-gray-100"], [1, "h-12", "bg-gray-200", "rounded-xl", "w-full", "mt-6"], [1, "lg:col-span-5", "order-1", "lg:order-2", "bg-white", "border", "border-gray-100", "rounded-2xl", "p-6", "shadow-sm", "space-y-6"], [1, "h-5", "bg-gray-200", "rounded-md", "w-1/3"], [1, "h-12", "bg-gray-200", "rounded-lg"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-200", "shadow-sm"], [1, "text-2xl", "font-bold", "text-gray-900", "mb-8"], [1, "space-y-8", 3, "ngSubmit", "formGroup"], [1, "bg-indigo-50/70", "border", "border-indigo-100", "rounded-xl", "p-4", "flex", "flex-col", "sm:flex-row", "items-start", "sm:items-center", "justify-between", "gap-4"], [1, "transition-opacity", "duration-200", 3, "disabled"], [1, "text-base", "font-semibold", "text-gray-800", "mb-4"], [1, "block", "text-xs", "font-medium", "text-gray-600", "uppercase", "tracking-wider", "mb-1"], ["formControlName", "firstName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "lastName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "streetName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "houseNumber", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "postcode", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "city", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "country", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], [1, "border-gray-200"], [1, "mb-1"], [1, "text-base", "font-semibold", "text-gray-800"], [1, "text-xs", "text-gray-500"], [1, "mt-4", "space-y-3"], [1, "flex", "items-center", "justify-between", "border", "border-indigo-600", "bg-indigo-50/40", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-indigo-50/60", "transition"], [1, "flex", "items-center", "gap-3"], ["type", "radio", "name", "payment_method", "value", "ideal", "checked", "", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed"], [1, "font-medium", "text-gray-800", "text-sm"], [1, "text-xs", "font-bold", "text-teal-600", "bg-teal-50", "px-2", "py-1", "rounded"], [1, "flex", "items-center", "justify-between", "border", "border-gray-200", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-gray-50", "transition"], ["type", "radio", "name", "payment_method", "value", "paypal", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed"], [1, "flex", "gap-1", "text-gray-400"], [1, "text-xs"], ["type", "radio", "name", "payment_method", "value", "bancontact", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed"], ["type", "submit", 1, "w-full", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-3.5", "px-4", "rounded-xl", "transition", "shadow-sm", "mt-8", "block", "text-center", "text-sm", "tracking-wide", "disabled:bg-gray-300", "disabled:cursor-not-allowed", "disabled:shadow-none", 3, "disabled"], [1, "lg:col-span-5", "order-1", "lg:order-2"], [1, "bg-white", "border", "border-gray-200", "rounded-2xl", "p-6", "shadow-sm", "sticky", "top-6"], [1, "text-lg", "font-bold", "text-gray-800", "mb-4"], [1, "divide-y", "divide-gray-100", "max-h-96", "overflow-y-auto", "pr-1"], [1, "flex", "items-center", "justify-between", "py-4"], [1, "py-6", "text-center", "text-gray-500", "text-sm"], [1, "border-t", "border-gray-100", "pt-4", "space-y-2.5", "text-sm"], [1, "flex", "justify-between", "text-gray-600"], [1, "text-green-600", "font-medium"], [1, "border-gray-100", "my-2"], [1, "flex", "justify-between", "items-center", "text-gray-900", "pt-1"], [1, "font-bold", "text-base"], [1, "text-xl", "font-extrabold", "text-gray-900"], [1, "font-semibold", "text-indigo-950", "text-sm"], [1, "text-xs", "text-indigo-700", "mt-0.5"], ["type", "button", 1, "shrink-0", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-2", "px-5", "rounded-lg", "transition", "shadow-sm", "text-sm", 3, "click"], [1, "flex", "items-center", "gap-4"], ["alt", "Beverage", 1, "w-12", "h-12", "rounded-lg", "object-cover", "border", "border-gray-100", "shadow-sm", 3, "src"], [1, "font-medium", "text-gray-800"], [1, "text-gray-500", "text-xs"], [1, "font-semibold", "text-gray-700"]],
     template: function CheckoutComponent_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](0, "app-header", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](1, "div", 1)(2, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](3, CheckoutComponent_Conditional_3_Template, 13, 9, "div", 3)(4, CheckoutComponent_Conditional_4_Template, 17, 0, "div", 4)(5, CheckoutComponent_Conditional_5_Template, 107, 69, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](3, CheckoutComponent_Conditional_3_Template, 13, 9, "div", 3)(4, CheckoutComponent_Conditional_4_Template, 17, 0, "div", 4)(5, CheckoutComponent_Conditional_5_Template, 112, 72, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
       }
       if (rf & 2) {
@@ -3071,7 +3096,8 @@ class CartService {
   toastService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.ToastService);
   cartSignal = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)({
     items: [],
-    totalPrice: 0
+    totalPrice: 0,
+    id: -1
   });
   _isLoading = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)(true); //TODO these might not be used including hasError.
   _hasError = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)(false);

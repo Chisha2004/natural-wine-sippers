@@ -1,10 +1,12 @@
 package com.naturalwine.service;
 
-import com.naturalwine.dto.CheckoutRequestDto;
+import com.naturalwine.dto.CheckoutRequest;
 import com.naturalwine.dto.CheckoutResponseDto;
 import com.naturalwine.dto.ShippingAddressDto;
 import com.naturalwine.entity.Cart;
+import com.naturalwine.entity.CartStatus;
 import com.naturalwine.entity.Order;
+import com.naturalwine.exception.CartAccessDeniedException;
 import com.naturalwine.repository.OrderRepository;
 import com.naturalwine.repository.DefaultShippingAddressRepo;
 import com.naturalwine.service.payment.PaymentService;
@@ -38,9 +40,13 @@ public class CheckoutService {
     }
 
     @Transactional
-    public CheckoutResponseDto processCheckout(final UUID userUuid, final CheckoutRequestDto request) {
+    public CheckoutResponseDto processCheckout(final UUID userUuid, final CheckoutRequest request) {
 
-        final Cart cart = cartService.getCart(userUuid);
+        final Cart cart = cartService.getCartById(request.cartId());
+
+        if(!cart.getUserUuid().equals(userUuid)) {
+            throw new CartAccessDeniedException(cart.getId(), userUuid);
+        }
 
         final Order order = orderRepository.findByCartId(cart.getId()).orElseGet(() -> {
             Order newOrder = Order.builder()
@@ -54,6 +60,8 @@ public class CheckoutService {
             return newOrder;
         });
 
+        cartService.updateStatus(cart, CartStatus.IN_CHECKOUT);
+
         paymentService.generatePaymentUrl(request.paymentMethod(), order);
 
         //TODO do not start a new transaction without checking existing. If payment method has changed from previous then start new or if no transaction already exists in pending
@@ -62,7 +70,7 @@ public class CheckoutService {
         String url = "http://localhost:8080/checkout"; //TODO add
         //TODO we need a thread executor which should be checking on transactions and update completed payments.
 
-        return new CheckoutResponseDto(url);
+        return new CheckoutResponseDto(url, order.getId());
     }
 
     private static String generateOrderId() {

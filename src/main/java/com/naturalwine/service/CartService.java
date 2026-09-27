@@ -7,6 +7,7 @@ import com.naturalwine.entity.Cart;
 import com.naturalwine.entity.CartItem;
 import com.naturalwine.entity.CartStatus;
 import com.naturalwine.exception.BeverageNotFoundException;
+import com.naturalwine.exception.CartNotFoundException;
 import com.naturalwine.exception.InsufficientStockException;
 import com.naturalwine.repository.BeverageRepository;
 import com.naturalwine.repository.CartRepository;
@@ -82,6 +83,11 @@ public class CartService {
         cart.setStatus(CartStatus.ACTIVE);
         cart.setDlu(LocalDateTime.now());
         cartRepository.save(cart);
+    }
+
+    public Cart getCartById(Long cartId) throws CartNotFoundException {
+        return cartRepository.findById(cartId)
+                .orElseThrow(() -> new CartNotFoundException(cartId));
     }
 
     public Cart getCart(final UUID userUuid) {
@@ -201,6 +207,11 @@ public class CartService {
         cartItem.setPriceEach(beverage.getPrice());
         cartItem.setTotalForQuantity(beverage.getPrice().multiply(BigDecimal.valueOf(newQuantity)));
         return cartItem;
+    }
+
+    public void updateStatus(Cart cart, CartStatus cartStatus) {
+        cart.setStatus(cartStatus);
+        cartRepository.save(cart);
     }
 }
 

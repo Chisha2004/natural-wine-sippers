@@ -15,7 +15,11 @@ export class CartService {
   private readonly http = inject(HttpClient);
   private readonly toastService = inject(ToastService);
 
-  private cartSignal = signal<Cart>({ items: [], totalPrice: 0 });
+  private cartSignal = signal<Cart>({
+    items: [],
+    totalPrice: 0,
+    id: -1,
+  });
   private readonly _isLoading = signal(true); //TODO these might not be used including hasError.
   private readonly _hasError = signal(false);
 

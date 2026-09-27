@@ -1,5 +1,4 @@
 {
-  "CHECKOUT.STREET_ADDRESS": "Street",
   "CHECKOUT.CITY": "City",
   "CHECKOUT.COUNTRY": "Country",
   "CHECKOUT.DELIVERY_INFO": "Delivery Information",
@@ -19,6 +18,8 @@
   "CHECKOUT.REDIRECT_NOTICE": "You will be securely redirected to complete your payment.",
   "CHECKOUT.RETRY_BTN": "Retry Connection",
   "CHECKOUT.SHIPPING": "Shipping",
+  "CHECKOUT.STREET_ADDRESS": "Street",
+  "CHECKOUT.STREET_NUMBER": "House Number",
   "CHECKOUT.SUBTOTAL": "Subtotal",
   "CHECKOUT.TITLE": "Checkout",
   "CHECKOUT.TOTAL": "Total",
