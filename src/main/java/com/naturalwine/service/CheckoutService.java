@@ -6,6 +6,7 @@ import com.naturalwine.dto.ShippingAddressDto;
 import com.naturalwine.entity.Cart;
 import com.naturalwine.entity.CartStatus;
 import com.naturalwine.entity.Order;
+import com.naturalwine.entity.OrderStatus;
 import com.naturalwine.exception.CartAccessDeniedException;
 import com.naturalwine.repository.OrderRepository;
 import com.naturalwine.repository.DefaultShippingAddressRepo;
@@ -13,6 +14,7 @@ import com.naturalwine.service.payment.PaymentService;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -53,6 +55,18 @@ public class CheckoutService {
                     .orderNumber(generateOrderId())
                     .userId(userUuid)
                     .cartId(cart.getId())
+                    .shippingFirstName(request.shipmentAddress().firstName())
+                    .shippingLastName(request.shipmentAddress().lastName())
+                    .shippingStreetAddress(request.shipmentAddress().streetName())
+                    .shippingHouseNumber(request.shipmentAddress().houseNumber())//TODO need to add phone number
+                    .shippingPostalCode(request.shipmentAddress().postcode())
+                    .shippingCity(request.shipmentAddress().city())
+                    .shippingCountry(request.shipmentAddress().country())
+                    .status(OrderStatus.PENDING)
+                    .subtotalAmount(cart.getTotalPrice())
+                    .totalAmount(cart.getTotalPrice()) //TODO confirm from cart if we show sub total then if needed + shipping + vat to form totalAmount
+                    .shippingAmount(new BigDecimal(0)) //TODO now hardcoded to 0 till frontend can send a breakdown of the shippingAmount which could also be 0 for free shipping
+                    .paymentMethod(request.paymentMethod())
                     .build();
 
             orderRepository.save(newOrder);

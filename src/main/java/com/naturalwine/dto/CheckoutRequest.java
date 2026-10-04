@@ -8,6 +8,6 @@ public record CheckoutRequest(
                                 Long cartId,
                                 @NotNull(message = "Payment method is required")
                                 PaymentMethod paymentMethod,
-                                @NotNull(message = "Shipping is required")
+                                @NotNull(message = "Shipping address is required")
                                 ShippingAddressDto shipmentAddress) {
 }

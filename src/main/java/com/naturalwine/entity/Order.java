@@ -42,13 +42,16 @@ public class Order {
     private OrderStatus status;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "payment_method", nullable = false, length = 30)
+    private PaymentMethod paymentMethod;
+
     @PositiveOrZero
     @Column(name = "subtotal_amount", nullable = false, precision = 10, scale = 2)
     private BigDecimal subtotalAmount;
 
-    @NotNull
     @PositiveOrZero
-    @Column(name = "shipping_amount", nullable = false, precision = 10, scale = 2)
+    @Column(name = "shipping_amount", precision = 10, scale = 2)
     private BigDecimal shippingAmount;
 
     @NotNull
@@ -58,23 +61,42 @@ public class Order {
 
     @NotBlank
     @Size(max = 255)
+    @Column(name = "shipping_first_name", nullable = false)
+    private String shippingFirstName;
+
+    @NotBlank
+    @Size(max = 255)
+    @Column(name = "shipping_last_name", nullable = false)
+    private String shippingLastName;
+
+    @NotBlank
+    @Size(max = 255)
     @Column(name = "shipping_street_address", nullable = false)
     private String shippingStreetAddress;
 
     @NotBlank
-    @Size(max = 20)
-    @Column(name = "shipping_postal_code", nullable = false, length = 20)
+    @Size(max = 10)
+    @Column(name = "shipping_house_number", nullable = false)
+    private String shippingHouseNumber;
+
+    @NotBlank
+    @Size(max = 10)
+    @Column(name = "shipping_postal_code", nullable = false)
     private String shippingPostalCode;
 
     @NotBlank
-    @Size(max = 100)
-    @Column(name = "shipping_city", nullable = false, length = 100)
+    @Size(max = 225)
+    @Column(name = "shipping_city", nullable = false)
     private String shippingCity;
 
     @NotBlank
-    @Size(max = 100)
-    @Column(name = "shipping_country", nullable = false, length = 100)
+    @Size(max = 225)
+    @Column(name = "shipping_country", nullable = false)
     private String shippingCountry;
+
+    @Size(max = 15)
+    @Column(name = "shipping_phone_number")
+    private String shippingPhoneNumber; //phone number can be string for now till we have a proper phone number class
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

@@ -237,8 +237,9 @@
                   <input
                     type="radio"
                     name="payment_method"
-                    value="ideal"
+                    value="IDEAL"
                     checked
+                    (change)="selectedPaymentMethod.set('IDEAL')"
                     class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 disabled:cursor-not-allowed"
                   />
                   <span class="font-medium text-gray-800 text-sm">iDEAL</span>
@@ -257,8 +258,9 @@
                   <input
                     type="radio"
                     name="payment_method"
-                    value="paypal"
+                    value="PAYPAL"
                     class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 disabled:cursor-not-allowed"
+                    (change)="selectedPaymentMethod.set('PAYPAL')"
                   />
                   <span class="font-medium text-gray-800 text-sm">PayPal</span>
                 </div>
@@ -274,8 +276,9 @@
                   <input
                     type="radio"
                     name="payment_method"
-                    value="bancontact"
+                    value="BANCONTACT"
                     class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 disabled:cursor-not-allowed"
+                    (change)="selectedPaymentMethod.set('BANCONTACT')"
                   />
                   <span class="font-medium text-gray-800 text-sm">
                     Bancontact

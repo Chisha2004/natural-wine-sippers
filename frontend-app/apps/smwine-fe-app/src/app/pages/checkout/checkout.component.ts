@@ -35,7 +35,7 @@ export class CheckoutComponent {
   readonly isLoggedIn = this.userStore.isLoggedIn;
 
   // Signal state for selected payment method
-  readonly selectedPaymentMethod = signal<string>('ideal');
+  readonly selectedPaymentMethod = signal<string>('IDEAL');
 
   // Reactive Form instance bound to shipping address
   readonly shippingForm = this.fb.nonNullable.group({
@@ -90,7 +90,7 @@ export class CheckoutComponent {
     }
 
     const payload: CheckoutRequest = {
-      address: this.shippingForm.getRawValue(),
+      shipmentAddress: this.shippingForm.getRawValue(),
       paymentMethod: this.selectedPaymentMethod(),
       cartId: this.cart().id,
     };

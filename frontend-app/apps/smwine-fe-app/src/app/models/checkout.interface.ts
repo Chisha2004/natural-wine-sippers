@@ -1,7 +1,7 @@
 import { ShippingAddress } from './shipping-address.interface';
 
 export interface CheckoutRequest {
-  address: ShippingAddress;
+  shipmentAddress: ShippingAddress;
   paymentMethod: string;
   cartId: number;
 }
