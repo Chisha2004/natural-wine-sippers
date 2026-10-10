@@ -1,7 +1,7 @@
 package com.naturalwine.entity;
 
 public enum OrderStatus {
-    PENDING,
+    AWAITING_PAYMENT,
     PAID,
     PROCESSING,
     SHIPPED,

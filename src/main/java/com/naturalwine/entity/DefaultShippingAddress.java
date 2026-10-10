@@ -2,13 +2,19 @@ package com.naturalwine.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Entity
-@Table(name = "beverages")
+@Table(name = "default_delivery_address")
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class DefaultShippingAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

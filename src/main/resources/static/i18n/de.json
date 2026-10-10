@@ -1,5 +1,7 @@
 {
+  "CHECKOUT.CHECKOUT_IN_PROGRESS_TEXT": "Ihre Checkout-Sitzung ist in Bearbeitung. Bitte schließen Sie Ihre Zahlung ab, um Ihre Bestellung abzuschließen.",
   "CHECKOUT.CITY": "Stadt",
+  "CHECKOUT.CONTINUE_WITH_PAYMENT": "Weiter zur sicheren Zahlung",
   "CHECKOUT.COUNTRY": "Land",
   "CHECKOUT.DELIVERY_INFO": "Lieferinformationen",
   "CHECKOUT.EMPTY_CART": "Ihr Warenkorb ist leer.",

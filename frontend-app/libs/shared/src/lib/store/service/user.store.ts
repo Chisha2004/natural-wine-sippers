@@ -99,6 +99,18 @@ export class UserStore extends signalStore(
         localStorage.getItem(USER_STATE_STORAGE_KEY) || '{}'
       );
 
+      const generateAndPersistGuest = () => {
+        userService.generateGuestUser().subscribe({
+          next: (user: UserState) => {
+            patchState(store, user, { hasError: false, isLoading: false });
+            persistUserToStorage(user);
+          },
+          error: () => {
+            patchState(store, { hasError: true, isLoading: false });
+          },
+        });
+      };
+
       if (userState.userType === UserType.GUEST) {
         patchState(store, userState, { hasError: false, isLoading: false });
       } else if (userState.token) {
@@ -107,15 +119,13 @@ export class UserStore extends signalStore(
           next: (user: UserState) => {
             patchState(store, user, { hasError: false, isLoading: false });
           },
-          error: () => localStorage.removeItem(USER_STATE_STORAGE_KEY),
-        });
-      } else {
-        userService.generateGuestUser().subscribe({
-          next: (user: UserState) => {
-            patchState(store, user, { hasError: false, isLoading: false });
-            persistUserToStorage(user);
+          error: () => {
+            localStorage.removeItem(USER_STATE_STORAGE_KEY);
+            generateAndPersistGuest();
           },
         });
+      } else {
+        generateAndPersistGuest();
       }
     },
   }))

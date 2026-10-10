@@ -1,7 +1,7 @@
 import { effect, inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
-import { Cart } from '../models/cart.interface';
+import { Cart, CartStatus } from '../models/cart.interface';
 import { ToastService, ToastType, UserStore } from '@smwine-fe-app/shared';
 import { finalize } from 'rxjs';
 
@@ -19,6 +19,7 @@ export class CartService {
     items: [],
     totalPrice: 0,
     id: -1,
+    status: CartStatus.NONE,
   });
   private readonly _isLoading = signal(true); //TODO these might not be used including hasError.
   private readonly _hasError = signal(false);

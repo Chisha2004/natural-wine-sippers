@@ -1,4 +1,8 @@
 package com.naturalwine.dto;
 
-public record CheckoutResponseDto(String paymentRedirectUrl, Long orderId) {
+import com.naturalwine.entity.OrderStatus;
+import lombok.Builder;
+
+@Builder
+public record CheckoutResponseDto(String paymentRedirectUrl, Long orderId, OrderStatus orderStatus) {
 }

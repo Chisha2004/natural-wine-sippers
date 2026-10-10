@@ -27,6 +27,7 @@ public class CartController {
 
     @PostMapping("/add")
     public CartResponse addToCart(@RequestBody AddToCartRequest request) {
+        //TODO if there is a cart which status is IN_CHECKOUT then we should not add any items until that order is paid or cancelled then we should update the status of the cart and reverse any stock number if it had deducted
         //TODO if payment is in progress and successfull then we should not add to it but create new cart.
         //TODO if the order is in progress and payment is not yet made then we need to invalidate this order and create a new
 

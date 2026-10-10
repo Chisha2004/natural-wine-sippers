@@ -9,6 +9,8 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -98,22 +100,26 @@ public class Order {
     @Column(name = "shipping_phone_number")
     private String shippingPhoneNumber; //phone number can be string for now till we have a proper phone number class
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    @Column(name = "doe", nullable = false, updatable = false)
+    private LocalDateTime doe;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    @Column(name = "dlu")
+    private LocalDateTime dlu;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
+        this.doe = LocalDateTime.now();
         if (this.status == null) {
-            this.status = OrderStatus.PENDING;
+            this.status = OrderStatus.AWAITING_PAYMENT;
         }
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.updatedAt = LocalDateTime.now();
+        this.dlu = LocalDateTime.now();
     }
 }

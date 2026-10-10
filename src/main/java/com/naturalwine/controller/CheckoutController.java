@@ -31,6 +31,15 @@ public class CheckoutController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @GetMapping("/status/{orderId}")
+    public ResponseEntity<CheckoutResponseDto> status(@PathVariable Long orderId) {
+        final UUID userUuid = SecurityUtil.getCurrentUserUuid();
+
+        CheckoutResponseDto response = checkoutService.checkStatus(userUuid, orderId);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
     @GetMapping("/shipping-address")
     public ResponseEntity<ShippingAddressDto> getDefaultShippingAddress() {
         final UUID userUuid = SecurityUtil.getCurrentUserUuid();

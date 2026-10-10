@@ -47,13 +47,13 @@ public class Transaction {
     private String redirectUrl;
 
     @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime doe;
 
-    private LocalDateTime updatedAt;
+    private LocalDateTime dlu;
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
+        this.doe = LocalDateTime.now();
         if (this.status == null) {
             this.status = TransactionStatus.PENDING;
         }
@@ -61,7 +61,7 @@ public class Transaction {
 
     @PreUpdate
     protected void onUpdate() {
-        this.updatedAt = LocalDateTime.now();
+        this.dlu = LocalDateTime.now();
     }
     //TODO add transaction history of an order. links logs when using payment gateway, etc
 }

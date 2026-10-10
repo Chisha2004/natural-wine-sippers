@@ -83,6 +83,10 @@ export class CheckoutComponent {
     });
   }
 
+  continueWithPayment(): void {
+    // window.location.href = this.cart().paymentRedirectUrl; //TODO we need to implement the payment page and route
+  }
+
   onSubmit(): void {
     if (this.shippingForm.invalid) {
       this.shippingForm.markAllAsTouched();
@@ -97,7 +101,7 @@ export class CheckoutComponent {
 
     this.checkoutService.initiateCheckout(payload).subscribe({
       next: (response) => {
-        window.location.href = response.paymentUrl; //Maybe we have a page which indicates that the user is being redirected to the payment gateway. This is a better UX than just redirecting them without any indication.
+        window.location.href = response.paymentRedirectUrl; //Maybe we have a page which indicates that the user is being redirected to the payment gateway. This is a better UX than just redirecting them without any indication.
       },
       error: () => {
         this.toastService.show({

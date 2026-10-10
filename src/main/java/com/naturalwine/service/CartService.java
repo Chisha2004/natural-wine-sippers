@@ -7,6 +7,7 @@ import com.naturalwine.entity.Cart;
 import com.naturalwine.entity.CartItem;
 import com.naturalwine.entity.CartStatus;
 import com.naturalwine.exception.BeverageNotFoundException;
+import com.naturalwine.exception.CartAccessDeniedException;
 import com.naturalwine.exception.CartNotFoundException;
 import com.naturalwine.exception.InsufficientStockException;
 import com.naturalwine.repository.BeverageRepository;
@@ -85,9 +86,16 @@ public class CartService {
         cartRepository.save(cart);
     }
 
-    public Cart getCartById(Long cartId) throws CartNotFoundException {
-        return cartRepository.findById(cartId)
+    public Cart getCartById(Long cartId, UUID ownerUuid) throws CartNotFoundException {
+        final Cart cart = cartRepository.findById(cartId)
                 .orElseThrow(() -> new CartNotFoundException(cartId));
+
+        if(!cart.getUserUuid().equals(ownerUuid)){
+            throw new CartAccessDeniedException(cartId, ownerUuid);
+        }
+
+        populateItemPrices(cart);
+        return cart;
     }
 
     public Cart getCart(final UUID userUuid) {
@@ -99,26 +107,30 @@ public class CartService {
             return newCart;
         });
 
+        populateItemPrices(cart);
+
+        return cart;
+    }
+
+    private void populateItemPrices(Cart cart) {
         if (cart.getItems() != null && !cart.getItems().isEmpty()) {
             final List<Beverage> beverages = beverageRepository.findAll();
             cart.getItems().forEach(item -> {
-                        final Beverage beverage = beverages.stream()
-                                .filter(b -> b.getId().equals(item.getBeverageId()))
-                                .findFirst()
-                                .orElse(null);
-                        if (beverage != null) {
-                            item.setPriceEach(beverage.getPrice());
-                            item.setTotalForQuantity(beverage.getPrice()
-                                    .multiply(BigDecimal.valueOf(item.getQuantity())));
-                        }
-                    });
+                final Beverage beverage = beverages.stream()
+                        .filter(candidate -> candidate.getId().equals(item.getBeverageId()))
+                        .findFirst()
+                        .orElse(null);
+                if (beverage != null) {
+                    item.setPriceEach(beverage.getPrice());
+                    item.setTotalForQuantity(beverage.getPrice()
+                            .multiply(BigDecimal.valueOf(item.getQuantity())));
+                }
+            });
             //TODO future add VAT and any other added bits to price, bonus, etc
             cart.setTotalPrice(cart.getItems().stream()
                     .map(CartItem::getTotalForQuantity)
                     .reduce(BigDecimal.ZERO, BigDecimal::add));
         }
-
-        return cart;
     }
 
     public CartResponse getCartResponse(final UUID userUuid) {
@@ -131,6 +143,7 @@ public class CartService {
                         .map(this::convertToDto)
                         .collect(Collectors.toList()))
                 .totalPrice(cart.getTotalPrice())
+                .status(cart.getStatus())
                 .build();
     }
 
@@ -214,5 +227,4 @@ public class CartService {
         cartRepository.save(cart);
     }
 }
-
 

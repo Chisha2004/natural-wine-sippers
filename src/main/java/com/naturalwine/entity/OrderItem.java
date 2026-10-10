@@ -16,14 +16,15 @@ import jakarta.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-class OrderItem { //TODO improve this to match cart
+public class OrderItem { //TODO improve this to match cart
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    @Column(nullable = false)
-    private Long orderId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
     @NotNull
     @Column(nullable = false)

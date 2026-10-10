@@ -8,5 +8,5 @@ export interface CheckoutRequest {
 
 export interface CheckoutResponse {
   orderId: number;
-  paymentUrl: string;
+  paymentRedirectUrl: string;
 }

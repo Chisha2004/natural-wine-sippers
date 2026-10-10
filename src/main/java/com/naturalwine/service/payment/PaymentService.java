@@ -47,13 +47,13 @@ public class PaymentService {
 
             // Get the latest transaction attempt
             Transaction latestTx = transactionList.stream()
-                    .max(Comparator.comparing(Transaction::getUpdatedAt))
+                    .max(Comparator.comparing(Transaction::getDoe))
                     .orElse(null);
 
             if (latestTx.getStatus() == TransactionStatus.PENDING) {
                 boolean isSameMethod = latestTx.getPaymentMethod() == paymentMethod;
                 //TODO maybe this expire time is less like 15 but we keep it 30mins for now
-                boolean isStillValid = latestTx.getCreatedAt().isAfter(LocalDateTime.now().minusMinutes(TRANSACTION_EXPIRE_TIME));
+                boolean isStillValid = latestTx.getDoe().isAfter(LocalDateTime.now().minusMinutes(TRANSACTION_EXPIRE_TIME));
                 boolean isSameAmount = latestTx.getTotalAmount().compareTo(order.getTotalAmount()) == 0;
 
                 if (isSameMethod && isStillValid && isSameAmount) {

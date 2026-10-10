@@ -1429,21 +1429,45 @@ function CheckoutComponent_Conditional_4_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
   }
 }
-function CheckoutComponent_Conditional_5_Conditional_6_Template(rf, ctx) {
+function CheckoutComponent_Conditional_5_Conditional_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 27)(1, "div")(2, "h3", 67);
+    const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](2, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](3, "div", 38)(4, "button", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("click", function CheckoutComponent_Conditional_5_Conditional_2_Template_button_click_4_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r3);
+      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresetView"](ctx_r1.continueWithPayment());
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](6, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+  }
+  if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](2, 2, "CHECKOUT.CHECKOUT_IN_PROGRESS_TEXT"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](6, 4, "CHECKOUT.CONTINUE_WITH_PAYMENT"), " ");
+  }
+}
+function CheckoutComponent_Conditional_5_Conditional_3_Conditional_4_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 42)(1, "div")(2, "h3", 69);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](4, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](5, "p", 68);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](5, "p", 70);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](7, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](8, "button", 69);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("click", function CheckoutComponent_Conditional_5_Conditional_6_Template_button_click_8_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r4);
-      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](8, "button", 71);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("click", function CheckoutComponent_Conditional_5_Conditional_3_Conditional_4_Template_button_click_8_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r5);
+      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](3);
       return _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresetView"](ctx_r1.redirectToLogin());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](9);
@@ -1459,36 +1483,188 @@ function CheckoutComponent_Conditional_5_Conditional_6_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](10, 7, "CHECKOUT.LOGIN_BTN"), " ");
   }
 }
-function CheckoutComponent_Conditional_5_For_89_Template(rf, ctx) {
+function CheckoutComponent_Conditional_5_Conditional_3_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "li", 58)(1, "div", 70);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](2, "img", 71);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](3, "div")(4, "div", 72);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](5);
+    const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "h1", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](2, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](6, "div", 73);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](3, "form", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("ngSubmit", function CheckoutComponent_Conditional_5_Conditional_3_Template_form_ngSubmit_3_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r4);
+      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresetView"](ctx_r1.onSubmit());
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](4, CheckoutComponent_Conditional_5_Conditional_3_Conditional_4_Template, 11, 9, "div", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](5, "fieldset", 43)(6, "h2", 44);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](7);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](8, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](9, "div", 16)(10, "div")(11, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](13, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](14, "input", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](15, "div")(16, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](18, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](19, "input", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](20, "div")(21, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](23, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](24, "input", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](25, "div")(26, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](28, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](29, "input", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](30, "div")(31, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](33, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](34, "input", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](35, "div")(36, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](38, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](39, "input", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](40, "div")(41, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](43, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](44, "input", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](9, "div", 74);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](45, "hr", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](46, "fieldset", 43)(47, "div", 54)(48, "h2", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](50, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](51, "p", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](53, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](54, "div", 57)(55, "label", 58)(56, "div", 59)(57, "input", 60);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("change", function CheckoutComponent_Conditional_5_Conditional_3_Template_input_change_57_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r4);
+      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresetView"](ctx_r1.selectedPaymentMethod.set("IDEAL"));
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](58, "span", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](59, "iDEAL");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](60, "span", 62);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](61, " EU Standard ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](62, "label", 63)(63, "div", 59)(64, "input", 64);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("change", function CheckoutComponent_Conditional_5_Conditional_3_Template_input_change_64_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r4);
+      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresetView"](ctx_r1.selectedPaymentMethod.set("PAYPAL"));
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](65, "span", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](66, "PayPal");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](67, "div", 65)(68, "span", 66);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](69, "Worldwide");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](70, "label", 63)(71, "div", 59)(72, "input", 67);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("change", function CheckoutComponent_Conditional_5_Conditional_3_Template_input_change_72_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r4);
+      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresetView"](ctx_r1.selectedPaymentMethod.set("BANCONTACT"));
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](73, "span", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](74, " Bancontact ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](75, "span", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](76, "Belgium");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](77, "button", 68);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](78);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](79, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
-    const item_r5 = ctx.$implicit;
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](2, 30, "CHECKOUT.TITLE"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("src", item_r5.beverageImgUrl, _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsanitizeUrl"]);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](item_r5.title);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("formGroup", ctx_r1.shippingForm);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵconditional"](!ctx_r1.isLoggedIn() ? 4 : -1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵclassProp"]("opacity-50", !ctx_r1.isLoggedIn())("pointer-events-none", !ctx_r1.isLoggedIn())("select-none", !ctx_r1.isLoggedIn());
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("disabled", !ctx_r1.isLoggedIn());
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate2"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](8, 5, "CHECKOUT.QTY"), ": ", item_r5.quantity, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](8, 32, "CHECKOUT.DELIVERY_INFO"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](13, 34, "CHECKOUT.FIRST_NAME"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](18, 36, "CHECKOUT.LAST_NAME"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](23, 38, "CHECKOUT.STREET_ADDRESS"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](28, 40, "CHECKOUT.STREET_NUMBER"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](33, 42, "CHECKOUT.POSTAL_CODE"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](38, 44, "CHECKOUT.CITY"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](43, 46, "CHECKOUT.COUNTRY"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵclassProp"]("opacity-50", !ctx_r1.isLoggedIn())("pointer-events-none", !ctx_r1.isLoggedIn())("select-none", !ctx_r1.isLoggedIn());
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("disabled", !ctx_r1.isLoggedIn());
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", `€${item_r5.totalForQuantity}`, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](50, 48, "CHECKOUT.PAYMENT_METHOD"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](53, 50, "CHECKOUT.REDIRECT_NOTICE"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("disabled", !ctx_r1.isLoggedIn());
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate2"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](79, 52, "CHECKOUT.PROCEED_BTN"), " (", `€${ctx_r1.cart().totalPrice}`, ") ");
   }
 }
-function CheckoutComponent_Conditional_5_ForEmpty_90_Template(rf, ctx) {
+function CheckoutComponent_Conditional_5_For_11_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "li", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "li", 29)(1, "div", 72);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](2, "img", 73);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](3, "div")(4, "div", 74);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](6, "div", 75);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](8, "div", 76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
+  }
+  if (rf & 2) {
+    const item_r6 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("src", item_r6.beverageImgUrl, _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](item_r6.title);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](": ", item_r6.quantity, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", `€${item_r6.totalForQuantity}`, " ");
+  }
+}
+function CheckoutComponent_Conditional_5_ForEmpty_12_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "li", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](2, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
@@ -1500,199 +1676,58 @@ function CheckoutComponent_Conditional_5_ForEmpty_90_Template(rf, ctx) {
 }
 function CheckoutComponent_Conditional_5_Template(rf, ctx) {
   if (rf & 1) {
-    const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 5)(1, "div", 24)(2, "h1", 25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](4, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 5)(1, "div", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](2, CheckoutComponent_Conditional_5_Conditional_2_Template, 7, 6)(3, CheckoutComponent_Conditional_5_Conditional_3_Template, 80, 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](5, "form", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("ngSubmit", function CheckoutComponent_Conditional_5_Template_form_ngSubmit_5_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r3);
-      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresetView"](ctx_r1.onSubmit());
-    });
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](6, CheckoutComponent_Conditional_5_Conditional_6_Template, 11, 9, "div", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](7, "fieldset", 28)(8, "h2", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](10, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](4, "div", 25)(5, "div", 26)(6, "h2", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](8, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](11, "div", 16)(12, "div")(13, "label", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](15, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](9, "ul", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrepeaterCreate"](10, CheckoutComponent_Conditional_5_For_11_Template, 10, 4, "li", 29, _forTrack0, false, CheckoutComponent_Conditional_5_ForEmpty_12_Template, 3, 3, "li", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](16, "input", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](13, "div", 31)(14, "div", 32)(15, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](17, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](17, "div")(18, "label", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](18, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](20, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](21, "input", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](22, "div")(23, "label", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](25, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](26, "input", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](27, "div")(28, "label", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](30, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](31, "input", 34);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](32, "div")(33, "label", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](34);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](35, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](36, "input", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](37, "div")(38, "label", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](40, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](41, "input", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](42, "div")(43, "label", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](45, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](46, "input", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](47, "hr", 38);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](48, "fieldset", 28)(49, "div", 39)(50, "h2", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](51);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](52, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](53, "p", 41);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](55, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](56, "div", 42)(57, "label", 43)(58, "div", 44)(59, "input", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("change", function CheckoutComponent_Conditional_5_Template_input_change_59_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r3);
-      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresetView"](ctx_r1.selectedPaymentMethod.set("IDEAL"));
-    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](20, "div", 32)(21, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](23, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](60, "span", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](61, "iDEAL");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](24, "span", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](26, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](62, "span", 47);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](63, " EU Standard ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](64, "label", 48)(65, "div", 44)(66, "input", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("change", function CheckoutComponent_Conditional_5_Template_input_change_66_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r3);
-      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresetView"](ctx_r1.selectedPaymentMethod.set("PAYPAL"));
-    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](27, "hr", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](28, "div", 35)(29, "span", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](31, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](67, "span", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](68, "PayPal");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](69, "div", 50)(70, "span", 51);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](71, "Worldwide");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](72, "label", 48)(73, "div", 44)(74, "input", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("change", function CheckoutComponent_Conditional_5_Template_input_change_74_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r3);
-      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresetView"](ctx_r1.selectedPaymentMethod.set("BANCONTACT"));
-    });
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](75, "span", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](76, " Bancontact ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](77, "span", 41);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](78, "Belgium");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](79, "button", 53);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](80);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](81, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](82, "div", 54)(83, "div", 55)(84, "h2", 56);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](85);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](86, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](87, "ul", 57);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrepeaterCreate"](88, CheckoutComponent_Conditional_5_For_89_Template, 11, 7, "li", 58, _forTrack0, false, CheckoutComponent_Conditional_5_ForEmpty_90_Template, 3, 3, "li", 59);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](91, "div", 60)(92, "div", 61)(93, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](94);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](95, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](96, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](97);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](98, "div", 61)(99, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](100);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](101, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](102, "span", 62);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](103);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](104, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](105, "hr", 63);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](106, "div", 64)(107, "span", 65);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](108);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](109, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](110, "span", 66);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](111);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](32, "span", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](33);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()()()()()();
   }
   if (rf & 2) {
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](4, 38, "CHECKOUT.TITLE"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("formGroup", ctx_r1.shippingForm);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵconditional"](!ctx_r1.isLoggedIn() ? 6 : -1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵclassProp"]("opacity-50", !ctx_r1.isLoggedIn())("pointer-events-none", !ctx_r1.isLoggedIn())("select-none", !ctx_r1.isLoggedIn());
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("disabled", !ctx_r1.isLoggedIn());
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](10, 40, "CHECKOUT.DELIVERY_INFO"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵconditional"](ctx_r1.cart().status === "IN_CHECKOUT" ? 2 : 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](15, 42, "CHECKOUT.FIRST_NAME"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](20, 44, "CHECKOUT.LAST_NAME"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](25, 46, "CHECKOUT.STREET_ADDRESS"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](30, 48, "CHECKOUT.STREET_NUMBER"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](35, 50, "CHECKOUT.POSTAL_CODE"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](40, 52, "CHECKOUT.CITY"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](45, 54, "CHECKOUT.COUNTRY"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵclassProp"]("opacity-50", !ctx_r1.isLoggedIn())("pointer-events-none", !ctx_r1.isLoggedIn())("select-none", !ctx_r1.isLoggedIn());
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("disabled", !ctx_r1.isLoggedIn());
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](52, 56, "CHECKOUT.PAYMENT_METHOD"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](55, 58, "CHECKOUT.REDIRECT_NOTICE"), " ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("disabled", !ctx_r1.isLoggedIn());
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate2"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](81, 60, "CHECKOUT.PROCEED_BTN"), " (", `€${ctx_r1.cart().totalPrice}`, ") ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](86, 62, "CHECKOUT.ORDER_SUMMARY"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](8, 9, "CHECKOUT.ORDER_SUMMARY"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrepeater"](ctx_r1.cart().items);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](95, 64, "CHECKOUT.SUBTOTAL"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](17, 11, "CHECKOUT.SUBTOTAL"));
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](`€${ctx_r1.cart().totalPrice}`);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](101, 66, "CHECKOUT.SHIPPING"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](23, 13, "CHECKOUT.SHIPPING"));
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](104, 68, "CHECKOUT.FREE"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](26, 15, "CHECKOUT.FREE"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](109, 70, "CHECKOUT.TOTAL"), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind1"](31, 17, "CHECKOUT.TOTAL"), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](" ", `€${ctx_r1.cart().totalPrice}`, " ");
   }
@@ -1750,6 +1785,9 @@ class CheckoutComponent {
       }
     });
   }
+  continueWithPayment() {
+    // window.location.href = this.cart().paymentRedirectUrl; //TODO we need to implement the payment page and route
+  }
   onSubmit() {
     if (this.shippingForm.invalid) {
       this.shippingForm.markAllAsTouched();
@@ -1762,7 +1800,7 @@ class CheckoutComponent {
     };
     this.checkoutService.initiateCheckout(payload).subscribe({
       next: response => {
-        window.location.href = response.paymentUrl; //Maybe we have a page which indicates that the user is being redirected to the payment gateway. This is a better UX than just redirecting them without any indication.
+        window.location.href = response.paymentRedirectUrl; //Maybe we have a page which indicates that the user is being redirected to the payment gateway. This is a better UX than just redirecting them without any indication.
       },
       error: () => {
         this.toastService.show({
@@ -1780,12 +1818,12 @@ class CheckoutComponent {
     selectors: [["app-checkout"]],
     decls: 6,
     vars: 1,
-    consts: [[1, "block"], [1, "min-h-screen", "bg-gray-50", "py-12", "px-4", "sm:px-6", "lg:px-8"], [1, "max-w-6xl", "mx-auto"], [1, "max-w-md", "mx-auto", "bg-white", "border", "border-gray-200", "rounded-2xl", "p-8", "text-center", "shadow-sm"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8", "animate-pulse"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8"], [1, "w-16", "h-16", "bg-red-50", "text-red-600", "rounded-full", "flex", "items-center", "justify-center", "mx-auto", "mb-4"], ["fill", "none", "stroke", "currentColor", "stroke-width", "2", "viewBox", "0 0 24 24", 1, "w-8", "h-8"], ["stroke-linecap", "round", "stroke-linejoin", "round", "d", "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"], [1, "text-xl", "font-bold", "text-gray-900", "mb-2"], [1, "text-gray-600", "text-sm", "mb-6", "leading-relaxed"], [1, "bg-gray-900", "hover:bg-gray-800", "text-white", "font-medium", "text-sm", "py-2.5", "px-6", "rounded-xl", "transition", "shadow-sm", 3, "click"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-100", "shadow-sm", "space-y-8"], [1, "h-8", "bg-gray-200", "rounded-md", "w-1/4"], [1, "space-y-4"], [1, "h-4", "bg-gray-200", "rounded-md", "w-1/3"], [1, "grid", "grid-cols-1", "sm:grid-cols-2", "gap-4"], [1, "h-10", "bg-gray-200", "rounded-lg"], [1, "sm:col-span-2", "h-10", "bg-gray-200", "rounded-lg"], [1, "border-gray-100"], [1, "h-12", "bg-gray-200", "rounded-xl", "w-full", "mt-6"], [1, "lg:col-span-5", "order-1", "lg:order-2", "bg-white", "border", "border-gray-100", "rounded-2xl", "p-6", "shadow-sm", "space-y-6"], [1, "h-5", "bg-gray-200", "rounded-md", "w-1/3"], [1, "h-12", "bg-gray-200", "rounded-lg"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-200", "shadow-sm"], [1, "text-2xl", "font-bold", "text-gray-900", "mb-8"], [1, "space-y-8", 3, "ngSubmit", "formGroup"], [1, "bg-indigo-50/70", "border", "border-indigo-100", "rounded-xl", "p-4", "flex", "flex-col", "sm:flex-row", "items-start", "sm:items-center", "justify-between", "gap-4"], [1, "transition-opacity", "duration-200", 3, "disabled"], [1, "text-base", "font-semibold", "text-gray-800", "mb-4"], [1, "block", "text-xs", "font-medium", "text-gray-600", "uppercase", "tracking-wider", "mb-1"], ["formControlName", "firstName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "lastName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "streetName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "houseNumber", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "postcode", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "city", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "country", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], [1, "border-gray-200"], [1, "mb-1"], [1, "text-base", "font-semibold", "text-gray-800"], [1, "text-xs", "text-gray-500"], [1, "mt-4", "space-y-3"], [1, "flex", "items-center", "justify-between", "border", "border-indigo-600", "bg-indigo-50/40", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-indigo-50/60", "transition"], [1, "flex", "items-center", "gap-3"], ["type", "radio", "name", "payment_method", "value", "IDEAL", "checked", "", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed", 3, "change"], [1, "font-medium", "text-gray-800", "text-sm"], [1, "text-xs", "font-bold", "text-teal-600", "bg-teal-50", "px-2", "py-1", "rounded"], [1, "flex", "items-center", "justify-between", "border", "border-gray-200", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-gray-50", "transition"], ["type", "radio", "name", "payment_method", "value", "PAYPAL", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed", 3, "change"], [1, "flex", "gap-1", "text-gray-400"], [1, "text-xs"], ["type", "radio", "name", "payment_method", "value", "BANCONTACT", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed", 3, "change"], ["type", "submit", 1, "w-full", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-3.5", "px-4", "rounded-xl", "transition", "shadow-sm", "mt-8", "block", "text-center", "text-sm", "tracking-wide", "disabled:bg-gray-300", "disabled:cursor-not-allowed", "disabled:shadow-none", 3, "disabled"], [1, "lg:col-span-5", "order-1", "lg:order-2"], [1, "bg-white", "border", "border-gray-200", "rounded-2xl", "p-6", "shadow-sm", "sticky", "top-6"], [1, "text-lg", "font-bold", "text-gray-800", "mb-4"], [1, "divide-y", "divide-gray-100", "max-h-96", "overflow-y-auto", "pr-1"], [1, "flex", "items-center", "justify-between", "py-4"], [1, "py-6", "text-center", "text-gray-500", "text-sm"], [1, "border-t", "border-gray-100", "pt-4", "space-y-2.5", "text-sm"], [1, "flex", "justify-between", "text-gray-600"], [1, "text-green-600", "font-medium"], [1, "border-gray-100", "my-2"], [1, "flex", "justify-between", "items-center", "text-gray-900", "pt-1"], [1, "font-bold", "text-base"], [1, "text-xl", "font-extrabold", "text-gray-900"], [1, "font-semibold", "text-indigo-950", "text-sm"], [1, "text-xs", "text-indigo-700", "mt-0.5"], ["type", "button", 1, "shrink-0", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-2", "px-5", "rounded-lg", "transition", "shadow-sm", "text-sm", 3, "click"], [1, "flex", "items-center", "gap-4"], ["alt", "Beverage", 1, "w-12", "h-12", "rounded-lg", "object-cover", "border", "border-gray-100", "shadow-sm", 3, "src"], [1, "font-medium", "text-gray-800"], [1, "text-gray-500", "text-xs"], [1, "font-semibold", "text-gray-700"]],
+    consts: [[1, "block"], [1, "min-h-screen", "bg-gray-50", "py-12", "px-4", "sm:px-6", "lg:px-8"], [1, "max-w-6xl", "mx-auto"], [1, "max-w-md", "mx-auto", "bg-white", "border", "border-gray-200", "rounded-2xl", "p-8", "text-center", "shadow-sm"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8", "animate-pulse"], [1, "grid", "grid-cols-1", "lg:grid-cols-12", "gap-8"], [1, "w-16", "h-16", "bg-red-50", "text-red-600", "rounded-full", "flex", "items-center", "justify-center", "mx-auto", "mb-4"], ["fill", "none", "stroke", "currentColor", "stroke-width", "2", "viewBox", "0 0 24 24", 1, "w-8", "h-8"], ["stroke-linecap", "round", "stroke-linejoin", "round", "d", "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"], [1, "text-xl", "font-bold", "text-gray-900", "mb-2"], [1, "text-gray-600", "text-sm", "mb-6", "leading-relaxed"], [1, "bg-gray-900", "hover:bg-gray-800", "text-white", "font-medium", "text-sm", "py-2.5", "px-6", "rounded-xl", "transition", "shadow-sm", 3, "click"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-100", "shadow-sm", "space-y-8"], [1, "h-8", "bg-gray-200", "rounded-md", "w-1/4"], [1, "space-y-4"], [1, "h-4", "bg-gray-200", "rounded-md", "w-1/3"], [1, "grid", "grid-cols-1", "sm:grid-cols-2", "gap-4"], [1, "h-10", "bg-gray-200", "rounded-lg"], [1, "sm:col-span-2", "h-10", "bg-gray-200", "rounded-lg"], [1, "border-gray-100"], [1, "h-12", "bg-gray-200", "rounded-xl", "w-full", "mt-6"], [1, "lg:col-span-5", "order-1", "lg:order-2", "bg-white", "border", "border-gray-100", "rounded-2xl", "p-6", "shadow-sm", "space-y-6"], [1, "h-5", "bg-gray-200", "rounded-md", "w-1/3"], [1, "h-12", "bg-gray-200", "rounded-lg"], [1, "lg:col-span-7", "order-2", "lg:order-1", "bg-white", "p-6", "sm:p-8", "rounded-2xl", "border", "border-gray-200", "shadow-sm"], [1, "lg:col-span-5", "order-1", "lg:order-2"], [1, "bg-white", "border", "border-gray-200", "rounded-2xl", "p-6", "shadow-sm", "sticky", "top-6"], [1, "text-lg", "font-bold", "text-gray-800", "mb-4"], [1, "divide-y", "divide-gray-100", "max-h-96", "overflow-y-auto", "pr-1"], [1, "flex", "items-center", "justify-between", "py-4"], [1, "py-6", "text-center", "text-gray-500", "text-sm"], [1, "border-t", "border-gray-100", "pt-4", "space-y-2.5", "text-sm"], [1, "flex", "justify-between", "text-gray-600"], [1, "text-green-600", "font-medium"], [1, "border-gray-100", "my-2"], [1, "flex", "justify-between", "items-center", "text-gray-900", "pt-1"], [1, "font-bold", "text-base"], [1, "text-xl", "font-extrabold", "text-gray-900"], [1, "flex", "justify-center"], ["type", "button", 1, "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-3.5", "px-4", "rounded-xl", "transition", "shadow-sm", "mt-8", "text-sm", "tracking-wide", "disabled:bg-gray-300", "disabled:cursor-not-allowed", "disabled:shadow-none", 3, "click"], [1, "text-2xl", "font-bold", "text-gray-900", "mb-8"], [1, "space-y-8", 3, "ngSubmit", "formGroup"], [1, "bg-indigo-50/70", "border", "border-indigo-100", "rounded-xl", "p-4", "flex", "flex-col", "sm:flex-row", "items-start", "sm:items-center", "justify-between", "gap-4"], [1, "transition-opacity", "duration-200", 3, "disabled"], [1, "text-base", "font-semibold", "text-gray-800", "mb-4"], [1, "block", "text-xs", "font-medium", "text-gray-600", "uppercase", "tracking-wider", "mb-1"], ["formControlName", "firstName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "lastName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "streetName", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "houseNumber", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "postcode", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "city", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], ["formControlName", "country", "type", "text", 1, "w-full", "bg-gray-50", "border", "border-gray-300", "rounded-lg", "px-3", "py-2", "text-gray-800", "focus:outline-none", "focus:border-indigo-500", "text-sm", "transition", "disabled:bg-gray-100", "disabled:cursor-not-allowed"], [1, "border-gray-200"], [1, "mb-1"], [1, "text-base", "font-semibold", "text-gray-800"], [1, "text-xs", "text-gray-500"], [1, "mt-4", "space-y-3"], [1, "flex", "items-center", "justify-between", "border", "border-indigo-600", "bg-indigo-50/40", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-indigo-50/60", "transition"], [1, "flex", "items-center", "gap-3"], ["type", "radio", "name", "payment_method", "value", "IDEAL", "checked", "", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed", 3, "change"], [1, "font-medium", "text-gray-800", "text-sm"], [1, "text-xs", "font-bold", "text-teal-600", "bg-teal-50", "px-2", "py-1", "rounded"], [1, "flex", "items-center", "justify-between", "border", "border-gray-200", "rounded-xl", "p-4", "cursor-pointer", "hover:bg-gray-50", "transition"], ["type", "radio", "name", "payment_method", "value", "PAYPAL", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed", 3, "change"], [1, "flex", "gap-1", "text-gray-400"], [1, "text-xs"], ["type", "radio", "name", "payment_method", "value", "BANCONTACT", 1, "w-4", "h-4", "text-indigo-600", "focus:ring-indigo-500", "disabled:cursor-not-allowed", 3, "change"], ["type", "submit", 1, "w-full", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-3.5", "px-4", "rounded-xl", "transition", "shadow-sm", "mt-8", "block", "text-center", "text-sm", "tracking-wide", "disabled:bg-gray-300", "disabled:cursor-not-allowed", "disabled:shadow-none", 3, "disabled"], [1, "font-semibold", "text-indigo-950", "text-sm"], [1, "text-xs", "text-indigo-700", "mt-0.5"], ["type", "button", 1, "shrink-0", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-2", "px-5", "rounded-lg", "transition", "shadow-sm", "text-sm", 3, "click"], [1, "flex", "items-center", "gap-4"], ["alt", "Beverage", 1, "w-12", "h-12", "rounded-lg", "object-cover", "border", "border-gray-100", "shadow-sm", 3, "src"], [1, "font-medium", "text-gray-800"], [1, "text-gray-500", "text-xs"], [1, "font-semibold", "text-gray-700"]],
     template: function CheckoutComponent_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](0, "app-header", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](1, "div", 1)(2, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](3, CheckoutComponent_Conditional_3_Template, 13, 9, "div", 3)(4, CheckoutComponent_Conditional_4_Template, 17, 0, "div", 4)(5, CheckoutComponent_Conditional_5_Template, 112, 72, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](3, CheckoutComponent_Conditional_3_Template, 13, 9, "div", 3)(4, CheckoutComponent_Conditional_4_Template, 17, 0, "div", 4)(5, CheckoutComponent_Conditional_5_Template, 34, 19, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
       }
       if (rf & 2) {
@@ -1937,6 +1975,23 @@ class UserStore extends (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.signalStor
 })), (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.withHooks)((store, userService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.inject)(_user_user_service__WEBPACK_IMPORTED_MODULE_0__.UserService)) => ({
   onInit: () => {
     const userState = JSON.parse(localStorage.getItem(USER_STATE_STORAGE_KEY) || '{}');
+    const generateAndPersistGuest = () => {
+      userService.generateGuestUser().subscribe({
+        next: user => {
+          (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, user, {
+            hasError: false,
+            isLoading: false
+          });
+          persistUserToStorage(user);
+        },
+        error: () => {
+          (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, {
+            hasError: true,
+            isLoading: false
+          });
+        }
+      });
+    };
     if (userState.userType === _model_user_interface__WEBPACK_IMPORTED_MODULE_1__.UserType.GUEST) {
       (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, userState, {
         hasError: false,
@@ -1953,18 +2008,13 @@ class UserStore extends (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.signalStor
             isLoading: false
           });
         },
-        error: () => localStorage.removeItem(USER_STATE_STORAGE_KEY)
-      });
-    } else {
-      userService.generateGuestUser().subscribe({
-        next: user => {
-          (0,_ngrx_signals__WEBPACK_IMPORTED_MODULE_2__.patchState)(store, user, {
-            hasError: false,
-            isLoading: false
-          });
-          persistUserToStorage(user);
+        error: () => {
+          localStorage.removeItem(USER_STATE_STORAGE_KEY);
+          generateAndPersistGuest();
         }
       });
+    } else {
+      generateAndPersistGuest();
     }
   }
 }))) {
@@ -2304,7 +2354,7 @@ class HeaderComponent {
     selectors: [["app-header"]],
     decls: 16,
     vars: 4,
-    consts: [[1, "sticky", "top-0", "z-50", "bg-white", "shadow-md"], [1, "max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8"], [1, "flex", "justify-between", "items-center", "h-16"], [1, "flex-shrink-0", "text-xl", "font-bold", "text-red-700"], ["href", "/"], ["src", "/logo.png", 1, "logo-img"], [1, "hidden", "md:flex", "space-x-8", "text-gray-700", "font-medium"], ["routerLinkActive", "active", 1, "hover:text-red-700", "transition", 3, "routerLink"], [1, "md:hidden", "flex", "space-x-8"], ["type", "button", 1, "text-gray-700", "focus:outline-none", 3, "click"], ["xmlns", "http://www.w3.org/2000/svg", "fill", "none", "viewBox", "0 0 24 24", "stroke", "currentColor", 1, "h-6", "w-6"], [1, "md:hidden", "px-4", "pb-4", "space-y-2", "bg-white", "border-t", "border-gray-200"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M4 6h16M4 12h16M4 18h16"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M6 18L18 6M6 6l12 12"], ["href", "/beer", 1, "block", "text-gray-700", "hover:text-red-700"], ["href", "/wine", 1, "block", "text-gray-700", "hover:text-red-700"], ["href", "/cider", 1, "block", "text-gray-700", "hover:text-red-700"]],
+    consts: [[1, "sticky", "top-0", "z-50", "bg-white", "border", "border-gray-200", "shadow-none"], [1, "max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8"], [1, "flex", "justify-between", "items-center", "h-16"], [1, "flex-shrink-0", "text-xl", "font-bold", "text-red-700"], ["href", "/"], ["src", "/logo.png", 1, "logo-img"], [1, "hidden", "md:flex", "space-x-8", "text-gray-700", "font-medium"], ["routerLinkActive", "active", 1, "hover:text-red-700", "transition", 3, "routerLink"], [1, "md:hidden", "flex", "space-x-8"], ["type", "button", 1, "text-gray-700", "focus:outline-none", 3, "click"], ["xmlns", "http://www.w3.org/2000/svg", "fill", "none", "viewBox", "0 0 24 24", "stroke", "currentColor", 1, "h-6", "w-6"], [1, "md:hidden", "px-4", "pb-4", "space-y-2", "bg-white", "border-t", "border-gray-200"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M4 6h16M4 12h16M4 18h16"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M6 18L18 6M6 6l12 12"], ["href", "/beer", 1, "block", "text-gray-700", "hover:text-red-700"], ["href", "/wine", 1, "block", "text-gray-700", "hover:text-red-700"], ["href", "/cider", 1, "block", "text-gray-700", "hover:text-red-700"]],
     template: function HeaderComponent_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "header", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "a", 4);
@@ -2345,6 +2395,29 @@ class HeaderComponent {
 
 /***/ }),
 
+/***/ 6189:
+/*!*************************************************************!*\
+  !*** ./apps/smwine-fe-app/src/app/models/cart.interface.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CartStatus: () => (/* binding */ CartStatus)
+/* harmony export */ });
+var CartStatus;
+(function (CartStatus) {
+  CartStatus["ACTIVE"] = "ACTIVE";
+  CartStatus["ABANDONED"] = "ABANDONED";
+  CartStatus["IN_CHECKOUT"] = "IN_CHECKOUT";
+  CartStatus["CONVERTED"] = "CONVERTED";
+  CartStatus["EXPIRED"] = "EXPIRED";
+  CartStatus["MERGED"] = "MERGED";
+  CartStatus["NONE"] = "NONE";
+})(CartStatus || (CartStatus = {}));
+
+/***/ }),
+
 /***/ 6736:
 /*!****************************************************************************************!*\
   !*** ./apps/smwine-fe-app/src/app/components/shopping-cart/shopping-cart.component.ts ***!
@@ -2355,81 +2428,94 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ShoppingCartComponent: () => (/* binding */ ShoppingCartComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 2596);
 /* harmony import */ var _services_cart_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/cart.service */ 9507);
+/* harmony import */ var _models_cart_interface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../models/cart.interface */ 6189);
+
+
 
 
 
 const _forTrack0 = ($index, $item) => $item.beverageId;
 function ShoppingCartComponent_Conditional_4_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "span", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
   }
   if (rf & 2) {
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r0.cart().items.length);
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r0.cart().items.length);
   }
 }
 function ShoppingCartComponent_Conditional_5_For_5_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "li", 8)(1, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "img", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div")(4, "div", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "li", 8)(1, "div", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "img", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "div")(4, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
     const item_r2 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("src", item_r2.beverageImgUrl, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeUrl"]);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](item_r2.title);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](": ", item_r2.quantity, "");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", `€${item_r2.totalForQuantity}`, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("src", item_r2.beverageImgUrl, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r2.title);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](": ", item_r2.quantity, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", `€${item_r2.totalForQuantity}`, " ");
   }
 }
 function ShoppingCartComponent_Conditional_5_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 5)(1, "div", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "Your Cart");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "ul", 7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrepeaterCreate"](4, ShoppingCartComponent_Conditional_5_For_5_Template, 10, 4, "li", 8, _forTrack0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div", 9)(7, "span", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, "Total:");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "span", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "div", 12)(12, "a", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, " Checkout ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 5)(1, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2, "Your Cart");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "ul", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrepeaterCreate"](4, ShoppingCartComponent_Conditional_5_For_5_Template, 10, 4, "li", 8, _forTrack0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "div", 9)(7, "span", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](8, "Total:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](9, "span", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "div", 12)(12, "a", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](13, " Checkout ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
   }
   if (rf & 2) {
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrepeater"](ctx_r0.cart().items);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](`€${ctx_r0.cart().totalPrice}`);
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrepeater"](ctx_r0.cart().items);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](`€${ctx_r0.cart().totalPrice}`);
   }
 }
 class ShoppingCartComponent {
-  cartService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_services_cart_service__WEBPACK_IMPORTED_MODULE_0__.CartService);
+  cartService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_services_cart_service__WEBPACK_IMPORTED_MODULE_0__.CartService);
+  router = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_angular_router__WEBPACK_IMPORTED_MODULE_3__.Router);
   showCart = false;
   cart = this.cartService.cart;
   //TODO on mobile we need to show the cart at the top of the page.
+  constructor() {
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.effect)(() => {
+      if (this.cart() && this.cart().status === _models_cart_interface__WEBPACK_IMPORTED_MODULE_1__.CartStatus.IN_CHECKOUT) {
+        //redirect to checkout page if the cart is in checkout status
+        this.router.navigate(['/checkout']);
+      }
+    });
+  }
   addToCart(beverageId, quantity) {
     this.cartService.addToCart({
       beverageId,
@@ -2440,7 +2526,7 @@ class ShoppingCartComponent {
   static ɵfac = function ShoppingCartComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || ShoppingCartComponent)();
   };
-  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+  static ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
     type: ShoppingCartComponent,
     selectors: [["app-shopping-cart"]],
     decls: 6,
@@ -2448,24 +2534,24 @@ class ShoppingCartComponent {
     consts: [[1, "relative"], ["aria-label", "Cart", 1, "relative", "p-2", "rounded-full", "hover:bg-gray-100", "transition", 3, "click"], ["fill", "none", "stroke", "currentColor", "stroke-width", "2", "viewBox", "0 0 24 24", "xmlns", "http://www.w3.org/2000/svg", 1, "w-6", "h-6", "text-gray-700"], ["stroke-linecap", "round", "stroke-linejoin", "round", "d", "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.2M16 17a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"], [1, "absolute", "-top-1", "-right-1", "bg-red-600", "text-white", "text-xs", "font-semibold", "rounded-full", "px-1.5", "py-0.5"], [1, "absolute", "right-0", "mt-2", "w-80", "bg-white", "border", "border-gray-200", "rounded-xl", "shadow-lg", "z-50", "text-sm", "divide-y", "divide-gray-100"], [1, "p-4", "font-medium", "text-gray-700"], [1, "max-h-60", "overflow-y-auto"], [1, "flex", "items-center", "justify-between", "px-4", "py-3", "hover:bg-gray-50"], [1, "p-4", "flex", "justify-between", "items-center"], [1, "font-semibold", "text-gray-800"], [1, "text-lg", "font-bold", "text-gray-900"], [1, "p-4"], ["href", "/checkout", 1, "block", "text-center", "bg-indigo-600", "hover:bg-indigo-700", "text-white", "font-medium", "py-2", "rounded-lg", "transition"], [1, "flex", "items-center", "gap-3"], ["alt", "Item", 1, "w-10", "h-10", "rounded-md", "object-cover", 3, "src"], [1, "font-medium", "text-gray-800"], [1, "text-gray-500", "text-xs"], [1, "font-semibold", "text-gray-700"]],
     template: function ShoppingCartComponent_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0)(1, "button", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ShoppingCartComponent_Template_button_click_1_listener() {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0)(1, "button", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ShoppingCartComponent_Template_button_click_1_listener() {
           return ctx.showCart = !ctx.showCart;
         });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnamespaceSVG"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "svg", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](3, "path", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, ShoppingCartComponent_Conditional_4_Template, 2, 1, "span", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](5, ShoppingCartComponent_Conditional_5_Template, 14, 1, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnamespaceSVG"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "svg", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](3, "path", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](4, ShoppingCartComponent_Conditional_4_Template, 2, 1, "span", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](5, ShoppingCartComponent_Conditional_5_Template, 14, 1, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
       }
       if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵconditional"](ctx.cart() && ctx.cart().items.length > 0 ? 4 : -1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵconditional"](ctx.showCart ? 5 : -1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵconditional"](ctx.cart() && ctx.cart().items.length > 0 ? 4 : -1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵconditional"](ctx.showCart ? 5 : -1);
       }
     },
     styles: ["/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzaG9wcGluZy1jYXJ0LmNvbXBvbmVudC5zY3NzIn0= */\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL2FwcHMvc213aW5lLWZlLWFwcC9zcmMvYXBwL2NvbXBvbmVudHMvc2hvcHBpbmctY2FydC9zaG9wcGluZy1jYXJ0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQSw0S0FBNEsiLCJzb3VyY2VSb290IjoiIn0= */"]
@@ -3094,10 +3180,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   CartService: () => (/* binding */ CartService)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 9648);
-/* harmony import */ var _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @smwine-fe-app/shared */ 925);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ 9475);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 9648);
+/* harmony import */ var _models_cart_interface__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/cart.interface */ 6189);
+/* harmony import */ var _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @smwine-fe-app/shared */ 925);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ 9475);
+
 
 
 
@@ -3106,21 +3194,22 @@ __webpack_require__.r(__webpack_exports__);
 
 class CartService {
   API_BASE_URL = '/api/v1/cart';
-  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.UserStore);
-  http = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient);
-  toastService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.inject)(_smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.ToastService);
-  cartSignal = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)({
+  userStore = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_1__.UserStore);
+  http = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient);
+  toastService = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.inject)(_smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_1__.ToastService);
+  cartSignal = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.signal)({
     items: [],
     totalPrice: 0,
-    id: -1
+    id: -1,
+    status: _models_cart_interface__WEBPACK_IMPORTED_MODULE_0__.CartStatus.NONE
   });
-  _isLoading = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)(true); //TODO these might not be used including hasError.
-  _hasError = (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.signal)(false);
+  _isLoading = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.signal)(true); //TODO these might not be used including hasError.
+  _hasError = (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.signal)(false);
   cart = this.cartSignal.asReadonly();
   isLoading = this._isLoading.asReadonly();
   hasError = this._hasError.asReadonly();
   constructor() {
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.effect)(() => {
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.effect)(() => {
       const currentUser = this.userStore.currentUser();
       if (currentUser && currentUser.uuid) {
         this.loadCart();
@@ -3147,7 +3236,7 @@ class CartService {
       },
       error: () => {
         this.toastService.show({
-          type: _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.ToastType.ERROR,
+          type: _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_1__.ToastType.ERROR,
           title: 'Failed to add item to cart. Please try again. Or refresh the page.' //TODO we need translation for this message
         });
       }
@@ -3155,13 +3244,13 @@ class CartService {
   }
   loadCart() {
     this._isLoading.set(true);
-    this.http.get(`${this.API_BASE_URL}`).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_3__.finalize)(() => this._isLoading.set(false))).subscribe({
+    this.http.get(`${this.API_BASE_URL}`).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_4__.finalize)(() => this._isLoading.set(false))).subscribe({
       next: cartItems => {
         this.cartSignal.set(cartItems);
       },
       error: () => {
         this.toastService.show({
-          type: _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_0__.ToastType.ERROR,
+          type: _smwine_fe_app_shared__WEBPACK_IMPORTED_MODULE_1__.ToastType.ERROR,
           title: 'Failed to load cart. You can try refreshing the page.' //TODO we need translation for this message
         });
       }
@@ -3170,7 +3259,7 @@ class CartService {
   static ɵfac = function CartService_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || CartService)();
   };
-  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+  static ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
     token: CartService,
     factory: CartService.ɵfac,
     providedIn: 'root'
