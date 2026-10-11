@@ -1,5 +1,5 @@
 {
-  "CHECKOUT.CHECKOUT_IN_PROGRESS_TEXT": "Your checkout session is in progress. Please complete your payment to finalize your order.",
+  "CHECKOUT.CHECKOUT_IN_PROGRESS_TEXT": "You have a pending checkout session in progress. Please complete your payment to finalize your order.",
   "CHECKOUT.CITY": "City",
   "CHECKOUT.CONTINUE_WITH_PAYMENT": "Continue with Payment",
   "CHECKOUT.COUNTRY": "Country",

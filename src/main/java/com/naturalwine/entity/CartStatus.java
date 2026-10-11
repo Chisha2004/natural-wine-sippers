@@ -6,6 +6,5 @@ public enum CartStatus {
     IN_CHECKOUT,
     CONVERTED,
     EXPIRED,
-    MERGED,
     NONE
 }

@@ -2,16 +2,14 @@ package com.naturalwine.service;
 
 import com.naturalwine.dto.CartItemDto;
 import com.naturalwine.dto.CartResponse;
-import com.naturalwine.entity.Beverage;
-import com.naturalwine.entity.Cart;
-import com.naturalwine.entity.CartItem;
-import com.naturalwine.entity.CartStatus;
+import com.naturalwine.entity.*;
 import com.naturalwine.exception.BeverageNotFoundException;
 import com.naturalwine.exception.CartAccessDeniedException;
 import com.naturalwine.exception.CartNotFoundException;
 import com.naturalwine.exception.InsufficientStockException;
 import com.naturalwine.repository.BeverageRepository;
 import com.naturalwine.repository.CartRepository;
+import com.naturalwine.repository.OrderRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -27,10 +25,12 @@ import java.util.stream.Collectors;
 public class CartService {
     private final CartRepository cartRepository;
     private final BeverageRepository beverageRepository;
+    private final OrderRepository orderRepository;
 
-    public CartService(CartRepository cartRepository, BeverageRepository beverageRepository) {
+    public CartService(CartRepository cartRepository, BeverageRepository beverageRepository, OrderRepository orderRepository) {
         this.cartRepository = cartRepository;
         this.beverageRepository = beverageRepository;
+        this.orderRepository = orderRepository;
     }
 
     @Transactional
@@ -136,6 +136,8 @@ public class CartService {
     public CartResponse getCartResponse(final UUID userUuid) {
         final Cart cart = getCart(userUuid);
 
+        Order order = orderRepository.findByCartId(cart.getId()).orElse(null);
+
         return CartResponse.builder()
                 .id(cart.getId())
                 .items(cart.getItems()
@@ -144,32 +146,30 @@ public class CartService {
                         .collect(Collectors.toList()))
                 .totalPrice(cart.getTotalPrice())
                 .status(cart.getStatus())
+                .orderId(order != null? order.getId() : null)
                 .build();
     }
 
     @Transactional
     public void migrateGuestCartToRegisteredUser(final UUID guestUuid, final UUID registeredUserUuid) {
-        final Optional<Cart> guestCartOpt = cartRepository.findByUserUuid(guestUuid);
+        final Cart guestCart = cartRepository.findByUserUuid(guestUuid).orElse(null);
 
-        if (guestCartOpt.isEmpty()) {
+        if (guestCart == null) {
             return;
         }
 
-        final Cart guestCart = guestCartOpt.get();
-        final Optional<Cart> userCartOpt = cartRepository.findByUserUuid(registeredUserUuid);
+        final Cart userCart = cartRepository.findByUserUuid(registeredUserUuid).orElse(null);
 
-        if (userCartOpt.isPresent()) {
-            final Cart userCart = userCartOpt.get();
-
+        if(userCart == null) {
+            // Simple ownership transfer
+            guestCart.setUserUuid(registeredUserUuid);
+            cartRepository.saveAndFlush(guestCart);
+        } else if(userCart.getStatus() == CartStatus.ACTIVE) { //If cart is not active do not add to it
             mergeCartItems(guestCart, userCart);
 
             // Remove old guest cart
             cartRepository.delete(guestCart);
             cartRepository.saveAndFlush(userCart);
-        } else {
-            // Simple ownership transfer
-            guestCart.setUserUuid(registeredUserUuid);
-            cartRepository.saveAndFlush(guestCart);
         }
     }
 

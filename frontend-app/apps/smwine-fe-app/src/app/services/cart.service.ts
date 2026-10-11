@@ -20,6 +20,7 @@ export class CartService {
     totalPrice: 0,
     id: -1,
     status: CartStatus.NONE,
+    orderId: -1,
   });
   private readonly _isLoading = signal(true); //TODO these might not be used including hasError.
   private readonly _hasError = signal(false);

@@ -13,7 +13,8 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { ShippingAddress } from '../../models/shipping-address.interface';
 import { CartService } from '../../services/cart.service';
 import { CheckoutService } from '../../services/checkout/checkout.service';
-import { CheckoutRequest } from '../../models/checkout.interface';
+import { CheckoutRequest, OrderStatus } from '../../models/checkout.interface';
+import { APP_ROUTES } from '../../app.routes.enum';
 
 @Component({
   selector: 'app-checkout',
@@ -78,13 +79,22 @@ export class CheckoutComponent {
   }
 
   redirectToLogin(): void {
-    this.router.navigate(['/login'], {
+    this.router.navigate([APP_ROUTES.LOGIN], {
       queryParams: { rd: RouteCode.CHECKOUT },
     });
   }
 
-  continueWithPayment(): void {
-    // window.location.href = this.cart().paymentRedirectUrl; //TODO we need to implement the payment page and route
+  checkStatusAndContinueWithoutPayment(): void {
+    this.checkoutService
+      .orderStatus(this.cart().orderId)
+      .pipe(take(1))
+      .subscribe((order) => {
+        if (order && order.status === OrderStatus.AWAITING_PAYMENT) {
+          window.location.href = order.paymentRedirectUrl;
+        } else {
+          this.router.navigate([APP_ROUTES.ORDERS, order.orderId]);
+        }
+      });
   }
 
   onSubmit(): void {

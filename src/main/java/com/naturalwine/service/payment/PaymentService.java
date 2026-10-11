@@ -105,4 +105,15 @@ public class PaymentService {
 
         return response.redirectUrl();
     }
+
+    public List<Transaction> getTransactionsForOrder(Long orderId) {
+        List<Transaction> transactions = transactionService.getTransactionsForOrder(orderId);
+
+        //return the list in desc
+        if(transactions != null && !transactions.isEmpty()) {
+            transactions.sort(Comparator.comparing(Transaction::getDoe).reversed());
+        }
+
+        return transactions;
+    }
 }

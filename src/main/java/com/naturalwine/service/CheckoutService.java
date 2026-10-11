@@ -85,7 +85,7 @@ public class CheckoutService {
         //TODO do not start a new transaction without checking existing. If payment method has changed from previous then start new or if no transaction already exists in pending
         //TODO payment method should be used at transaction level
 
-        //TODO we need a thread executor which should be checking on transactions and update completed payments.
+        //TODO we need a thread executor which should be checking on transactions and update completed or canceled payments.
 
         setDefaultAddressIfNotSet(userUuid, request.shipmentAddress());
         //TODO once an order is fully paid we should delete or empty the cart and can be reused for the future
@@ -97,17 +97,33 @@ public class CheckoutService {
 
         Order order = orderRepository.findById(orderId).orElseThrow(() -> new OrderNotFoundException(orderId));
         Cart cart = cartService.getCartById(order.getCartId(), userUuid);
+        CheckoutResponseDto.CheckoutResponseDtoBuilder checkoutResponseDtoBuilder = CheckoutResponseDto.builder()
+                .orderId(order.getId());
 
         if(order.getStatus() == OrderStatus.AWAITING_PAYMENT) {
             //TODO Check for transaction and query payment gateway for the status then update order if status has changed as well as update cart
+            final List<Transaction> transactions = paymentService.getTransactionsForOrder(order.getId());
 
+            if(transactions.stream().anyMatch(x -> x.getStatus() == TransactionStatus.SUCCESS)) {
+                finalizeCartForPaidOrder(cart, order);
+            } else {
+              //Follow an active transaction. User should cancel if they do not want to proceed then we can update this once we poll the given transaction
+                Transaction transaction = transactions.stream()
+                        .filter( t -> t.getStatus() == TransactionStatus.PENDING)
+                        .findFirst()
+                        .orElse(null);
+
+                //TODO what happens if transaction is null but awaiting payment?? should we trigger new payment? yes
+                if(transaction != null) {
+                    final String redirectUrl = paymentService.generatePaymentUrl(order.getPaymentMethod(), order);
+                    checkoutResponseDtoBuilder.paymentRedirectUrl(redirectUrl);
+                } else {
+                    checkoutResponseDtoBuilder.paymentRedirectUrl(transaction.getRedirectUrl());
+                }
+            }
         }
 
-        //else return
-        return CheckoutResponseDto.builder()
-                .orderId(order.getId())
-                .orderStatus(order.getStatus()).build();
-
+        return checkoutResponseDtoBuilder.orderStatus(order.getStatus()).build();
     }
 
     private List<OrderItem> createOrderItems(Cart cart) {
@@ -147,11 +163,6 @@ public class CheckoutService {
               .orElse(null);
     }
 
-    @Transactional
-    public void finalizeCartForPaidOrder(UUID userUuid, Cart cart, final Order order) {
-        //TODO need to clear cart or delete cart and cartItems
-    }
-
     private void setDefaultAddressIfNotSet(UUID userUuid, ShippingAddressDto shipmentAddress) {
         if(getDefaultShippingAddress(userUuid) == null) {
             DefaultShippingAddress defaultShippingAddress = DefaultShippingAddress.builder()
@@ -167,5 +178,18 @@ public class CheckoutService {
 
             defaultShippingAddressRepo.save(defaultShippingAddress);
         }
+    }
+
+    @Transactional
+    private void finalizeCartForPaidOrder(Cart cart, Order order) {
+        order.setStatus(OrderStatus.PAID);
+        orderRepository.save(order);
+
+        //TODO once order is paid it needs to move to processing. This makes PAID status to be a little redundant so transaction will always keep the try status of payment
+
+        cartService.updateStatus(cart, CartStatus.CONVERTED);
+        //TODO cleanup all cart items and delete converted cart after a month or less. for now we just make it as converted
+        //TODO if a cart is converted then when load cart is called return a new cart or empty no cart yet so new one is created. Also when filtering the do not consider converted.
+        // Although this could create another problem when looking for active cart or in checkout
     }
 }

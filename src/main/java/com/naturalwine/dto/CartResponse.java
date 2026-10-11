@@ -10,5 +10,7 @@ import java.util.List;
 public record CartResponse(Long id,
                            List<CartItemDto> items,
                            BigDecimal totalPrice,
-                           CartStatus status) {
+                           CartStatus status,
+                           //orderId is mostly null unless cart is in checkout process then it would have an orderId
+                           Long orderId) {
 }

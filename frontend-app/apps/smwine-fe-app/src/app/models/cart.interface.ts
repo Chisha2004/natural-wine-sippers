@@ -22,4 +22,5 @@ export interface Cart {
   items: CartItem[];
   totalPrice: number;
   status: CartStatus;
+  orderId: number;
 }

@@ -27,4 +27,10 @@ export class CheckoutService {
       payload
     );
   }
+
+  orderStatus(orderId: number): Observable<CheckoutResponse> {
+    return this.http.get<CheckoutResponse>(
+      `${this.API_BASE_URL}/status/${orderId}`
+    );
+  }
 }
