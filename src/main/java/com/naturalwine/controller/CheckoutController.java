@@ -35,7 +35,7 @@ public class CheckoutController {
     public ResponseEntity<CheckoutResponseDto> status(@PathVariable Long orderId) {
         final UUID userUuid = SecurityUtil.getCurrentUserUuid();
 
-        CheckoutResponseDto response = checkoutService.checkStatus(userUuid, orderId);
+        CheckoutResponseDto response = checkoutService.checkStatusOrStartNewPayment(userUuid, orderId);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

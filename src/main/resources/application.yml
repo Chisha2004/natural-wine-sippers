@@ -21,6 +21,12 @@ spring:
       initialize-schema: always
       platform: mysql
 
+paypal:
+  url: https://api-m.sandbox.paypal.com
+  client-id: AQe68GpKNCI5DxNun4k3w5lb_Z6M1IVeQaBtBhfWyAItch-ACdr0FszwQK_b5fPoaI0eywtVIaFgloTe
+  client-secret: EB2M4eiPjqMUrSFfABE1tNmsO4xXrjd3jTfkbh4bzYtkIHyak09EZZh4Ybm-NyXsf8-XU9BvXMzz_wIu
+  environment: sandbox
+
 jwt:
   secret: "Z2FtYWwyMzQ1Njc4OTBhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5emFiY2RlZmdoaWprbG1ub3A="
   expiration: 86400000

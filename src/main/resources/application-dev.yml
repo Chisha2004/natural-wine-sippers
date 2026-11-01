@@ -8,3 +8,8 @@ spring:
 devtools:
   restart:
     additional-paths: src/main/resources/static
+
+paypal:
+  url:
+  client-id:
+  client-secret:

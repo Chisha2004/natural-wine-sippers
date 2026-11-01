@@ -1,0 +1,35 @@
+{
+  "create_time" : "2026-11-01T19:58:33Z",
+  "id" : "4T267686TF3936638",
+  "intent" : "CAPTURE",
+  "purchase_units" : [ {
+    "reference_id" : "ORD-20261010-MVZ9",
+    "amount" : {
+      "currency_code" : "EUR",
+      "value" : "187.99",
+      "breakdown" : { }
+    },
+    "payee" : {
+      "email_address" : "sb-uh3rj53655187@business.example.com",
+      "merchant_id" : "ZQ9247SJ7BXAW"
+    }
+  } ],
+  "status" : "CREATED",
+  "links" : [ {
+    "href" : "https://api.sandbox.paypal.com/v2/checkout/orders/4T267686TF3936638",
+    "rel" : "self",
+    "method" : "GET"
+  }, {
+    "href" : "https://www.sandbox.paypal.com/checkoutnow?token=4T267686TF3936638",
+    "rel" : "approve",
+    "method" : "GET"
+  }, {
+    "href" : "https://api.sandbox.paypal.com/v2/checkout/orders/4T267686TF3936638",
+    "rel" : "update",
+    "method" : "PATCH"
+  }, {
+    "href" : "https://api.sandbox.paypal.com/v2/checkout/orders/4T267686TF3936638/capture",
+    "rel" : "capture",
+    "method" : "POST"
+  } ]
+}

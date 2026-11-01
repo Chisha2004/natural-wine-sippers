@@ -15,8 +15,8 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Service
-@Profile({"dev", "local"})
+//@Service
+//@Profile({"dev", "local"})
 public class MockPaypalPaymentGateway implements PaymentGateway {
     // In-memory store: Order ID -> Active Transaction Session
     private final Map<Long, DummyTransaction> activeTransactions = new ConcurrentHashMap<>();

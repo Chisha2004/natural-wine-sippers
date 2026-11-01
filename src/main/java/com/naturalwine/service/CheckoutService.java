@@ -93,7 +93,7 @@ public class CheckoutService {
         return new CheckoutResponseDto(url, order.getId(), order.getStatus());
     }
 
-    public CheckoutResponseDto checkStatus(final UUID userUuid, final Long orderId) {
+    public CheckoutResponseDto checkStatusOrStartNewPayment(final UUID userUuid, final Long orderId) {
 
         Order order = orderRepository.findById(orderId).orElseThrow(() -> new OrderNotFoundException(orderId));
         Cart cart = cartService.getCartById(order.getCartId(), userUuid);
@@ -114,11 +114,12 @@ public class CheckoutService {
                         .orElse(null);
 
                 //TODO what happens if transaction is null but awaiting payment?? should we trigger new payment? yes
+                //TODO we need a webhook api where payments that a
                 if(transaction != null) {
+                    checkoutResponseDtoBuilder.paymentRedirectUrl(transaction.getRedirectUrl());
+                } else {
                     final String redirectUrl = paymentService.generatePaymentUrl(order.getPaymentMethod(), order);
                     checkoutResponseDtoBuilder.paymentRedirectUrl(redirectUrl);
-                } else {
-                    checkoutResponseDtoBuilder.paymentRedirectUrl(transaction.getRedirectUrl());
                 }
             }
         }

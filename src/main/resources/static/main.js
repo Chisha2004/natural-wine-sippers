@@ -1,29 +1,6 @@
 "use strict";
 (self["webpackChunksmwine_fe_app"] = self["webpackChunksmwine_fe_app"] || []).push([["main"],{
 
-/***/ 171:
-/*!*****************************************************************!*\
-  !*** ./apps/smwine-fe-app/src/app/models/checkout.interface.ts ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   OrderStatus: () => (/* binding */ OrderStatus)
-/* harmony export */ });
-var OrderStatus;
-(function (OrderStatus) {
-  OrderStatus[OrderStatus["AWAITING_PAYMENT"] = 0] = "AWAITING_PAYMENT";
-  OrderStatus[OrderStatus["PAID"] = 1] = "PAID";
-  OrderStatus[OrderStatus["PROCESSING"] = 2] = "PROCESSING";
-  OrderStatus[OrderStatus["SHIPPED"] = 3] = "SHIPPED";
-  OrderStatus[OrderStatus["DELIVERED"] = 4] = "DELIVERED";
-  OrderStatus[OrderStatus["CANCELLED"] = 5] = "CANCELLED";
-  OrderStatus[OrderStatus["REFUNDED"] = 6] = "REFUNDED";
-})(OrderStatus || (OrderStatus = {}));
-
-/***/ }),
-
 /***/ 536:
 /*!**************************************************!*\
   !*** ./apps/smwine-fe-app/src/app/app.config.ts ***!
@@ -102,28 +79,6 @@ class RegisterUserService {
     providedIn: 'root'
   });
 }
-
-/***/ }),
-
-/***/ 657:
-/*!*******************************************************!*\
-  !*** ./apps/smwine-fe-app/src/app/app.routes.enum.ts ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   APP_ROUTES: () => (/* binding */ APP_ROUTES)
-/* harmony export */ });
-const APP_ROUTES = {
-  LOGIN: 'login',
-  REGISTER: 'register',
-  ORDERS: 'orders',
-  CHECKOUT: 'checkout',
-  WINE: 'wine',
-  BEER: 'beer',
-  CIDER: 'cider'
-};
 
 /***/ }),
 
@@ -1411,8 +1366,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_header_header_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/header/header.component */ 6168);
 /* harmony import */ var _services_cart_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/cart.service */ 9507);
 /* harmony import */ var _services_checkout_checkout_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/checkout/checkout.service */ 3758);
-/* harmony import */ var _models_checkout_interface__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../models/checkout.interface */ 171);
-/* harmony import */ var _app_routes_enum__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../app.routes.enum */ 657);
+/* harmony import */ var _models_checkout_interface__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../models/checkout.interface */ 8171);
+/* harmony import */ var _app_routes_enum__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../app.routes.enum */ 8657);
 
 
 
@@ -2776,6 +2731,29 @@ class ToastService {
 
 /***/ }),
 
+/***/ 8171:
+/*!*****************************************************************!*\
+  !*** ./apps/smwine-fe-app/src/app/models/checkout.interface.ts ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   OrderStatus: () => (/* binding */ OrderStatus)
+/* harmony export */ });
+var OrderStatus;
+(function (OrderStatus) {
+  OrderStatus[OrderStatus["AWAITING_PAYMENT"] = 0] = "AWAITING_PAYMENT";
+  OrderStatus[OrderStatus["PAID"] = 1] = "PAID";
+  OrderStatus[OrderStatus["PROCESSING"] = 2] = "PROCESSING";
+  OrderStatus[OrderStatus["SHIPPED"] = 3] = "SHIPPED";
+  OrderStatus[OrderStatus["DELIVERED"] = 4] = "DELIVERED";
+  OrderStatus[OrderStatus["CANCELLED"] = 5] = "CANCELLED";
+  OrderStatus[OrderStatus["REFUNDED"] = 6] = "REFUNDED";
+})(OrderStatus || (OrderStatus = {}));
+
+/***/ }),
+
 /***/ 8356:
 /*!******************************************************************!*\
   !*** ./libs/security/src/lib/security/guard/admin-auth.guard.ts ***!
@@ -3033,6 +3011,28 @@ class LoginComponent {
     styles: ["/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsb2dpbi5jb21wb25lbnQuc2NzcyJ9 */\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL2xpYnMvc2hhcmVkL3NyYy9saWIvY29tcG9uZW50cy9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsZ0tBQWdLIiwic291cmNlUm9vdCI6IiJ9 */"]
   });
 }
+
+/***/ }),
+
+/***/ 8657:
+/*!*******************************************************!*\
+  !*** ./apps/smwine-fe-app/src/app/app.routes.enum.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   APP_ROUTES: () => (/* binding */ APP_ROUTES)
+/* harmony export */ });
+const APP_ROUTES = {
+  LOGIN: 'login',
+  REGISTER: 'register',
+  ORDERS: 'orders',
+  CHECKOUT: 'checkout',
+  WINE: 'wine',
+  BEER: 'beer',
+  CIDER: 'cider'
+};
 
 /***/ }),
 

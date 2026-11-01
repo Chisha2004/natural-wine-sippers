@@ -1,0 +1,16 @@
+spring:
+  web:
+    resources:
+      static-locations: "file:src/main/resources/static/"
+      cache:
+        period: 0
+
+devtools:
+  restart:
+    additional-paths: src/main/resources/static
+
+paypal:
+  url: https://api-m.paypal.com
+  client-id: ADD_PROD_ID
+  client-secret: ADD_PROD_SECRET
+  environment: prod
