@@ -7,17 +7,16 @@ export interface CheckoutRequest {
 }
 
 export enum OrderStatus {
-  AWAITING_PAYMENT,
-  PAID,
-  PROCESSING,
-  SHIPPED,
-  DELIVERED,
-  CANCELLED,
-  REFUNDED,
+  AWAITING_PAYMENT = 'AWAITING_PAYMENT',
+  PAID = 'PAID',
+  PROCESSING = 'PROCESSING',
+  SHIPPED = 'SHIPPED',
+  DELIVERED = 'DELIVERED',
+  CANCELLED = 'CANCELLED',
+  REFUNDED = 'REFUNDED',
 }
-
 export interface CheckoutResponse {
   orderId: number;
-  status: OrderStatus;
+  orderStatus: OrderStatus;
   paymentRedirectUrl: string;
 }

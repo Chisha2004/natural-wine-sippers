@@ -1,15 +1,11 @@
 package com.naturalwine.service.payment;
 
-import com.naturalwine.entity.Order;
-import com.naturalwine.entity.PaymentMethod;
-import com.naturalwine.entity.Transaction;
-import com.naturalwine.entity.TransactionStatus;
+import com.naturalwine.entity.*;
 import com.naturalwine.exception.OrderAlreadyPaidException;
 import com.naturalwine.exception.UnSupportedPaymentMethodException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +16,6 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class PaymentService {
-    private static final int TRANSACTION_EXPIRE_TIME = 30; //in mins
     private final Map<PaymentMethod, PaymentGateway> gatewayRegistry;
     private final TransactionService transactionService;
 
@@ -33,14 +28,15 @@ public class PaymentService {
         this.transactionService = transactionService;
     }
 
-    public String generatePaymentUrl(final PaymentMethod paymentMethod, final Order order) {
+    public String generatePaymentUrl(final Order order) throws UnSupportedPaymentMethodException, OrderAlreadyPaidException {
         List<Transaction> transactionList = transactionService.getTransactionsForOrder(order.getId());
 
         // 1. Evaluate existing order transaction history
         if (!transactionList.isEmpty()) {
             // Block request if order is already paid
-            boolean isPaid = transactionList.stream()
+            final boolean isPaid = transactionList.stream()
                     .anyMatch(tx -> tx.getStatus() == TransactionStatus.SUCCESS);
+
             if (isPaid) {
                 throw new OrderAlreadyPaidException(order.getId());
             }
@@ -51,37 +47,46 @@ public class PaymentService {
                     .orElse(null);
 
             if (latestTx.getStatus() == TransactionStatus.PENDING) {
-                boolean isSameMethod = latestTx.getPaymentMethod() == paymentMethod;
-                //TODO maybe this expire time is less like 15 but we keep it 30mins for now
-                boolean isStillValid = latestTx.getDoe().isAfter(LocalDateTime.now().minusMinutes(TRANSACTION_EXPIRE_TIME));
-                boolean isSameAmount = latestTx.getTotalAmount().compareTo(order.getTotalAmount()) == 0;
+                //For existing transactions always use the one previously used in the transaction to check for status only
+                PaymentGateway previousPaymentGateway = gatewayRegistry.get(latestTx.getPaymentMethod());
+                TransactionStatus previousPaymentTransStatus = previousPaymentGateway.checkTransactionStatus(latestTx.getGatewayTransactionId());
 
-                if (isSameMethod && isStillValid && isSameAmount) {
-                    // Reuse existing active session without calling the external gateway
-                    log.info("Reusing active payment session for orderId: {}, transactionId: {}",
-                            order.getId(), latestTx.getGatewayTransactionId());
-                    return latestTx.getRedirectUrl();
+                if(previousPaymentTransStatus == TransactionStatus.SUCCESS) {
+                    latestTx.setStatus(TransactionStatus.SUCCESS);
+                    transactionService.save(latestTx);
+
+                    throw new OrderAlreadyPaidException(order.getId());
+                }else if(previousPaymentTransStatus == TransactionStatus.PENDING) {
+                   return latestTx.getRedirectUrl();
+                }else if(previousPaymentTransStatus == TransactionStatus.EXPIRED) {
+                    // Expire previous pending session if method changed, expired, or cart amount changed
+                    latestTx.setStatus(TransactionStatus.EXPIRED);
+                    transactionService.save(latestTx);
                 }
-
-                if (!isSameAmount) {
-                    log.info("Order {} amount changed from {} to {}. Expiring previous transaction {}",
-                            order.getId(), latestTx.getTotalAmount(), order.getTotalAmount(), latestTx.getGatewayTransactionId());
-                } else if (!isSameMethod) {
-                    log.info("Payment method changed from {} to {} for order {}. Expiring previous transaction {}",
-                            latestTx.getPaymentMethod(), paymentMethod, order.getId(), latestTx.getGatewayTransactionId());
-                } else {
-                    log.info("Payment session expired for order {}. Expiring transaction {}",
-                            order.getId(), latestTx.getGatewayTransactionId());
-                }
-
-                // Expire previous pending session if method changed, expired, or cart amount changed
-                latestTx.setStatus(TransactionStatus.EXPIRED);
-                transactionService.save(latestTx);
+                //TODO if a gateway fails a lookup, then we should throw the exception and not allow user to proceed for now.
+                //TODO log the exception so someone can look at it.
             }
         }
 
+        return getPaymentUrl(order);
+    }
+
+    public List<Transaction> getTransactionsForOrder(Long orderId) {
+        List<Transaction> transactions = transactionService.getTransactionsForOrder(orderId);
+
+        //return the list in desc
+        if(transactions != null && !transactions.isEmpty()) {
+            transactions.sort(Comparator.comparing(Transaction::getDoe).reversed());
+        }
+
+        return transactions;
+    }
+
+    private String getPaymentUrl(final Order order) {
         // 2. Fetch gateway strategy for requested payment method
+        final PaymentMethod paymentMethod = order.getPaymentMethod();
         PaymentGateway gateway = gatewayRegistry.get(paymentMethod);
+
         if (gateway == null) {
             throw new UnSupportedPaymentMethodException(paymentMethod);
         }
@@ -104,16 +109,5 @@ public class PaymentService {
                 paymentMethod, response.transactionId(), order.getId(), order.getTotalAmount());
 
         return response.redirectUrl();
-    }
-
-    public List<Transaction> getTransactionsForOrder(Long orderId) {
-        List<Transaction> transactions = transactionService.getTransactionsForOrder(orderId);
-
-        //return the list in desc
-        if(transactions != null && !transactions.isEmpty()) {
-            transactions.sort(Comparator.comparing(Transaction::getDoe).reversed());
-        }
-
-        return transactions;
     }
 }

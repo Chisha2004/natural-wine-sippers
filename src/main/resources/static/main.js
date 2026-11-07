@@ -1793,11 +1793,11 @@ class CheckoutComponent {
     });
   }
   checkStatusAndContinueWithoutPayment() {
-    this.checkoutService.orderStatus(this.cart().orderId).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_9__.take)(1)).subscribe(order => {
-      if (order && order.status === _models_checkout_interface__WEBPACK_IMPORTED_MODULE_4__.OrderStatus.AWAITING_PAYMENT) {
-        window.location.href = order.paymentRedirectUrl;
+    this.checkoutService.orderStatus(this.cart().orderId).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_9__.take)(1)).subscribe(response => {
+      if (response && response.orderStatus === _models_checkout_interface__WEBPACK_IMPORTED_MODULE_4__.OrderStatus.AWAITING_PAYMENT) {
+        window.location.href = response.paymentRedirectUrl;
       } else {
-        this.router.navigate([_app_routes_enum__WEBPACK_IMPORTED_MODULE_5__.APP_ROUTES.ORDERS, order.orderId]);
+        this.router.navigate([_app_routes_enum__WEBPACK_IMPORTED_MODULE_5__.APP_ROUTES.ORDERS, response.orderId]);
       }
     });
   }
@@ -2743,13 +2743,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var OrderStatus;
 (function (OrderStatus) {
-  OrderStatus[OrderStatus["AWAITING_PAYMENT"] = 0] = "AWAITING_PAYMENT";
-  OrderStatus[OrderStatus["PAID"] = 1] = "PAID";
-  OrderStatus[OrderStatus["PROCESSING"] = 2] = "PROCESSING";
-  OrderStatus[OrderStatus["SHIPPED"] = 3] = "SHIPPED";
-  OrderStatus[OrderStatus["DELIVERED"] = 4] = "DELIVERED";
-  OrderStatus[OrderStatus["CANCELLED"] = 5] = "CANCELLED";
-  OrderStatus[OrderStatus["REFUNDED"] = 6] = "REFUNDED";
+  OrderStatus["AWAITING_PAYMENT"] = "AWAITING_PAYMENT";
+  OrderStatus["PAID"] = "PAID";
+  OrderStatus["PROCESSING"] = "PROCESSING";
+  OrderStatus["SHIPPED"] = "SHIPPED";
+  OrderStatus["DELIVERED"] = "DELIVERED";
+  OrderStatus["CANCELLED"] = "CANCELLED";
+  OrderStatus["REFUNDED"] = "REFUNDED";
 })(OrderStatus || (OrderStatus = {}));
 
 /***/ }),

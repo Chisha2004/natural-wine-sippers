@@ -5,11 +5,13 @@ import com.naturalwine.dto.CheckoutResponseDto;
 import com.naturalwine.dto.ShippingAddressDto;
 import com.naturalwine.entity.*;
 import com.naturalwine.exception.CartAccessDeniedException;
+import com.naturalwine.exception.OrderAlreadyPaidException;
 import com.naturalwine.exception.OrderNotFoundException;
 import com.naturalwine.repository.OrderRepository;
 import com.naturalwine.repository.DefaultShippingAddressRepo;
 import com.naturalwine.service.payment.PaymentService;
 import jakarta.transaction.Transactional;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -21,6 +23,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Log4j2
 @Service
 public class CheckoutService {
     private static final String ALPHANUMERIC = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; // Omitted confusing characters like 0, 1, O, I
@@ -78,9 +81,14 @@ public class CheckoutService {
             return newOrder;
         });
 
+        if(order.getPaymentMethod() != request.paymentMethod()) {
+            order.setPaymentMethod(request.paymentMethod());
+            orderRepository.save(order);
+        }
+
         cartService.updateStatus(cart, CartStatus.IN_CHECKOUT);
 
-        final String url = paymentService.generatePaymentUrl(request.paymentMethod(), order);
+        final String url = getPaymentUrl(cart, order);
 
         //TODO do not start a new transaction without checking existing. If payment method has changed from previous then start new or if no transaction already exists in pending
         //TODO payment method should be used at transaction level
@@ -115,10 +123,11 @@ public class CheckoutService {
 
                 //TODO what happens if transaction is null but awaiting payment?? should we trigger new payment? yes
                 //TODO we need a webhook api where payments that a
+                //TODO we need to validate if the payment link is still valid before redirecting the customer
                 if(transaction != null) {
                     checkoutResponseDtoBuilder.paymentRedirectUrl(transaction.getRedirectUrl());
                 } else {
-                    final String redirectUrl = paymentService.generatePaymentUrl(order.getPaymentMethod(), order);
+                    final String redirectUrl = getPaymentUrl(cart, order);
                     checkoutResponseDtoBuilder.paymentRedirectUrl(redirectUrl);
                 }
             }
@@ -179,6 +188,18 @@ public class CheckoutService {
 
             defaultShippingAddressRepo.save(defaultShippingAddress);
         }
+    }
+
+    private String getPaymentUrl(final Cart cart, final Order order) {
+        String paymentUrl = null;
+        try {
+            paymentUrl = paymentService.generatePaymentUrl(order);
+        }catch (OrderAlreadyPaidException e){
+            log.info("Order Already paid: ", e);
+            finalizeCartForPaidOrder(cart, order);
+        }
+
+        return paymentUrl;
     }
 
     @Transactional

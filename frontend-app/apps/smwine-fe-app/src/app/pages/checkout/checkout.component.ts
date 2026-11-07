@@ -88,11 +88,11 @@ export class CheckoutComponent {
     this.checkoutService
       .orderStatus(this.cart().orderId)
       .pipe(take(1))
-      .subscribe((order) => {
-        if (order && order.status === OrderStatus.AWAITING_PAYMENT) {
-          window.location.href = order.paymentRedirectUrl;
+      .subscribe((response) => {
+        if (response && response.orderStatus === OrderStatus.AWAITING_PAYMENT) {
+          window.location.href = response.paymentRedirectUrl;
         } else {
-          this.router.navigate([APP_ROUTES.ORDERS, order.orderId]);
+          this.router.navigate([APP_ROUTES.ORDERS, response.orderId]);
         }
       });
   }
