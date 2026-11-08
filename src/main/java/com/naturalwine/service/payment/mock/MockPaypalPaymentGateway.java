@@ -2,6 +2,8 @@ package com.naturalwine.service.payment.mock;
 
 import com.naturalwine.entity.Order;
 import com.naturalwine.entity.PaymentMethod;
+import com.naturalwine.entity.Transaction;
+import com.naturalwine.entity.TransactionStatus;
 import com.naturalwine.service.payment.PaymentGateway;
 import com.naturalwine.service.payment.PaymentResponse;
 import org.springframework.context.annotation.Profile;
@@ -43,7 +45,7 @@ public class MockPaypalPaymentGateway implements PaymentGateway {
         if (existing != null
                 && "PENDING".equals(existing.status())
                 && Instant.now().isBefore(existing.expiresAt())) {
-            return new PaymentResponse(existing.transactionId, existing.paymentUrl);
+            return new PaymentResponse(existing.transactionId, existing.paymentUrl, null );
         }
 
         // 2. Otherwise, create a new transaction ID and session (expires in 30 mins)
@@ -59,7 +61,12 @@ public class MockPaypalPaymentGateway implements PaymentGateway {
         );
 
         activeTransactions.put(orderId, newTransaction);
-        return new PaymentResponse(newTransaction.transactionId, paymentUrl);
+        return new PaymentResponse(newTransaction.transactionId, paymentUrl, null);
+    }
+
+    @Override
+    public TransactionStatus checkTransactionStatus(Transaction transaction) {
+        return null;
     }
 
     public Optional<DummyTransaction> getTransaction(Long orderId) {

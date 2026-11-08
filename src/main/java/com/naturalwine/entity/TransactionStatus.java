@@ -5,5 +5,6 @@ public enum TransactionStatus {
     FAILED,
     CANCELED,
     PENDING,
-    EXPIRED
+    EXPIRED,
+    PENDING_PAYMENT_CONFIRMATION
 }

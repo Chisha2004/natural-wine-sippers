@@ -51,6 +51,12 @@ public class Transaction {
 
     private LocalDateTime dlu;
 
+    /**
+     * Complete raw JSON response payload returned by the third-party payment gateway.
+     */
+    @Column(columnDefinition = "json")
+    private String rawResponse;
+
     @PrePersist
     protected void onCreate() {
         this.doe = LocalDateTime.now();

@@ -2,6 +2,8 @@ package com.naturalwine.service.payment.mock;
 
 import com.naturalwine.entity.Order;
 import com.naturalwine.entity.PaymentMethod;
+import com.naturalwine.entity.Transaction;
+import com.naturalwine.entity.TransactionStatus;
 import com.naturalwine.exception.UnSupportedPaymentMethodException;
 import com.naturalwine.service.payment.PaymentGateway;
 import com.naturalwine.service.payment.PaymentResponse;
@@ -21,5 +23,10 @@ public class MockIdealPaymentGateway implements PaymentGateway {
     @Override
     public PaymentResponse generatePaymentUrl(BigDecimal amount, Order order) {
         throw new UnSupportedPaymentMethodException(PaymentMethod.IDEAL); //TODO needs to be implemented
+    }
+
+    @Override
+    public TransactionStatus checkTransactionStatus(Transaction transaction) {
+        return null;
     }
 }

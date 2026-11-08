@@ -49,7 +49,7 @@ public class PaymentService {
             if (latestTx.getStatus() == TransactionStatus.PENDING) {
                 //For existing transactions always use the one previously used in the transaction to check for status only
                 PaymentGateway previousPaymentGateway = gatewayRegistry.get(latestTx.getPaymentMethod());
-                TransactionStatus previousPaymentTransStatus = previousPaymentGateway.checkTransactionStatus(latestTx.getGatewayTransactionId());
+                TransactionStatus previousPaymentTransStatus = previousPaymentGateway.checkTransactionStatus(latestTx);
 
                 if(previousPaymentTransStatus == TransactionStatus.SUCCESS) {
                     latestTx.setStatus(TransactionStatus.SUCCESS);
@@ -62,6 +62,8 @@ public class PaymentService {
                     // Expire previous pending session if method changed, expired, or cart amount changed
                     latestTx.setStatus(TransactionStatus.EXPIRED);
                     transactionService.save(latestTx);
+                } else if (previousPaymentTransStatus == TransactionStatus.PENDING_PAYMENT_CONFIRMATION) {
+                    throw new OrderAlreadyPaidException(order.getId(), previousPaymentTransStatus);
                 }
                 //TODO if a gateway fails a lookup, then we should throw the exception and not allow user to proceed for now.
                 //TODO log the exception so someone can look at it.
@@ -93,6 +95,7 @@ public class PaymentService {
 
         // 3. Call gateway to generate new session
         PaymentResponse response = gateway.generatePaymentUrl(order.getTotalAmount(), order);
+        //TODO If a
 
         // 4. Persist new PENDING transaction to database
         Transaction newTx = new Transaction();
@@ -102,6 +105,7 @@ public class PaymentService {
         newTx.setRedirectUrl(response.redirectUrl());
         newTx.setTotalAmount(order.getTotalAmount());
         newTx.setStatus(TransactionStatus.PENDING);
+        newTx.setRawResponse(response.rawResponse());
 
         transactionService.save(newTx);
         //TODO this maybe we remove in the future if we log too much

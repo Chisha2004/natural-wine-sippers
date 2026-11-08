@@ -4,6 +4,7 @@ import lombok.Builder;
 
 @Builder
 public record PaymentResponse(
-        String transactionId, //TODO rename this to referenceId rather
-        String redirectUrl
+        String transactionId,
+        String redirectUrl,
+        String rawResponse
 ) {}
